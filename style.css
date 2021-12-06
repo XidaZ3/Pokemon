@@ -1,23 +1,107 @@
-html, body{
+@font-face {
+    font-family: "Questrial";
+    src: url("./fonts/Questrial-Regular.ttf");
+}
+
+:root{
+    --light-cornflower-blue: #8ecae6ff;
+    --blue-green: #219ebcff;
+    --prussian-blue: #023047ff;
+    --honey-yellow: #ffb703ff;
+    --orange: #fb8500ff;
+    --yellow:rgb(255, 255, 160);
+}
+
+*{
     margin:0;
     padding: 0;
 }
 
-@font-face {
-    font-family: 'Questrial',sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    src: url('./fonts/questrial-v13-latin-regular.eot'); /* IE9 Compat Modes */
-    src: local(''),
-         url('./fonts/questrial-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('./fonts/questrial-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-         url('./fonts/questrial-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
-         url('./fonts/questrial-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('./fonts/questrial-v13-latin-regular.svg#Questrial') format('svg'); /* Legacy iOS */
-  }
+header{
+    margin-top: 2em;
+    margin-left:2em;
+}
 
-  #content{
-      border:red solid 1px;
-      height: 10px;
-      width: 10px;
-  }
+html, body{
+   
+    font-family: "Questrial",sans-serif;
+    font-size: 100%;
+}
+
+body{
+    border:black solid 1px;
+    background-image: url("./Immagini/Xida_Immagini/pokemon-partito-sfondo-3840x2400_9.jpg");
+    background-size: contain;
+}
+
+#menu ul{
+    display: flex;
+    border: var(--orange) solid 2px;
+    border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    width: 70%;
+    height: auto;
+    margin: auto;
+}
+
+#menu ul li{
+    list-style-type: none;
+    padding-left: 1em;
+    font-size: 1.5em;
+    color: var(--prussian-blue);
+}
+
+#breadcrumb{
+    display: flex;
+    margin:auto;
+    width: 70%;
+}
+
+footer{
+    display: flex;
+    width: 70%;
+    background-color: var(--honey-yellow);
+
+    bottom: 0;
+    margin-left:15%;
+    position: absolute;
+}
+
+#content{
+    display: flex;
+    height: 30em;
+    width: 60em;
+    margin: auto;
+    border:var(--orange) solid 1px;
+    background-color: var(--yellow);
+    border-radius: 0.5em;
+    height: max-content;
+}
+#content #ultimeUscite {
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 40%;
+    height:80%;
+    min-height: 24em;
+    border:black solid 1px;
+    border-radius: 0.5em;
+}
+
+#content #ultimeUscite ul{
+    list-style-type: none;
+}
+
+#content #popolari {
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 40%;
+    height:80%;
+    min-height: 24em;
+    border:black solid 1px;
+    border-radius: 0.5em;
+}
+
+#content #popolari ul{
+    list-style-type: none;
+}
