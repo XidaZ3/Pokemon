@@ -1,4 +1,4 @@
-@font-face {
+ @font-face {
     font-family: "Questrial";
     src: url("./fonts/Questrial-Regular.ttf");
 }
@@ -29,79 +29,169 @@ html, body{
 }
 
 body{
-    border:black solid 1px;
-    background-image: url("./Immagini/Xida_Immagini/pokemon-partito-sfondo-3840x2400_9.jpg");
-    background-size: contain;
+    border:none;
+   /* background-color: var(--light-cornflower-blue);*/
+   background-image: url("./Immagini/Xida_Immagini/pokemon-partito-sfondo-3840x2400_9.jpg");
+    background-size:cover;
+    background-attachment: fixed;
 }
-
-#menu ul{
+/*------------------------------*/
+header{
+    height: 8em;
+    text-indent: -9999999em;
+}
+/*------------------------------*/
+#menu ul {
     display: flex;
-    border: var(--orange) solid 2px;
+    border: var(--orange) inset 2px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
     width: 70%;
     height: auto;
     margin: auto;
+    margin-bottom: 0.1em;
+    padding: 0.2em;
 }
-
+#menu a{
+    text-decoration: none;
+    color: var(--prussian-blue);
+}
 #menu ul li{
     list-style-type: none;
-    padding-left: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     font-size: 1.5em;
     color: var(--prussian-blue);
 }
+#menu ul li:hover,#menu ul li:active{
+    background-color:var(--yellow) ;
+    color: var(--prussian-blue);
+    border-radius: 0.3em;
+
+}
+#ricerca{
+    margin-left: 23px; 
+}
+#s {
+    width: 70%;
+    height: 28px;
+    padding: 0 10px;
+    background: var(--yellow);
+    border-radius: 0.3em;
+    float: left;
+    box-sizing: border-box;
+}
+
+/*------------------------------*/
 
 #breadcrumb{
     display: flex;
     margin:auto;
     width: 70%;
 }
-
+/*------------------------------*/
 footer{
     display: flex;
     width: 70%;
     background-color: var(--honey-yellow);
-
+    padding: 0.3em;
+    border-radius: 0.3em;
     bottom: 0;
     margin-left:15%;
-    position: absolute;
+    position: fixed;
 }
-
+/*------------------------------*/
 #content{
     display: flex;
-    height: 30em;
+    height: 90%;
     width: 60em;
     margin: auto;
-    border:var(--orange) solid 1px;
+    border: var(--orange) inset 1px;
     background-color: var(--yellow);
     border-radius: 0.5em;
     height: max-content;
 }
 #content #ultimeUscite {
-    margin-left: 5%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 40%;
-    height:80%;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    margin-right: 1%;
+    width: 50%;
+    height:90%;
     min-height: 24em;
-    border:black solid 1px;
+    border:var(--orange) solid 5px;
     border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    text-align: center;
+
 }
 
 #content #ultimeUscite ul{
     list-style-type: none;
 }
+#content #ultimeUscite li,#content #popolari li{
+    margin:0.5em;
+    border: 3px;
+    border-radius: 0.5em;
+    background-color: var(--yellow);
+    min-height: 5em;
+}
+#content #ultimeUscite img.postuscite,#content #popolari img.postpopolari{
+   width: 6em;
+}
 
 #content #popolari {
-    margin-left: 10%;
-    margin-top: 5%;
-    width: 40%;
-    height:80%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-left: 1%; 
+    margin-bottom: 2%;
+    width: 50%;
+    height:90%;
     min-height: 24em;
-    border:black solid 1px;
+    border:var(--orange) solid 5px;
     border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    text-align: center;
 }
 
 #content #popolari ul{
     list-style-type: none;
 }
+#content #guide{
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 1%;
+    width: 50%;
+    height:90%;
+    min-height: 24em;
+    border:var(--orange) solid 5px;
+    border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    text-align: center;
+}
+
+#content #guide ul, #content #articoli ul{
+    list-style-type: none;
+}
+
+#content #articoli{
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-left: 1%; 
+    margin-bottom: 5%;
+    width: 50%;
+    height:90%;
+    min-height: 24em;
+    border:var(--orange) solid 5px;
+    border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    text-align: center;
+}
+
+#content h2{
+    color: var(--prussian-blue);
+    font-size: 1.8em;
+}
+
+/*------------------------------*/
