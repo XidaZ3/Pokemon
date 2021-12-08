@@ -4,43 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type ="text/css" media="screen" href="style.css">
     <link rel="icon" type="image/png" href="favicon.ico"/>
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
     
+     
     <header>
-    		<h1>Poke friends</h1>
+        <h1>Poke friends</h1>
     </header>     
+    <nav id="menu">
+        <ul>
+            <li lang="en"> home</li>
+            <li><a href="contenuti.html">contenuti</a></li>
+            <li>chi siamo</li>
+            <li>profilo</li>
+            <li id="ricerca"> 
+                <input type="search" id="s" name="s" placeholder="Cerca sul sito">
+            </li>
+        </ul>
+    </nav>
     
     
-    
-        <nav id="menu">
-            <ul>
-                <li lang="en"> home</li>
-                <li><a href="contenuti.html">contenuti</a></li>
-                <li>chi siamo</li>
-                <li>profilo</li>
-            </ul>
-        </nav>
-        <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en">Home</span></p>
-        </nav>
-
-
     <div id="content">
         <div id="ultimeUscite">
+            <h2>ULTIME USCITE <img src="immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
             <ul>
-                <li class="postUscita"> Post 1</li>
-                <li class="postUscita" >Post 2</li>
+                <li>
+                    <img class="postuscite" src="immagini/25.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postuscite" src="immagini/224.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postuscite" src="immagini/59.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postuscite" src="immagini/57.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
             </ul>
         </div>
 
         <div id="popolari">
-            <ul post="popolare">
-                <li class="postPopolare"> Post 3</li>
-                <li class="postPopolare" >Post 4</li>
+            <h2>I PIU' POPOLARI <img src="immagini/144.png" height="35em" alt="uccello blu con le ali spiegate"/></h2>
+            <ul>
+                <li>
+                    <img class="postpopolari" src="immagini/59.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postpopolari" src="immagini/57.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postpopolari" src="immagini/25.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
+                <li>
+                    <img class="postpopolari" src="immagini/224.png"/>
+                    <strong>Titolo della guida/articolo</strong>
+                </li>
             </ul>
         </div>
     </div>
