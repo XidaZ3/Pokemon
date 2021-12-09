@@ -31,7 +31,7 @@ html, body{
 body{
     border:none;
    /* background-color: var(--light-cornflower-blue);*/
-   background-image: url("./Immagini/Xida_Immagini/pokemon-partito-sfondo-3840x2400_9.jpg");
+   background-image: url("./Immagini/sfondoazzuro3.png");
     background-size:cover;
     background-attachment: fixed;
 }
