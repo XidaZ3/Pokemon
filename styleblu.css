@@ -1,11 +1,3 @@
-
-
-    
- /*background:light-cornflower-blue #8ecae6ff;
- blue-green: #219ebcff;
- prussian-blue: #023047ff;
- honey-yellow: #ffb703ff;
- orange: #fb8500ff;*/
  @font-face {
     font-family: "Questrial";
     src: url("./fonts/Questrial-Regular.ttf");
@@ -39,7 +31,7 @@ html, body{
 body{
     border:none;
    /* background-color: var(--light-cornflower-blue);*/
-   background-image: url("./Immagini/Xida_Immagini/pokemon-partito-sfondo-3840x2400_9.jpg");
+   background-image: url("./Immagini/sfondonotte.png");
     background-size:cover;
     background-attachment: fixed;
 }
@@ -206,5 +198,3 @@ footer{
     color: var(--prussian-blue);
     font-size: 1.8em;
 }
-
-/*------------------------------*/
