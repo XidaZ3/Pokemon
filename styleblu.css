@@ -1,4 +1,4 @@
- @font-face {
+@font-face {
     font-family: "Questrial";
     src: url("./fonts/Questrial-Regular.ttf");
 }
@@ -45,7 +45,7 @@ header{
     display: flex;
     border: var(--prussian-blue) inset 2px;
     border-radius: 0.5em;
-    background-color: var(--light-cornflower-blue);
+    background-color: var(--blue-green);
     width: 70%;
     height: auto;
     margin: auto;
@@ -64,7 +64,7 @@ header{
     color: var(--prussian-blue);
 }
 #menu ul li:hover,#menu ul li:active{
-    background-color:var(--yellow) ;
+    background-color:var(--light-cornflower-blue) ;
 
     color: var(--prussian-blue);
     border-radius: 0.3em;
@@ -77,7 +77,7 @@ header{
     width: 70%;
     height: 28px;
     padding: 0 10px;
-    background: var(--yellow);
+    background: var(--light-cornflower-blue);
     border-radius: 0.3em;
     float: left;
     box-sizing: border-box;
@@ -94,7 +94,7 @@ header{
 footer{
     display: flex;
     width: 70%;
-    background-color: var(--light-cornflower-blue);
+    background-color: var(--blue-green);
     padding: 0.3em;
     border-radius: 0.3em;
     bottom: 0;
@@ -108,7 +108,7 @@ footer{
     width: 60em;
     margin: auto;
     border: var(--prussian-blue) inset 1px;
-    background-color: var(--blue-green);
+    background-color: var(--prussian-blue);
     border-radius: 0.5em;
     height: max-content;
 }
@@ -122,7 +122,7 @@ footer{
     min-height: 24em;
     border:var(--prussian-blue) solid 3px;
     border-radius: 0.5em;
-    background-color: var(--light-cornflower-blue);
+    background-color: var(--blue-green);
     text-align: center;
 
 }
@@ -133,8 +133,8 @@ footer{
 #content #ultimeUscite li,#content #popolari li{
     margin:0.5em;
     border-radius: 0.5em;
-    background-color: var(--yellow);
-    border:var(--orange) solid 2px;
+    background-color: var(--light-cornflower-blue);
+    border:var(--prussian-blue) solid 2px;
     min-height: 7em;
 }
 #content #ultimeUscite img.postuscite,#content #popolari img.postpopolari{
@@ -151,13 +151,8 @@ footer{
     min-height: 24em;
     border:var(--prussian-blue) solid 3px;
     border-radius: 0.5em;
-    background-color: var(--light-cornflower-blue);
+    background-color: var(--blue-green);
     text-align: center;
-
-    /*background-image: url('immagini/144.png');
-    background-position: top right;
-    background-size: 2em;
-    background-repeat: no-repeat;*/
 }
 
 #content #popolari ul{
