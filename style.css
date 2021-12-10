@@ -35,12 +35,16 @@ body{
     background-size:cover;
     background-attachment: fixed;
 }
-/*------------------------------*/
-header{
-    height: 8em;
-    text-indent: -9999999em;
+
+#mainLogo{
+    background-image: url("./Immagini/Logo/big_logo.png");
+    background-size:contain;
+    height: 100px;
+    width: 200px;
+    background-repeat: no-repeat;
+    margin-left: 6em;
+    text-indent: -99em;
 }
-/*------------------------------*/
 
 .highlight{
     font-weight: bold;
@@ -67,25 +71,21 @@ header{
     font-size: 1.5em;
     color: var(--prussian-blue);
 }
-#menu ul li:hover,#menu ul li:active{
+#menu ul li:hover a,#menu ul li:active a{
     background-color:var(--yellow) ;
     color: var(--prussian-blue);
     border-radius: 0.3em;
 
 }
 #ricerca{
-    /* da mettere in em */
-    margin-left: 23px; 
+    display: flex;
+    margin-left: auto;
 }
-/* ???? float ??? */
-#s {
-    width: 70%;
-    height: 28px;
-    padding: 0 10px;
+
+#searchBar {
     background: var(--yellow);
     border-radius: 0.3em;
-    float: left;
-    box-sizing: border-box;
+    align-self: center;
 }
 
 /*------------------------------*/
