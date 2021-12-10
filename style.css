@@ -10,6 +10,7 @@
     --honey-yellow: #ffb703ff;
     --orange: #fb8500ff;
     --yellow:#ffe566;
+    --boxHeight: 24em;
 }
 
 *{
@@ -37,8 +38,8 @@ body{
 }
 
 #mainLogo{
-    background-image: url("./Immagini/Logo/big_logo.png");
-    background-size:contain;
+    background-image: url("./Immagini/Logo/big_logo.svg");
+    background-size:cover;
     height: 100px;
     width: 200px;
     background-repeat: no-repeat;
@@ -82,6 +83,55 @@ body{
     margin-left: auto;
 }
 
+#collabora input, #collabora textarea{
+    border-radius: 0.3em;
+    width: 70%;
+}
+
+#collabora{
+    min-width: 15em;
+    min-height: 30em;
+}
+
+#collabora h2{
+    margin-top: 0.5em;
+}
+
+#collaboraForm label{
+    text-indent: -999em;
+}
+
+#collaboraForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#collaboraForm *{
+    margin-top: 0.25em;
+}
+
+#collabora textarea{
+    margin-top: 1.5em;
+    min-height: 18em;
+}
+
+#collabora input[type="submit"]{
+    margin-top: 1.5em;
+}
+
+#contatti, #presentazione{
+    text-align: start;
+    padding-left: 0.8em ;
+    padding-right: 0.8em;
+    padding-bottom: 0.5em;
+}
+
+#contatti h2, #presentazione h2{
+    margin-top: 0.5em ;
+    margin-bottom: 0.2em ;
+}
+
 #searchBar {
     background: var(--yellow);
     border-radius: 0.3em;
@@ -116,23 +166,52 @@ footer{
     background-color: var(--yellow);
     border-radius: 0.5em;
     height: max-content;
+    justify-content: center;
 }
 
-.boxLista li{
+.boxInside{
     margin:0.5em;
     border: 3px;
     border-radius: 0.5em;
     background-color: var(--yellow);
     min-height: 5em;
 }
+.expand{
+    height: max-content;
+}
+
+.boxBig{
+    width: 80%;
+    height:80%;
+    margin: 4%;
+    min-height: 24em;
+    border:var(--orange) solid 5px;
+    border-radius: 0.5em;
+    background-color: var(--honey-yellow);
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+}
+
 img.postuscite,img.postpopolari{
    width: 6em;
 }
+.vflex{
 
-.boxLista{
+    display: flex;
+    flex-direction:column;
+}
+
+.hflex{
+
+    display: flex;
+    flex-direction:row;
+}
+
+.boxColonna{
     width: 50%;
     height:90%;
-    min-height: 24em;
+    min-height: var(--boxHeight);
     border:var(--orange) solid 5px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
@@ -161,5 +240,23 @@ ul{
     color: var(--prussian-blue);
     font-size: 1.8em;
 }
+
+.chiSiamo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    justify-content: center;
+    text-align: center;
+}
+
+.internaSinistra{
+    margin-left: 1%;
+    margin-right: 0.2%;
+}
+
+.internaDestra{
+    margin-right: 1%;
+}
+
 
 /*------------------------------*/

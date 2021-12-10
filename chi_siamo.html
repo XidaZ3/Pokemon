@@ -1,52 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type ="text/css" media="screen" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.ico"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.ico" />
     <title>PokèFriends</title>
 </head>
+
 <body>
-    
+
     <header>
         <h1 id=mainLogo> PokèFriends</h1>
-    </header>     
+    </header>
     <nav id="menu">
         <ul>
             <li lang="en"><a href="index.html">home </a> </li>
             <li><a href="contenuti.html">contenuti</a></li>
             <li>chi siamo</li>
             <li><a href="profilo.html">profilo</a></li>
-            <li id="ricerca"> 
+            <li id="ricerca">
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
             </li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en">Home</span>->contenuti</p>
+        <p>Ti trovi in: <span lang="en">Home</span>->contenuti</p>
     </nav>
-    
-    <div id="content">
-        <div id="guide" class="boxLista boxSinistra">
-            <h2>Guida <img src="immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <li class="guida"><img src="" alt=""/> titolo guida </li>
-                <li class="guida" > <img src="" alt=""/> titolo guida</li>
-                <li class="guida" ><img src="" alt=""/> titolo guida </li>
-                <li class="guida" > <img src="" alt=""/> titolo guida</li>
-            </ul>
-        </div>
 
-        <div id="articoli" class="boxLista boxDestra">
-            <h2>Articolo <img src="immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <li class="articolo"> <img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-            </ul>
+    <div id="content">
+        <div class="chiSiamo">
+            <h1>La più grande community di pokemon Enthusiasts in Italia</h1>
+            <div class="boxBig hflex ">
+                <div class="vflex internaSinistra">
+                    <div id="presentazione" class="boxInside">
+                        <h2>Andiamo a catturarli tutti!</h2>
+                        <p>
+                            PokéFriends è il più grande network italiano dedicato all’universo Pokémon e Nintendo, per
+                            bacino di utenza e contenuti offerti.
+                            Fondato nel 2021 con l’obiettivo di fornire ai lettori notizie e approfondimenti costanti,
+                            si è evoluto nel tempo offrendo contenuti di intrattenimento e permettendo agli utenti di
+                            ogni età di condividere il proprio interesse per il brand.
+
+                        </p>
+                    </div>
+
+                    <div id="contatti" class="boxInside">
+                        <h2>Contatti</h2>
+                        <img src="./Immagini/emerald/36.png" alt="">
+                        <img src="./Immagini/emerald/23.png" alt="">
+                        <img src="./Immagini/emerald/42.png" alt="">
+                        <img src="./Immagini/emerald/59.png" alt="">
+                        <img src="./Immagini/emerald/14.png" alt="">
+                        <img src="./Immagini/emerald/67.png" alt="">
+                    </div>
+                </div>
+
+                <div class="hflex internaDestra">
+                    <div id="collabora" class="boxInside">
+                        <h2>
+                            <p>Collabora</p>
+                            <p>con noi</p>
+                        </h2>
+                        <form id="collaboraForm" action="./collabora.php">
+                            <label for="Nome">Nome</label>
+                            <input type="text" placeholder="Nome">
+                            <label for="Nome">Cognome</label>
+                            <input type="text" placeholder="Cognome">
+
+                            <textarea name="Motivazione" form="collaboraForm"
+                                placeholder="Perchè vorresti unirti?"></textarea>
+
+                            <input type="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -54,4 +85,5 @@
         The Best Pokemon Company TM.
     </footer>
 </body>
+
 </html>
