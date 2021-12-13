@@ -32,24 +32,40 @@
 
     <div id="content">
         <div id="profiloBordo" class="boxOutside vflex">
-            <h1>Profilo</h1>
+            <h2>Profilo</h2>
 
             <div id="zone" class="hflex">
                 <form id="profiloForm" class="boxInside vflex">
                     <div id="avatar"> </div>
 
+                    <!-- da attivare compilazione campi o no in base al button -->
                     <div id="campi" class="vflex">
-                        <div class="hflex"><label>Nome:</label><button></button></div>
+                        <label>Nome:</label>
                         <input type="text"></input>
-                        <div class="hflex"><label>Cognome:</label><button></button></div>
+                        <label>Cognome:</label>
                         <input type="text" ></input>
-                        <div class="hflex"><label >Password:</label><button></button></div>
+                        <label >Password:</label>
                         <input type="text"></input>
-                    </div>
+                        <button id="azioneProfilo">Modifica</button>
+                    </div> 
                 </form>            
                 
-                <div class="boxInside">post2</div>
-                <div class="boxInside">post3</div>
+                <div id="statistiche" class="boxInside vflex">
+                    <h3>Statistiche</h3>
+                    <ul id="infoProfilo" class="boxInside highlight">     
+                          
+                        <li id="miPiace">Mi piace: 10</li>
+                        <li id="eta">Età virtuale: <br /> 1 anno 3 mesi</li>
+                        <li id="numeroPosts">Numero posts: 3</li>
+                        <li id="pokePoints">PokèPoints: 45</li>
+                        <li id="ultimoAccesso">Ultimo accesso: 13/12/21</li>
+                    </ul>
+                </div>
+                <div id="posts" class="boxInside highlight hflex"><h3>Ultimi posts</h3>
+                    <div class="boxOutside">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, reiciendis?</div>
+                    <div class="boxOutside">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis rem magnam et hic.</div>
+                    <div class="boxOutside">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis? </div>
+                </div>
             </div>
         </div>
     </div>

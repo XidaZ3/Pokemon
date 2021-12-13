@@ -10,7 +10,7 @@
     --honey-yellow: #ffb703ff;
     --orange: #fb8500ff;
     --yellow:#ffe566;
-    --boxHeight: 24em;
+    --backgroundWidget:rgb(253, 242, 222);
 }
 
 *{
@@ -180,7 +180,7 @@ footer{
     width: 80%;
     height:80%;
     margin: 4%;
-    min-height: 24em;
+    /* min-height: 24em; */
     border:var(--orange) solid 5px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
@@ -264,9 +264,6 @@ ul{
 
 #zone *{
     width: 30%;
-}
-
-#profiloForm{
     align-items: center;
 }
 
@@ -278,8 +275,8 @@ ul{
     background-image: url("./Immagini/emerald/54.png");
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: var(--honey-yellow);
-    border:var(--orange) 4px solid;
+    background-color: var(--backgroundWidget);
+    border:black 2px solid;
     border-radius: 5em;
 }
 
@@ -287,16 +284,43 @@ ul{
     width: 14em;
     align-items: center;
 }
+
 #campi *{
     margin-top: 0.5em;
 }
 
-#campi div label, #campi div{
-    width: 14em;
+#campi button{
+    width: 35px;
+    height: 35px;
+
+    background-image: url("./Immagini/icons/brush.svg");
+    background-color: var(--backgroundWidget);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 0.3em;
+    width: 70%;
 }
 
-#campi div button{
-    width: 15px;
-    height: 15px;
+#infoProfilo, #posts{
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#statistiche{
+    align-items: center;
+    justify-content: center;
+}
+
+#statistiche *{
+    width: 85%;
+    padding:0.5em;
+}
+
+#posts .boxOutside{
+    min-width: 10em ;
+    font-size: 14px;
 }
 /*------------------------------
