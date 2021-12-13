@@ -1,57 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type ="text/css" media="screen" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.ico"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.ico" />
     <title>PokèFriends</title>
 </head>
+
 <body>
-    
+
     <header>
         <h1 id=mainLogo> PokèFriends</h1>
-    </header>     
+    </header>
     <nav id="menu">
         <ul>
             <li lang="en"><a href="index.html">home </a> </li>
             <li><a href="contenuti.html">contenuti</a></li>
             <li><a href="chi_siamo.html">chi siamo</a></li>
             <li>profilo</li>
-            <li id="ricerca"> 
+            <li id="ricerca">
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
             </li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en">Home</span>->Profilo</p>
+        <p>Ti trovi in: <span lang="en">Home</span>->Profilo</p>
     </nav>
-    
-    <div id="content">
-        <div id="guide" class="boxColonna boxSinistra">
-            <h2>Guida <img src="immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <li class="guida"><img src="" alt=""/> titolo guida </li>
-                <li class="guida" > <img src="" alt=""/> titolo guida</li>
-                <li class="guida" ><img src="" alt=""/> titolo guida </li>
-                <li class="guida" > <img src="" alt=""/> titolo guida</li>
-            </ul>
-        </div>
 
-        <div id="articoli" class="boxColonna boxDestra">
-            <h2>Articolo <img src="immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <li class="articolo"> <img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-            </ul>
+    <div id="content">
+        <div id="profiloBordo" class="boxOutside vflex">
+            <h1>Profilo</h1>
+
+            <div id="zone" class="hflex">
+                <form id="profiloForm" class="boxInside vflex">
+                    <div id="avatar"> </div>
+
+                    <div id="campi" class="vflex">
+                        <div class="hflex"><label>Nome:</label><button></button></div>
+                        <input type="text"></input>
+                        <div class="hflex"><label>Cognome:</label><button></button></div>
+                        <input type="text" ></input>
+                        <div class="hflex"><label >Password:</label><button></button></div>
+                        <input type="text"></input>
+                    </div>
+                </form>            
+                
+                <div class="boxInside">post2</div>
+                <div class="boxInside">post3</div>
+            </div>
         </div>
+    </div>
     </div>
 
     <footer>
         The Best Pokemon Company TM.
     </footer>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <header>
         <h1 id=mainLogo> PokèFriends</h1>
     </header>
@@ -31,9 +30,9 @@
     </nav>
 
     <div id="content">
-        <div class="chiSiamo">
+        <div id="chiSiamo">
             <h1>La più grande community di pokemon Enthusiasts in Italia</h1>
-            <div class="boxBig hflex ">
+            <div class="boxOutside hflex ">
                 <div class="vflex internaSinistra">
                     <div id="presentazione" class="boxInside">
                         <h2>Andiamo a catturarli tutti!</h2>
@@ -60,17 +59,15 @@
 
                 <div class="hflex internaDestra">
                     <div id="collabora" class="boxInside">
-                        <h2>
-                            <p>Collabora</p>
-                            <p>con noi</p>
-                        </h2>
+                        <h2>Collabora  <br /> con noi</h2>
                         <form id="collaboraForm" action="./collabora.php">
                             <label for="Nome">Nome</label>
-                            <input type="text" placeholder="Nome">
-                            <label for="Nome">Cognome</label>
-                            <input type="text" placeholder="Cognome">
+                            <input id="Nome" type="text">
+                            <label for="Cognome">Cognome</label>
+                            <input id="Cognome" type="text">
 
-                            <textarea name="Motivazione" form="collaboraForm"
+                            <label for="Motivazione">Motivazione</label>
+                            <textarea id="Motivazione" name="Motivazione" form="collaboraForm"
                                 placeholder="Perchè vorresti unirti?"></textarea>
 
                             <input type="submit">

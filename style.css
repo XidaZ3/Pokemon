@@ -97,10 +97,6 @@ body{
     margin-top: 0.5em;
 }
 
-#collaboraForm label{
-    text-indent: -999em;
-}
-
 #collaboraForm{
     display: flex;
     flex-direction: column;
@@ -112,12 +108,11 @@ body{
 }
 
 #collabora textarea{
-    margin-top: 1.5em;
     min-height: 18em;
 }
 
 #collabora input[type="submit"]{
-    margin-top: 1.5em;
+    margin-top: 1.2em;
 }
 
 #contatti, #presentazione{
@@ -175,12 +170,13 @@ footer{
     border-radius: 0.5em;
     background-color: var(--yellow);
     min-height: 5em;
+    min-width: 5em;
 }
 .expand{
     height: max-content;
 }
 
-.boxBig{
+.boxOutside{
     width: 80%;
     height:80%;
     margin: 4%;
@@ -197,13 +193,11 @@ img.postuscite,img.postpopolari{
    width: 6em;
 }
 .vflex{
-
     display: flex;
     flex-direction:column;
 }
 
 .hflex{
-
     display: flex;
     flex-direction:row;
 }
@@ -241,7 +235,7 @@ ul{
     font-size: 1.8em;
 }
 
-.chiSiamo{
+#chiSiamo{
     display: flex;
     flex-direction: column;
     margin-top: 2em;
@@ -258,5 +252,51 @@ ul{
     margin-right: 1%;
 }
 
+#profiloBordo{
+    align-items: center;
+    padding-top: 1em;
+}
+#zone{
+    width: 98%;
+    justify-content: center;
+    height: 22em;
+}
 
-/*------------------------------*/
+#zone *{
+    width: 30%;
+}
+
+#profiloForm{
+    align-items: center;
+}
+
+#avatar
+{
+    margin-top: 1em;
+    height: 100px;
+    width:100px;
+    background-image: url("./Immagini/emerald/54.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--honey-yellow);
+    border:var(--orange) 4px solid;
+    border-radius: 5em;
+}
+
+#campi {
+    width: 14em;
+    align-items: center;
+}
+#campi *{
+    margin-top: 0.5em;
+}
+
+#campi div label, #campi div{
+    width: 14em;
+}
+
+#campi div button{
+    width: 15px;
+    height: 15px;
+}
+/*------------------------------
