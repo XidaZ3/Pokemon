@@ -18,6 +18,10 @@
     padding: 0;
 }
 
+input, button, textarea, #searchBar, footer{
+    border-radius: 0.3em;
+}
+
 header{
     margin-top: 2em;
     margin-left:2em;
@@ -84,7 +88,6 @@ body{
 }
 
 #collabora input, #collabora textarea{
-    border-radius: 0.3em;
     width: 70%;
 }
 
@@ -129,7 +132,6 @@ body{
 
 #searchBar {
     background: var(--yellow);
-    border-radius: 0.3em;
     align-self: center;
 }
 
@@ -146,7 +148,6 @@ footer{
     width: 70%;
     background-color: var(--honey-yellow);
     padding: 0.3em;
-    border-radius: 0.3em;
     bottom: 0;
     margin-left:15%;
     position: fixed;
@@ -297,8 +298,8 @@ ul{
     background-color: var(--backgroundWidget);
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius: 0.3em;
     width: 70%;
+    margin-top: 1.5em;
 }
 
 #infoProfilo, #posts{
@@ -322,5 +323,28 @@ ul{
 #posts .boxOutside{
     min-width: 10em ;
     font-size: 14px;
+}
+
+#profiloForm{
+    justify-content: center;
+
+}
+
+#psyduckConfused{
+    background-image: url("./Immagini/404.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 30em;
+}
+
+#psyduckConfused h1{
+    margin-top: 0.7em;
+}
+
+#psyduckConfused p{
+    position: relative;
+    top:16em;
+    right:9em;
+    font-size: 20px;
 }
 /*------------------------------
