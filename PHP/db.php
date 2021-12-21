@@ -1,0 +1,193 @@
+<?php
+    namespace DB;
+    class DBAccess{
+        private const HOST_DB = "127.0.0.1";
+        private const DB_NAME = "pokefriends"; #pmarcatt
+        private const USERNAME = "root"; #pmarcatt
+        private const PASSWORD = ""; #koShaituayeo7fae
+
+        private $connection;
+
+        public function openDBConnection(){
+            $this->connection = mysqli_connect(DBAccess::HOST_DB,DBAccess::USERNAME,DBAccess::PASSWORD,DBAccess::DB_NAME);
+            return mysqli_errno($this->connection);
+        }
+
+        public function closeDBConnection(){
+            mysqli_close($this->connection);
+        }
+
+        private function pulisciInput($valore, $filters){
+            return filter_input(INPUT_POST, $valore, $filters);
+        }
+
+        public function getUser($email, $psw){
+            //$email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
+            //$psw = $this->pulisciInput($psw, FILTER_DEFAULT, [FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING]); //Filtraggio della password
+            $query = "SELECT * FROM utenti WHERE email = '$email'";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUser: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult) >0){
+                //Mail trovata nel database, viene fetchato "l'array" (1 solo elemento)
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                //Verifica della password con quella inserita 
+                if(password_verify($psw, $result[0]['password'])){
+                    return $result[0]; //La password è corretta
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+            
+        }
+
+        public function getUserById($id){
+            $query = "SELECT * FROM utenti WHERE id=$id";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUserById: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult) >0){
+                //Mail trovata nel database, viene fetchato "l'array" (1 solo elemento)
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result[0];
+            }else{
+                return null;
+            }
+        }
+
+        public function getUserByUsername($username){
+            $query = "SELECT * FROM utenti WHERE username='$username'";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+            if(mysqli_num_rows($queryResult) >0){
+                //Username trovato nel database, viene fetchato "l'array" (1 solo elemento)
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result[0];
+            }else{
+                return null;
+            }
+        }
+
+        public function getUserByEmail($email){
+            $query = "SELECT * FROM utenti WHERE email='$email'";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+            if(mysqli_num_rows($queryResult) >0){
+                //Mail trovata nel database, viene fetchato "l'array" (1 solo elemento)
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result[0];
+            }else{
+                return null;
+            }
+        }
+
+        public function isEmailUsed($email){
+            $email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); 
+            //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
+            $query = "SELECT id FROM utenti WHERE email = '$email'";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in isEmailUsed: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult) >1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function addUser($email, $psw, $uname) {
+            //$email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
+            //$psw = $this->pulisciInput($psw, FILTER_DEFAULT, [FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING]); //Filtraggio della password
+            $emailUsed = $this->isEmailUsed($email); // Verifico che l'email non sia già stata utilizzata, se questa variabile è vuota proseguo
+            if(!$emailUsed){
+                $psw = password_hash($psw,PASSWORD_BCRYPT);//Hash della password che unisce anche il salt per la verifica in un unica stringa di 60 caratteri
+                $query = "INSERT INTO utenti (email,password,username,privilegio) VALUES ('$email', '$psw', '$uname',0)";
+                    $queryResult = mysqli_query($this->connection, $query) or null;
+                    return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+            }
+            
+        }
+
+        public function getKarma($id) {
+            if(isset($id)){
+                $query = "SELECT COUNT(valore), SUM(valore) as karma from karma_commenti k, commenti c WHERE k.commento = c.id AND c.utente = $id GROUP BY k.id";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getKarma: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result[0]['karma'];
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getEta($id) {
+            if(isset($id)){
+                $query = "SELECT data_iscrizione as dataI from utenti WHERE utenti.id = $id";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getEta: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result[0]['dataI'];
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getNumeroPost($id) {
+            if(isset($id)){
+                $query = "SELECT COUNT(commenti.utente) AS npost FROM commenti WHERE commenti.utente = $id GROUP BY commenti.utente";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getNumeroPost: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result[0]['npost'];
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getLatestPosts($id) {
+            if(isset($id)){
+                $query = "SELECT commenti.* FROM commenti WHERE commenti.utente = $id ORDER BY commenti.timestamp DESC LIMIT 3";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getLatestPost: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result;
+                }else{
+                    return null;
+                }
+            }
+        }
+
+    };
+
+    
+
+?>

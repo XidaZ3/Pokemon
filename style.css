@@ -282,7 +282,7 @@ ul{
 }
 
 #campi {
-    width: 14em;
+    width: 20em;
     align-items: center;
 }
 
@@ -290,7 +290,7 @@ ul{
     margin-top: 0.5em;
 }
 
-#campi button{
+#campi button {
     width: 35px;
     height: 35px;
 
@@ -300,6 +300,17 @@ ul{
     background-repeat: no-repeat;
     width: 70%;
     margin-top: 1.5em;
+}
+
+#campi input[type='text'], #campi input[type='password']{
+    width: 35px;
+    height: 35px;
+    width: 70%;
+    margin-top: 1.5em;
+}
+
+label.smalltext {
+    font-size: 75%;
 }
 
 #infoProfilo, #posts{
@@ -327,7 +338,6 @@ ul{
 
 #profiloForm{
     justify-content: center;
-
 }
 
 #psyduckConfused{
@@ -347,4 +357,4 @@ ul{
     right:9em;
     font-size: 20px;
 }
-/*------------------------------
+/*------------------------------*/

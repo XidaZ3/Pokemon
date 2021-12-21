@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css">
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <script type="text/javascript" src="../JS/signIn.js"></script>
+    <title>PokèFriends</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 id=mainLogo> PokèFriends</h1>
+    </header>
+    <nav id="menu">
+        <ul>
+            <li lang="en"><a href="../index.html">Home </a> </li>
+            <li><a href="../contenuti.html">Contenuti</a></li>
+            <li><a href="../chi_siamo.html">Chi siamo</a></li>
+            <li><a href="profilo.php">Profilo</a></li>
+            <li id="ricerca">
+                <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
+            </li>
+        </ul>
+    </nav>
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <span lang="en"><a href="../index.html">Home</a></span>->Profilo</p>
+    </nav>
+
+    <div id="content">
+        <div id="profiloBordo" class="boxOutside vflex">
+            <h2>Registrazione</h2>
+
+            <div id="zone" class="hflex">
+                <form id="loginForm" class="boxInside vflex" action="signIn.php?" method="POST" target="_self" >
+                        <div id="campi" class="vflex">
+                            <div id="cuserfound" class="errormsg"><userFoundError/></div>
+                            <label for="email"><b>Email:</b></label>
+                            <input type="text" placeholder="Inserisci Email" name="email" value="<email/>" id="email" oninput="return clearEmailErrorMessage()" required>
+                            <div class="hflex" id="cemail" class="errormsg"><emailError/></div>
+                            <label for="psw"><b>Password:</b></label>
+                            <input type="password" placeholder="Inserisci Password" name="password"  id="password" required>
+                            <div class="hflex">
+                                <label for="showPassword" class='smalltext'><input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">Mostra password</label>
+                            </div>
+                            <label for="uname"><b>Username:</b></label>
+                            <input type="text" placeholder="Inserisci Username" name="uname" value="<uname/>" id="uname" oninput="return clearUsernameErrorMessage()" required>
+                            <div id="cuname" class="errormsg"><usernameError/></div>
+                            <div class="hflex">
+                                <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
+                                <button type="submit">Registrami</button>
+                            </div>
+                            <p>Possiedi già un account? <a href = "profilo.php">Log In</a></a></p>
+                        </div>
+                </form>      
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        The Best Pokemon Company TM.
+    </footer>
+</body>
+
+</html>
