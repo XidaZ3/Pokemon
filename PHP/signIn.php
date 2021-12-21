@@ -2,7 +2,6 @@
 
     if (session_status() == PHP_SESSION_NONE) {session_start();} //Attivo la session per accedere alla variabile $_SESSION[]
     require_once "db.php";
-    require_once "utils.php";
     use DB\DBAccess;
     $db= new DBAccess();
     $userAdded= false;
