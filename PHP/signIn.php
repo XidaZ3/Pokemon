@@ -1,6 +1,8 @@
 <?php
+
     if (session_status() == PHP_SESSION_NONE) {session_start();} //Attivo la session per accedere alla variabile $_SESSION[]
     require_once "db.php";
+    require_once "utils.php";
     use DB\DBAccess;
     $db= new DBAccess();
     $userAdded= false;
@@ -11,9 +13,9 @@
     $errorUsername = false;
     if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['uname'])) // Verifico che siano state inviate le variabili necessarie
     {
-        $email = pulisci_input($_POST['email']);
+        $email = $_POST['email'];
         $psw = $_POST['password'];
-        $uname = pulisci_input($_POST['uname']);
+        $uname = $_POST['uname'];
         $db->openDBConnection();
          // Verifico se trovo già entries con questa email o username
         $u = $db->getUserByUsername($uname);
@@ -52,10 +54,5 @@
         header("Location: registrazione.php");
     }
 
-    function pulisciInput($value){
-        $value = trim($value);
-        $value = htmlentities($value);
-        $value = htmlspecialchars($value);
-        return value;
-    }
+    
 ?>
