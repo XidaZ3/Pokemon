@@ -11,6 +11,7 @@
     --orange: #fb8500ff;
     --yellow:#ffe566;
     --backgroundWidget:rgb(253, 242, 222);
+    --errorFont:#800000;
 }
 
 *{
@@ -385,6 +386,7 @@ label.smalltext {
     height: 100%;
     justify-content: center;
     vertical-align: middle;
+    text-align: left;
 }
 
 
@@ -392,12 +394,17 @@ label.smalltext {
     height: 100%;
 }  
 
-#campiLogin label, #campiLogin p{
+#campiLogin label, #campiLogin p, #campiLogin #clogin{
     padding-top: 0.7em;
 }  
 
-#visualizzaPass{
-    margin-left: auto;
+.errormsg{
+    font-size: 90%;
+    color: var(--errorFont);
+}
+
+#loginForm.enlarge{
+    height: 30em;
 }
 
 /*------------------------------*/

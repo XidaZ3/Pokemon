@@ -40,12 +40,10 @@
                     <label for="email"><span class="highlight">Email:</span></label>
                     <input type="text" placeholder="Enter Email" name="email" value="<email/>" id="email" oninput="return clearLoginErrorMessage()" required>
                     <label for="password"><span class="highlight">Password:</span></label>
-                    <div class="hflex">
-                        <input type="password" placeholder="Enter Password" name="password" id="password" oninput="return clearLoginErrorMessage()" required>
-                        <div id="visualizzaPass">
-                            <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">
-                            <label for="showPassword" class='smalltext'>Mostra password</label>
-                        </div>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" oninput="return clearLoginErrorMessage()" required>
+                    <div id="visualizzaPass">
+                        <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">
+                        <label for="showPassword" class='smalltext'>Mostra password</label>
                     </div>
                     <div id="clogin" class="errormsg"><loginError/></div>
                     <div id="buttonLogin" class="hflex">
