@@ -23,7 +23,6 @@
             <li><a href="PHP/contenuti.php">Contenuti</a></li>
             <li><a href="../chi_siamo.html">Chi siamo</a></li>
             <li>Profilo</li>
-            <admin/>
             <li id="ricerca">
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
             </li>
@@ -38,24 +37,24 @@
             <h2>Profilo</h2>
 
             <div id="zone" class="hflex">
-                <form id="profiloForm" class="boxInside vflex">
-                    <div id="avatar"></div>
+                <form id="loginForm" class="boxInside vflex" action="logIn.php?" method="POST" target="_self">
                     <div id="campi" class="vflex">
-                        <label for="email">Email:</label>
-                        <input type="text" value="<email/>" id="email"></input>
-                        <button id="azioneProfilo">Modifica</button>
-                        <input type="submit" method="POST" form ="profiloForm" formaction="logOut.php" value = "LogOut" name="logout" id="logout">
+                        <label for="email"><b>Email:</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" value="<email/>" id="email" oninput="return clearLoginErrorMessage()" required>
+                        <label for="psw"><b>Password:</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" id="password" oninput="return clearLoginErrorMessage()" required>
+                        <div class="hflex">
+                            <label for="showPassword" class='smalltext'><input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">Mostra password</label>
+                        </div>
+                        <div id="clogin" class="errormsg"><loginError/></div>
+                        <div class="hflex">
+                            <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
+                            <button type="submit"  >Login</button>
+                        </div>
+                        <p>Non hai un account? <a href = "registrazione.php" >Registrati</a></p>
                     </div>
                 </form>
-                <div id="statistiche" class="boxInside vflex">
-                    <h3>Statistiche</h3>
-                    <ul id="infoProfilo" class="boxInside highlight">
-                        <li id="karma\">Karma: <karma/></li>
-                        <li id="eta">Età virtuale: <br/> <eta/></li>
-                        <li id="numeroPosts">Numero posts: <npost/></li>
-                    </ul>
             </div>
-            <div id="posts" class="boxInside highlight hflex"><h3>Ultimi post:</h3><latestPosts/></div>
         </div>
     </div>
     </div>

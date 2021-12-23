@@ -1,6 +1,6 @@
 <?php
 
-    if (session_status() == PHP_SESSION_NONE) {session_start();} //Attivo la session per accedere alla variabile $_SESSION[]
+    session_start(); //Attivo la session per accedere alla variabile $_SESSION[]
     require_once "db.php";
     use DB\DBAccess;
     $db= new DBAccess();
@@ -30,6 +30,7 @@
             if (!is_null($user) && is_array($user))  {
                 //Se è stato possibile ritrovare l'utente aggiungo il suo id alla sessione
                 $_SESSION['userid']=$user['id'];
+                $_SESSION['privilegio']=$user['privilegio'];
                 $userAdded= true;
                 $userFound=true;
             }else if(!is_null($user) && !is_array($user)) {

@@ -268,6 +268,17 @@ ul{
     align-items: center;
 }
 
+#adminZone{
+    width: 98%;
+    justify-content: center;
+    height: 22em;
+}
+
+#adminZone *{
+    width: 60%;
+    align-items: center;
+}
+
 #avatar
 {
     margin-top: 1em;

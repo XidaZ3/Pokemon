@@ -186,6 +186,67 @@
             }
         }
 
+        public function addContent($path, $tipo) {
+            $pathUsed = $this->isPathUsed($path); // Verifico che l'email non sia già stata utilizzata, se questa variabile è vuota proseguo
+            if(is_null($pathUsed)){
+                $query = "INSERT INTO contenuti (path, tipo) VALUES ('$path', $tipo)";
+                    $queryResult = mysqli_query($this->connection, $query) or null;
+                    return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+            }else{
+                return null;
+            }
+        }
+
+        private function isPathUsed($path) {
+            $query = "SELECT id FROM contenuti WHERE path = '$path'";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in isPathUsed: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult)>0){
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result;
+            }else{
+                return null;
+            }
+        
+        }
+
+        public function getGuideContents($page) {
+            $offset = $page * 10;
+            $query = "SELECT * FROM contenuti WHERE tipo = 0 LIMIT $offset,$page";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult)>0){
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result;
+            }else{
+                return null;
+            }
+        }
+
+        public function getArticleContents($page) {
+            $offset = $page * 10;
+            if(isset($page)){
+                $query = "SELECT path FROM contenuti WHERE tipo = 1 LIMIT $offset,$page";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result;
+                }else{
+                    return null;
+                }
+            }
+        }
+
     };
 
     

@@ -1,5 +1,5 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) {session_start();}
+    session_start();
     require_once "db.php";
     use DB\DBAccess;
     $paginaRegistrazione = file_get_contents('../registrazione.html');
@@ -32,7 +32,6 @@
         $paginaRegistrazione = str_replace('<uname/>', '', $paginaRegistrazione);
         $paginaRegistrazione = str_replace('<usernameError/>','', $paginaRegistrazione);
     }
-    session_unset();
     echo $paginaRegistrazione;
     
 ?>
