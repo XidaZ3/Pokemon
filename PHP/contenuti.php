@@ -32,9 +32,8 @@
     $output = "";
     if(isset($guides) && is_array($guides)){
         foreach($guides as $key => $item){
-            $pagina = file_get_contents("../Uploads/Guide/{$item['path']}/index.html");
             $output = $output . "<li class=\"guida\">
-                                    <a href=\"contentViewer.php?guida={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a><br/>
+                                    <a href=\"../contentViewer.php?guida={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a><br/>
                                     <div class=\"hflex1\">
                                     K:". (isset($item['karma']) ? $item['karma'] : 0) ."
                                     D: {$item['data_creazione']}
@@ -49,9 +48,8 @@
     $output = "";
     if(isset($articles) && is_array($articles)){
         foreach($articles as $key => $item){
-            $pagina = file_get_contents("../Uploads/Articoli/{$item['path']}/index.html");
             $output = $output . "<li class=\"articolo\">
-                                    <a href=\"contentViewer.php?articolo={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a><br/>
+                                    <a href=\"../contentViewer.php?articolo={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a><br/>
                                     <div class=\"hflex1\">
                                     K:". (isset($item['karma']) ? $item['karma'] : 0) ."
                                     D: {$item['data_creazione']}

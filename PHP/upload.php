@@ -3,7 +3,7 @@ session_start();
 require_once "db.php";
 use DB\DBAccess;
 $tipo = isset($_POST['tipo']) && $_POST['tipo'] == "Guide" ? 0 : 1;
-$target_dir = $tipo ? "Uploads/Articolo/" : "Uploads/Guide/";
+$target_dir = $tipo ? "Articoli/" : "Guide/";
 $target_file = $target_dir . basename($_FILES["zipfile"]["name"]);
 $uploadOk = 1;
 $error = array();
@@ -34,7 +34,7 @@ if(isset($_POST["submit"])) {
         // if everything is ok, try to upload file
         } else {
             $path = $_FILES['zipfile']['tmp_name'];
-            $destination= "../Uploads/".$_POST['tipo']."/";
+            $destination= "../".$_POST['tipo']."/";
             $title = $_POST['titolo'];
             $filename = pathinfo($_FILES['zipfile']['tmp_name'])['filename'];
             $zip = new ZipArchive;
@@ -48,9 +48,9 @@ if(isset($_POST["submit"])) {
                     $result = $db->addContent($filename,$tipo,$title);
                     if(isset($result) && $result){
                         if($tipo == 0)
-                            $link = "<a href=\"contentViewer.php?guida={$filename}&titolo={$title}\">{$title}</a>";
+                            $link = "<a href=\"../contentViewer.php?guida={$filename}&titolo={$title}\">{$title}</a>";
                         else if($tipo ==1)
-                            $link = "<a href=\"contentViewer.php?articolo={$filename}&titolo={$title}\">{$title}</a>";
+                            $link = "<a href=\"../contentViewer.php?articolo={$filename}&titolo={$title}\">{$title}</a>";
                         array_push($error,$link);
                         $_SESSION['uploadError']=$error;
                         header("Location: amministratore.php");
