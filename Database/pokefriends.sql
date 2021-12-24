@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 24, 2021 alle 15:33
+-- Creato il: Dic 24, 2021 alle 17:51
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -36,13 +36,6 @@ CREATE TABLE `commenti` (
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dump dei dati per la tabella `commenti`
---
-
-INSERT INTO `commenti` (`id`, `utente`, `testo`, `padre`, `contenuto`, `timestamp`) VALUES
-(2, 9, 'Bel commento', NULL, 18, '2021-12-24');
-
 -- --------------------------------------------------------
 
 --
@@ -62,9 +55,14 @@ CREATE TABLE `contenuti` (
 --
 
 INSERT INTO `contenuti` (`id`, `path`, `tipo`, `titolo`, `data_creazione`) VALUES
-(5, 'Prova', 0, 'Come ottenere Arceus in Gen 4', '2021-12-23'),
-(7, 'mew', 1, 'La leggenda di Mew sotto il camioncino', '2021-12-23'),
-(18, 'php75C8', 1, 'Mew Pazzo sgravato', '2021-12-24');
+(19, 'arceus', 0, 'Come ottenere Arceus in 4a generazione', '2021-12-24'),
+(20, 'ditto', 0, 'Come catturare Ditto in Pokèmon Diamante Brillante e Perla Splendente', '2021-12-24'),
+(21, 'twoberrymagikarp', 0, 'Come aumentare il livello dei Magikarp velocemente in Magikarp Jump', '2021-12-24'),
+(22, 'decimastagione', 1, 'Svelata la decima stagione della Lega Lotte Go', '2021-12-22'),
+(23, 'mewundertruck', 1, 'C\'è un Mew nascosto sotto il camioncino in Pokèmon Rosso e Blu', '2021-12-17'),
+(24, 'pokemonsocialimpact', 1, 'Pokemon Go e il suo impatto sociale', '2021-12-21'),
+(25, 'pokemonstory', 1, 'La Storia di Pokèmon', '2021-12-09'),
+(26, 'php134', 0, 'Vediamo se funziona', '2021-12-24');
 
 -- --------------------------------------------------------
 
@@ -89,14 +87,6 @@ CREATE TABLE `karma_contenuti` (
   `contenuto` int(11) NOT NULL,
   `valore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `karma_contenuti`
---
-
-INSERT INTO `karma_contenuti` (`id`, `contenuto`, `valore`) VALUES
-(1, 5, 1),
-(2, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -179,7 +169,7 @@ ALTER TABLE `commenti`
 -- AUTO_INCREMENT per la tabella `contenuti`
 --
 ALTER TABLE `contenuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT per la tabella `karma_commenti`
