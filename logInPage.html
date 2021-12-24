@@ -35,26 +35,24 @@
     <div id="content">
         <div id="profiloBordo" class="boxOutside vflex">
             <h2>Profilo</h2>
-
-            <div id="zone" class="hflex">
-                <form id="loginForm" class="boxInside vflex" action="logInUtils.php?" method="POST" target="_self">
-                    <div id="campi" class="vflex">
-                        <label for="email"><b>Email:</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" value="<email/>" id="email" oninput="return clearLoginErrorMessage()" required>
-                        <label for="psw"><b>Password:</b></label>
-                        <input type="password" placeholder="Enter Password" name="password" id="password" oninput="return clearLoginErrorMessage()" required>
-                        <div class="hflex">
-                            <label for="showPassword" class='smalltext'><input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">Mostra password</label>
-                        </div>
-                        <div id="clogin" class="errormsg"><loginError/></div>
-                        <div class="hflex">
-                            <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
-                            <button type="submit"  >Login</button>
-                        </div>
-                        <p>Non hai un account? <a href = "registrazione.php" >Registrati</a></p>
+            <form id="loginForm" class="boxInside vflex" action="logInUtils.php?" method="POST" target="_self">
+                <div id="campiLogin" class="vflex">
+                    <label for="email"><span class="highlight">Email:</span></label>
+                    <input type="text" placeholder="Enter Email" name="email" value="<email/>" id="email" oninput="return clearLoginErrorMessage()" required>
+                    <label for="password"><span class="highlight">Password:</span></label>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" oninput="return clearLoginErrorMessage()" required>
+                    <div id="visualizzaPass">
+                        <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">
+                        <label for="showPassword" class='smalltext'>Mostra password</label>
                     </div>
-                </form>
-            </div>
+                    <div id="clogin" class="errormsg"><loginError/></div>
+                    <div id="buttonLogin" class="hflex">
+                        <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
+                        <button type="submit"  >Login</button>
+                    </div>
+                    <p>Non hai un account? <a href = "registrazione.php" >Registrati</a></p>
+                </div>
+            </form>
         </div>
     </div>
     </div>

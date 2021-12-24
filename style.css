@@ -11,6 +11,7 @@
     --orange: #fb8500ff;
     --yellow:#ffe566;
     --backgroundWidget:rgb(253, 242, 222);
+    --errorFont:#800000;
 }
 
 *{
@@ -293,32 +294,28 @@ ul{
     border-radius: 5em;
 }
 
-#campi {
-    width: 20em;
+#campiProfilo {
+    width: 100%;
+    height:40%;
     align-items: center;
 }
 
-#campi *{
+#campiProfilo *{
     margin-top: 0.5em;
 }
 
-#campi button {
-    width: 35px;
-    height: 35px;
-
+#campiProfilo button {
     background-image: url("./Immagini/icons/brush.svg");
     background-color: var(--backgroundWidget);
     background-size: contain;
     background-repeat: no-repeat;
     width: 70%;
-    margin-top: 1.5em;
 }
 
-#campi input[type='text'], #campi input[type='password']{
-    width: 35px;
-    height: 35px;
+#campiProfilo input, #campiProfilo button{
+
+    height: 60%;
     width: 70%;
-    margin-top: 1.5em;
 }
 
 label.smalltext {
@@ -369,4 +366,46 @@ label.smalltext {
     right:9em;
     font-size: 20px;
 }
+
+#buttonLogin{
+    width: 80%;
+    align-self: center;
+}
+#buttonLogin button{
+    width: 30%;
+    margin:auto;
+}
+
+#loginForm{
+    width: 95%;
+    height: 15em;
+    align-items: center;
+    justify-content: center;
+}
+#campiLogin{
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: left;
+}
+
+
+#campiLogin *{
+    height: 100%;
+}  
+
+#campiLogin label, #campiLogin p, #campiLogin #clogin{
+    padding-top: 0.7em;
+}  
+
+.errormsg{
+    font-size: 90%;
+    color: var(--errorFont);
+}
+
+#loginForm.enlarge{
+    height: 30em;
+}
+
 /*------------------------------*/

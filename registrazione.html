@@ -35,29 +35,28 @@
         <div id="profiloBordo" class="boxOutside vflex">
             <h2>Registrazione</h2>
 
-            <div id="zone" class="hflex">
-                <form id="loginForm" class="boxInside vflex" action="signInUtils.php?" method="POST" target="_self" >
-                        <div id="campi" class="vflex">
-                            <div id="cuserfound" class="errormsg"><userFoundError/></div>
-                            <label for="email"><b>Email:</b></label>
-                            <input type="text" placeholder="Inserisci Email" name="email" value="<email/>" id="email" oninput="return clearEmailErrorMessage()" required>
-                            <div class="hflex" id="cemail" class="errormsg"><emailError/></div>
-                            <label for="psw"><b>Password:</b></label>
-                            <input type="password" placeholder="Inserisci Password" name="password"  id="password" required>
-                            <div class="hflex">
-                                <label for="showPassword" class='smalltext'><input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">Mostra password</label>
-                            </div>
-                            <label for="uname"><b>Username:</b></label>
-                            <input type="text" placeholder="Inserisci Username" name="uname" value="<uname/>" id="uname" oninput="return clearUsernameErrorMessage()" required>
-                            <div id="cuname" class="errormsg"><usernameError/></div>
-                            <div class="hflex">
-                                <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
-                                <button type="submit">Registrami</button>
-                            </div>
-                            <p>Possiedi già un account? <a href = "profilo.php">Log In</a></a></p>
-                        </div>
-                </form>      
-            </div>
+            <form id="loginForm" class="boxInside vflex enlarge" action="signInUtils.php?" method="POST" target="_self" >
+                <div id="campiLogin" class="vflex">
+                    <div id="cuserfound" class="errormsg"><userFoundError/></div>
+                    <label for="email"><b>Email:</b></label>
+                    <input type="text" placeholder="Inserisci Email" name="email" value="<email/>" id="email" oninput="return clearEmailErrorMessage()" required>
+                    <div class="hflex errormsg" id="cemail"><emailError/></div>
+                    <label for="password"><b>Password:</b></label>
+                    <input type="password" placeholder="Inserisci Password" name="password"  id="password" required>
+                    <div id="visualizzaPass">
+                        <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">
+                        <label for="showPassword" class='smalltext'>Mostra password</label>
+                    </div>
+                    <label for="uname"><b>Username:</b></label>
+                    <input type="text" placeholder="Inserisci Username" name="uname" value="<uname/>" id="uname" oninput="return clearUsernameErrorMessage()" required>
+                    <div id="cuname" class="errormsg"><usernameError/></div>
+                    <div id="buttonLogin" class="hflex">
+                        <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
+                        <button type="submit">Registrami</button>
+                    </div>
+                    <p>Possiedi già un account? <a href = "profilo.php">Log In</a></a></p>
+                </div>
+            </form>      
         </div>
     </div>
     </div>
