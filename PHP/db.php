@@ -186,10 +186,10 @@
             }
         }
 
-        public function addContent($path, $tipo) {
+        public function addContent($path,$tipo,$titolo) {
             $pathUsed = $this->isPathUsed($path); // Verifico che l'email non sia già stata utilizzata, se questa variabile è vuota proseguo
             if(is_null($pathUsed)){
-                $query = "INSERT INTO contenuti (path, tipo) VALUES ('$path', $tipo)";
+                $query = "INSERT INTO contenuti (path,tipo, titolo) VALUES ('$path', $tipo,'$titolo')";
                     $queryResult = mysqli_query($this->connection, $query) or null;
                     return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
             }else{
@@ -213,9 +213,12 @@
         
         }
 
-        public function getGuideContents($page) {
+        public function getGuideContentsMostRecent($page) {
             $offset = $page * 10;
-            $query = "SELECT * FROM contenuti WHERE tipo = 0 LIMIT $offset,$page";
+            $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+            FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+            WHERE tipo = 0
+            GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY c.data_creazione DESC LIMIT $offset, 10 ";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
@@ -229,10 +232,133 @@
             }
         }
 
-        public function getArticleContents($page) {
+        public function getGuideContentsLeastRecent($page) {
+            $offset = $page * 10;
+            $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+            FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+            WHERE tipo = 0
+            GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY c.data_creazione ASC LIMIT $offset, 10 ";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult)>0){
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result;
+            }else{
+                return null;
+            }
+        }
+
+        public function getGuideContentsMostKarma($page) {
+            $offset = $page * 10;
+            $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+            FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+            WHERE tipo = 0
+            GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY karma DESC LIMIT $offset, 10 ";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult)>0){
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result;
+            }else{
+                return null;
+            }
+        }
+
+        public function getGuideContentsMostComments($page) {
+            $offset = $page * 10;
+            $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+            FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+            WHERE tipo = 0
+            GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY ncom DESC LIMIT $offset, 10 ";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            if(mysqli_num_rows($queryResult)>0){
+                $result = array();
+                while($row = mysqli_fetch_assoc($queryResult)){
+                    array_push($result, $row);
+                }
+                $queryResult->free();
+                return $result;
+            }else{
+                return null;
+            }
+        }
+
+        public function getArticleContentsMostRecent($page) {
             $offset = $page * 10;
             if(isset($page)){
-                $query = "SELECT path FROM contenuti WHERE tipo = 1 LIMIT $offset,$page";
+                $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+                FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+                WHERE tipo = 1
+                GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY c.data_creazione DESC LIMIT $offset, 10";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result;
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getArticleContentsLeastRecent($page) {
+            $offset = $page * 10;
+            if(isset($page)){
+                $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+                FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+                WHERE tipo = 1
+                GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY c.data_creazione ASC LIMIT $offset, 10";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result;
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getArticleContentsMostKarma($page) {
+            $offset = $page * 10;
+            if(isset($page)){
+                $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+                FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+                WHERE tipo = 1
+                GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY karma DESC LIMIT $offset, 10";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result;
+                }else{
+                    return null;
+                }
+            }
+        }
+
+        public function getArticleContentsMostComments($page) {
+            $offset = $page * 10;
+            if(isset($page)){
+                $query = "SELECT c.path, c.tipo, c.titolo, c.data_creazione, SUM(k.valore) as karma, COUNT(co.contenuto) as ncom   
+                FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto
+                WHERE tipo = 1
+                GROUP BY c.path,c.tipo,c.titolo,c.data_creazione ORDER BY ncom DESC LIMIT $offset, 10";
                 $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
                 if(mysqli_num_rows($queryResult)>0){
                     $result = array();

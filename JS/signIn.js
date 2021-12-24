@@ -66,5 +66,17 @@ function clearLoginFields() {
     return true;
 };
 
+function filterChange() {
+    select = document.getElementById('filter');
+    switch(select.value){
+        case "0": window.location.replace("contenuti.php?filter=0"); ;break; //Most recent 
+        case "1": window.location.replace("contenuti.php?filter=1"); ;break; //Most recent 
+        case "2": window.location.replace("contenuti.php?filter=2"); ;break; //Most recent 
+        case "3": window.location.replace("contenuti.php?filter=3"); ;break; //Most recent 
+        default: window.location.replace("contenuti.php?filter=0");
+    }
+    return;
+};
+
 
 

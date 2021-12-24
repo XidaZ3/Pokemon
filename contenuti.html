@@ -7,6 +7,7 @@
     <link rel="stylesheet" type ="text/css" media="screen" href="../style.css">
     <link rel="stylesheet" type ="text/css" media="print" href="../print.css">
     <link rel="icon" type="image/png" href="favicon.ico"/>
+    <script type="text/javascript" src="../JS/signIn.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -16,9 +17,9 @@
     </header>     
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="index.html">Home </a> </li>
+            <li lang="en"><a href="../index.html">Home </a> </li>
             <li>Contenuti</li>
-            <li><a href="chi_siamo.html">Chi siamo</a></li>
+            <li><a href="../chi_siamo.html">Chi siamo</a></li>
             <li><a href="profilo.php">Profilo</a></li>
             <li id="ricerca"> 
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
@@ -30,21 +31,28 @@
     </nav>
     
     <div id="content">
-        <div id="guide" class="boxColonna boxSinistra">
-            <h2>Guida <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <guide/>
-            </ul>
-        </div>
-
-        <div id="articoli" class="boxColonna boxDestra">
-            <h2>Articolo <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <li class="articolo"> <img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-                <li class="articolo"><img id="articoloimg" src="" alt=""/>titolo articolo </li>
-            </ul>
+        <div class="vflex boxOutside">
+            <div id="filters" class="boxInside">
+                <label for="filer">Ordina per:</label>
+                <select name="filter" id="filter" onchange="filterChange()">
+                    <filterOptions/>
+                </select>
+            </div>
+            <div class="hflex">
+                <div id="guide" class="boxColonna boxSinistra">
+                    <h2>Guida <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
+                    <ul>
+                        <guide/>
+                    </ul>
+                </div>
+        
+                <div id="articoli" class="boxColonna boxDestra">
+                    <h2>Articolo <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
+                    <ul>
+                        <article/>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 

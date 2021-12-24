@@ -20,9 +20,9 @@
     <nav id="menu">
         <ul>
             <li lang="en"><a href="../index.html">Home </a> </li>
-            <li><a href="PHP/contenuti.php">Contenuti</a></li>
+            <li><a href="contenuti.php">Contenuti</a></li>
             <li><a href="../chi_siamo.html">Chi siamo</a></li>
-            <li><a href="PHP/profilo.php">Profilo</a></li>
+            <li><a href="profilo.php">Profilo</a></li>
             <li>Admin</li>
             <li id="ricerca">
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
@@ -35,10 +35,10 @@
 
     <div id="content">
         <div id="profiloBordo" class="boxOutside vflex">
-            <h2>Profilo</h2>
+            <h2>Carica Contenuti</h2>
 
             <div id="adminZone" class="hflex">
-                <form action="PHP/upload.php" method="POST" enctype="multipart/form-data" class="boxInside vflex">
+                <form action="upload.php" method="POST" enctype="multipart/form-data" class="boxInside vflex">
                     <label for="zipfile">Scegli un file zip:</label>
                     <input type="file" name="zipfile" id="zipfile" accept=".zip,.rar,.7zip" required>
                     <div class="hflex">
@@ -47,7 +47,14 @@
                         <label for="articolo">Articolo</label>
                         <input type="radio" id="articolo" name="tipo" value="Articoli">
                     </div>
+                    <label for="titolo">Titolo:</label>
+                    <input type="text" name="titolo" required>
                     <input type="submit" name="submit" id="submit" value="Carica">
+                    <div>
+                        <ul>
+                            <output/>
+                        </ul>
+                    </div>
                 </form>
             </div>
         </div>

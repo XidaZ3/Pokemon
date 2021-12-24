@@ -1,59 +1,74 @@
 <?php
+session_start();
 require_once "db.php";
 use DB\DBAccess;
-$target_dir = "Uploads/";
+$tipo = isset($_POST['tipo']) && $_POST['tipo'] == "Guide" ? 0 : 1;
+$target_dir = $tipo ? "Uploads/Articolo/" : "Uploads/Guide/";
 $target_file = $target_dir . basename($_FILES["zipfile"]["name"]);
 $uploadOk = 1;
+$error = array();
 $zipFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     if(is_uploaded_file($_FILES['zipfile']['tmp_name'])){
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
             $uploadOk = 0;
+            array_push($error,'Esiste già un file con questo nome.');
         }
         
         // Check file size
-        if ($_FILES["zipfile"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
+        if ($_FILES["zipfile"]["size"] > 1000000) {
             $uploadOk = 0;
+            array_push($error,"Il file supera la dimensione massima. (1MB)");
         }
         
         // Allow certain file formats
         if($zipFileType != "zip" && $zipFileType != "rar" && $zipFileType != "7z") {
-            echo "Sorry, only ZIP, RAR, 7Z files are allowed.";
             $uploadOk = 0;
+            array_push($error,"L'estensioni supportate sono .zip, .rar e .7z");
         }
         
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
             $path = $_FILES['zipfile']['tmp_name'];
             $destination= "../Uploads/".$_POST['tipo']."/";
-            $tipo = $_POST['tipo'] == "Guide" ? 0 : 1;
-            $filename = pathinfo($_FILES['zipfile']['name'])['filename'];
+            $title = $_POST['titolo'];
+            $filename = pathinfo($_FILES['zipfile']['tmp_name'])['filename'];
             $zip = new ZipArchive;
             if ($zip->open($path) === true) {
-                $zip->extractTo($destination.$filename);
+                $upload = $zip->extractTo($destination.$filename);
                 $zip->close();
-                $db = new DBAccess();
-                $db->openDBConnection();
-                $result = $db->addContent($_POST['tipo']."/".$filename, $tipo);
-                if(isset($result) && $result){
-                    //Tutto bene
-                    header("Location: ../amministratore.html");
-                }else if (isset($result)){
-                    //Contenuto con lo stesso nome già presente nella stessa cartella
-                }else{
-                    //Errore nell'inserimento o nella verifica dell'unicità
+                if(is_bool($upload) && $upload){
+                    array_push($error,"Il file è stato aggiunto correttamente nella directory del server.");
+                    $db = new DBAccess();
+                    $db->openDBConnection();
+                    $result = $db->addContent($filename,$tipo,$title);
+                    if(isset($result) && $result){
+                        if($tipo == 0)
+                            $link = "<a href=\"contentViewer.php?guida={$filename}&titolo={$title}\">{$title}</a>";
+                        else if($tipo ==1)
+                            $link = "<a href=\"contentViewer.php?articolo={$filename}&titolo={$title}\">{$title}</a>";
+                        array_push($error,$link);
+                        $_SESSION['uploadError']=$error;
+                        header("Location: amministratore.php");
+                    }else if (isset($result)){
+                        array_push($error,"Non è stato possibile aggiornare il database.");
+                    }else{
+                        array_push($error,"Errore nel tentativo di aggiornare il database");
+                    }
                 }
+                else
+                    array_push($error,"Non è stato possibile estrarre i file sulla directory del server.");
+                
             }else{
-                echo 'failed';
+                array_push($error,"Non è stato possibile aprire il file per l'estrazione.");
             }
         }
+        $_SESSION['uploadError']=$error;
+        header("Location: amministratore.php");
     }else{
         exit();
     }
