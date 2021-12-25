@@ -8,8 +8,8 @@
     --blue-green: #219ebcff;
     --prussian-blue: #023047ff;
     --honey-yellow: #ffb703ff;
-    --orange: #fb8500ff;
-    --yellow:#ffe566;
+    --border: #fb8500ff;
+    --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
 }
@@ -58,7 +58,7 @@ body{
 
 #menu ul {
     display: flex;
-    border: var(--orange) inset 2px;
+    border: var(--border) inset 2px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
     width: 70%;
@@ -78,7 +78,7 @@ body{
     color: var(--prussian-blue);
 }
 #menu ul li:hover a,#menu ul li:active a{
-    background-color:var(--yellow) ;
+    background-color:var(--contentItem) ;
     color: var(--prussian-blue);
     border-radius: 0.3em;
 
@@ -158,8 +158,8 @@ footer{
     height: 90%;
     width: 60em;
     margin: auto;
-    border: var(--orange) inset 1px;
-    background-color: var(--yellow);
+    border: var(--border) inset 1px;
+    background-color: var(--contentItem);
     border-radius: 0.5em;
     height: max-content;
     justify-content: center;
@@ -186,7 +186,7 @@ footer{
     margin:0.5em;
     border: 3px;
     border-radius: 0.5em;
-    background-color: var(--yellow);
+    background-color: var(--contentItem);
     min-height: 5em;
     min-width: 5em;
 }
@@ -206,7 +206,7 @@ footer{
     margin:0.5em;
     border: 3px;
     border-radius: 0.5em;
-    background-color: var(--backgroundWidget);
+    background-color: var(--contentItem);
     height: 6em;
     width: 90%;
     padding: 1em;
@@ -248,7 +248,7 @@ footer{
     height:80%;
     margin: 4%;
     /* min-height: 24em; */
-    border:var(--orange) solid 5px;
+    border:var(--border) solid 5px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
     text-align: center;
@@ -273,7 +273,7 @@ img.postuscite,img.postpopolari{
     width: 50%;
     height:90%;
     min-height: var(--boxHeight);
-    border:var(--orange) solid 5px;
+    border:var(--border) solid 5px;
     border-radius: 0.5em;
     background-color: var(--honey-yellow);
     text-align: center;
