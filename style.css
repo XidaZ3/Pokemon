@@ -19,7 +19,7 @@
     padding: 0;
 }
 
-input, button, textarea, #searchBar, footer, #searchBar{
+input, button, textarea, #searchBar, footer, #searchBar, select{
     border-radius: 0.3em;
 }
 
@@ -173,6 +173,14 @@ footer{
     margin-top: 1em;
     align-self: flex-start;
 }
+.contenutiTesto img
+{
+    margin: auto;
+    margin-top: 1em;
+    display: block;
+    border-radius: 0.5em;
+}
+
 
 .boxInside{
     margin:0.5em;
@@ -188,10 +196,39 @@ footer{
     border: 3px;
     border-radius: 0.5em;
     background-color: var(--backgroundWidget);
-    height: 8em;
+    height: 9em;
     width: 80%;
     padding: 1em;
     justify-content: space-evenly;
+}
+
+.itemList{
+    margin:0.5em;
+    border: 3px;
+    border-radius: 0.5em;
+    background-color: var(--backgroundWidget);
+    height: 6em;
+    width: 90%;
+    padding: 1em;
+    align-self: center;
+    align-items: center;
+}
+
+.itemList #avatarBox{
+   margin-left: auto;
+}
+
+.itemList a{
+    width:50%;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+/* Eventuale animazione .itemList a:hover{
+} */
+
+.itemStats{
+    width: 20%;
 }
 
 .boxComment *{
@@ -317,8 +354,23 @@ ul{
     background-image: url("./Immagini/emerald/54.png");
     background-size: contain;
     background-repeat: no-repeat;
-    border:black 2px solid;
+    border:var(--honey-yellow) 5px solid;
     border-radius: 5em;
+}
+
+#avatar.miniAvatar{
+    height: 50px;
+    width:50px;
+    border:var(--honey-yellow) 2px solid;
+}
+
+#avatarBox{
+    width: 20%;
+    align-items: center;
+}
+
+#avatarBox label{
+    text-align: center;
 }
 
 #avatar, input, button, textarea{
@@ -446,5 +498,32 @@ label.smalltext {
 #gestioneCommento button{
     margin-left: 2em;
 }
+
+#filters img.icon{
+    height: 24px;
+    width: 24px;
+    margin-left: 0.25em;
+}
+
+#filters{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#filters h2{
+    align-items: center;
+}
+
+#intestazione{
+    align-items: center;
+}
+
+#intestazione{
+   justify-content: space-between;
+}
+#intestazione .space, #intestazione a{
+    width: 20%;
+ }
+ 
 
 /*------------------------------*/

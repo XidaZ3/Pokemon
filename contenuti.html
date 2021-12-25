@@ -35,22 +35,79 @@
     
     <div id="content" class="vflex">
         <div class="vflex boxOutside">
-            <div id="filters" class="boxInside">
-                <label for="filer">Ordina per:</label>
-                <select name="filter" id="filter" onchange="filterChange()">
-                    <filterOptions/>
-                </select>
-            </div>
-            <div class="hflex" >
-                <div id="guide" class="boxInside">
-                    <h2>Guida <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-                    <ul>
+            <div class="vflex" >
+                <div id="guide" class="boxInside vflex">
+                    <div id="filters">
+                        <div id="intestazione" class="hflex">
+                            <div class="space"></div>
+                            <h2 class="hflex">Guide <img src="../Immagini/icons/guide-book.png" class="icon" alt=""/></h2>
+                            <a href="vaiAgliArticoli">vai agli articoli...</a>
+                        </div>
+                        
+                        <label for="filer">Ordina per:</label>
+                        <select name="filter" id="filter" onchange="filterChange()">
+                            <filterOptions/>
+                        </select>
+                    </div>
+
+                    <ul class="vflex">
+                        <li class="hflex itemList">
+                            <a href="">Guida Arceus</a>
+                            <ul class ="itemStats">
+                                <li>Creato:</li>
+                                <li>Karma:</li>
+                                <li>Commenti:</li>
+                            </ul>
+                            <div id="avatarBox" class="vflex">
+                                <div id="avatar" class="miniAvatar"></div>
+                                <label for="username">Username</label>
+                            </div>
+                        </li>
+
+                        <li class="hflex itemList">
+                            <a href="">Guida Arceus</a>
+                            <ul class ="itemStats">
+                                <li>Creato:</li>
+                                <li>Karma:</li>
+                                <li>Commenti:</li>
+                            </ul>
+                            <div id="avatarBox" class="vflex">
+                                <div id="avatar" class="miniAvatar"></div>
+                                <label for="username">Username</label>
+                            </div>
+                        </li>
+
+                        <li class="hflex itemList">
+                            <a href="">Guida Arceus</a>
+                            <ul class ="itemStats">
+                                <li>Creato:</li>
+                                <li>Karma:</li>
+                                <li>Commenti:</li>
+                            </ul>
+                            <div id="avatarBox" class="vflex">
+                                <div id="avatar" class="miniAvatar"></div>
+                                <label for="username">Username</label>
+                            </div>
+                        </li>
+
+                        <li class="hflex itemList">
+                            <a href="">Guida Arceus</a>
+                            <ul class ="itemStats">
+                                <li>Creato:</li>
+                                <li>Karma:</li>
+                                <li>Commenti:</li>
+                            </ul>
+                            <div id="avatarBox" class="vflex">
+                                <div id="avatar" class="miniAvatar"></div>
+                                <label for="username">Username</label>
+                            </div>
+                        </li>
                         <guide/>
                     </ul>
                 </div>
         
                 <div id="articoli" class="boxInside">
-                    <h2>Articolo <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
+                    <h2>Articoli <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
                     <ul>
                         <article/>
                     </ul>
