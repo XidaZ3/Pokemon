@@ -334,7 +334,7 @@ ul{
     height: 22em;
 }
 
-#zone *{
+#zone #posts, #zone #statistiche, #zone #profiloForm{
     width: 30%;
     align-items: center;
 }
@@ -496,11 +496,15 @@ label.smalltext {
 
 .commento{
     width: 80%;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .gestioneCommento button{
     margin-left: 2em;
+}
+
+.commento p.testo{
+    margin-top: 2.5em;
 }
 
 #filters img.icon{
@@ -545,5 +549,7 @@ label.smalltext {
     align-self: center;
 }
  
-
+.dataCreazione{
+    margin-left: auto;
+}
 /*------------------------------*/

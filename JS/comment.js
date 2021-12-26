@@ -28,6 +28,7 @@ function createUserComment() {
         commento.setAttribute("class","commento vflex");
 
         var p = document.createElement("p");
+        p.innerHTML = txtAreaCommento.value;
 
         var gestioneCommento = document.createElement("div");
         gestioneCommento.setAttribute("class","gestioneCommento hflex");
@@ -56,54 +57,9 @@ function createUserComment() {
         content.insertBefore(boxRect,creaCommento);
       }
     };
-
-    var content = document.getElementById("content");
-        var creaCommento = document.getElementById("creaCommento");
-
-        var boxRect=document.createElement("div");
-        boxRect.setAttribute("class","boxRect hflex");
-        
-        var avatarBox = document.createElement("div");
-        avatarBox.setAttribute("class","avatarBox vflex");
-
-        var avatar = document.createElement("div");
-        avatar.setAttribute("class","avatar");
-        
-        var username = document.createElement("label");
-        username.setAttribute("for","username");
-        username.innerHTML="Username";
-
-        var commento = document.createElement("div");
-        commento.setAttribute("class","commento vflex");
-
-        var p = document.createElement("p");
-
-        var gestioneCommento = document.createElement("div");
-        gestioneCommento.setAttribute("class","gestioneCommento hflex");
-
-        var buttonLike = document.createElement("button");
-        buttonLike.innerHTML="Like";
-        var buttonDislike = document.createElement("button");
-        buttonDislike.innerHTML="Dislike";
-        var buttonCancella = document.createElement("button");
-        buttonCancella.innerHTML="Cancella";
-        buttonCancella.setAttribute("class","btnCancella");
-
-        gestioneCommento.appendChild(buttonLike);
-        gestioneCommento.appendChild(buttonDislike);
-        gestioneCommento.appendChild(buttonCancella);
-
-        commento.appendChild(p);
-        commento.appendChild(gestioneCommento);
-        
-        avatarBox.appendChild(avatar);
-        avatarBox.appendChild(username);
-
-        boxRect.appendChild(avatarBox);
-        boxRect.appendChild(commento);
-
-        content.insertBefore(boxRect,creaCommento);
-    // xhttp.open("POST", "creaComment.php", true);
-    // xhttp.send();
+   
+    xhttp.open("POST", "./PHP/createComment.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("comment="+txtAreaCommento.value);
 }
 

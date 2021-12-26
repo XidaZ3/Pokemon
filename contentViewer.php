@@ -12,6 +12,8 @@
         header("Location: 404.html");
         return;
     }
+    $_SESSION['id']=$id;
+
     $db->openDBConnection();
     $content = "";
     if(isset($guida) && isset($titolo)){
@@ -32,17 +34,19 @@
         foreach($comments as $item){
             $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
             $commentOutput = $commentOutput. "<div class=\"boxRect hflex\">
-                                                <div id=\"avatarBox\" class=\"vflex\">
-                                                    <div id=\"avatar\"></div>
+                                                <div class=\"avatarBox vflex\">
+                                                    <div class=\"avatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                                 <div class=\"commento vflex\">
-                                                    <p>{$item['testo']}<br/>{$item['timestamp']}</p>
-                                                    <div id=\"gestioneCommento\" class=\"hflex\">
+                                                    <p class=\"testo\">{$item['testo']}</p>
+                                                    <div class=\"gestioneCommento hflex\">
                                                         <button class=\"".(isset($karmaClass) && $karmaClass ? "pressed" : "")."\">Like</button>
                                                         <button class=\"".(isset($karmaClass) && !$karmaClass ? "pressed" : "")."\">Dislike</button>
-                                                        <button id=\"cancella\">Cancella</button>
+                                                        <button class=\"cancella\">Cancella</button>
+                                                        <p class=\"dataCreazione\">{$item['timestamp']}<p>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>";
         }
