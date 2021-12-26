@@ -44,9 +44,8 @@
                                                         <button class=\"".(isset($karmaClass) && $karmaClass ? "pressed" : "")."\">Like</button>
                                                         <button class=\"".(isset($karmaClass) && !$karmaClass ? "pressed" : "")."\">Dislike</button>
                                                         <button class=\"cancella\">Cancella</button>
-                                                        <p class=\"dataCreazione\">{$item['timestamp']}<p>
+                                                        <p class=\"dataCreazione\">{$item['timestamp']}</p>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>";
         }

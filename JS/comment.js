@@ -1,3 +1,26 @@
+function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+function eraseCookie(name) {   
+  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 function createUserComment() {
     var xhttp;
     var txtAreaCommento=document.getElementById("textCommento");
@@ -22,13 +45,14 @@ function createUserComment() {
         
         var username = document.createElement("label");
         username.setAttribute("for","username");
-        username.innerHTML="Username";
+        username.innerHTML=getCookie("username");
 
         var commento = document.createElement("div");
         commento.setAttribute("class","commento vflex");
 
         var p = document.createElement("p");
         p.innerHTML = txtAreaCommento.value;
+        p.setAttribute("class","testo");
 
         var gestioneCommento = document.createElement("div");
         gestioneCommento.setAttribute("class","gestioneCommento hflex");
@@ -40,10 +64,15 @@ function createUserComment() {
         var buttonCancella = document.createElement("button");
         buttonCancella.innerHTML="Cancella";
         buttonCancella.setAttribute("class","btnCancella");
+        var dataCreazione = document.createElement("p");
+        dataCreazione.setAttribute("class","dataCreazione");
+        var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+        dataCreazione.innerHTML=utc;
 
         gestioneCommento.appendChild(buttonLike);
         gestioneCommento.appendChild(buttonDislike);
         gestioneCommento.appendChild(buttonCancella);
+        gestioneCommento.appendChild(dataCreazione);
 
         commento.appendChild(p);
         commento.appendChild(gestioneCommento);
