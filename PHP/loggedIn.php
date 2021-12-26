@@ -38,11 +38,6 @@
         }else{
             $paginaProfilo = str_replace('<uname/>', 'Errore caricamento', $userForm);
         }
-        if($_SESSION['privilegio'] == "1"){
-            $paginaProfilo = str_replace('<admin/>', '<li><a href="amministratore.php">Admin</a></li>', $paginaProfilo);
-        }else{
-            $paginaProfilo = str_replace('<admin/>', '', $paginaProfilo);
-        }
         echo $paginaProfilo;
     }
 ?>
