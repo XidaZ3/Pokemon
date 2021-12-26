@@ -68,15 +68,29 @@ function clearLoginFields() {
 
 function filterChange() {
     select = document.getElementById('filter');
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const content = urlParams.has('content') ? urlParams.get('content'): 0;
     switch(select.value){
-        case "0": window.location.replace("contenuti.php?filter=0"); ;break; //Most recent 
-        case "1": window.location.replace("contenuti.php?filter=1"); ;break; //Most recent 
-        case "2": window.location.replace("contenuti.php?filter=2"); ;break; //Most recent 
-        case "3": window.location.replace("contenuti.php?filter=3"); ;break; //Most recent 
-        default: window.location.replace("contenuti.php?filter=0");
+        case "0": window.location.replace("contenuti.php?content=".concat(content,"&filter=0")); ;break; //Most recent 
+        case "1": window.location.replace("contenuti.php?content=".concat(content,"&filter=1")); ;break; //Most recent 
+        case "2": window.location.replace("contenuti.php?content=".concat(content,"&filter=2")); ;break; //Most recent 
+        case "3": window.location.replace("contenuti.php?content=".concat(content,"&filter=3")); ;break; //Most recent 
+        default: window.location.replace("contenuti.php?content=".concat(content,"&filter=0"));
     }
     return;
 };
+
+function popUpDeleteAccount() {
+    var id = document.getElementById('id');
+    let password = prompt("Inserisci la password per eliminare il tuo account:");
+    if (password == null || password == "") {
+        alert('Lololo');
+    } else {
+        window.location.replace("deleteAccount.php?id=".concat(id.value,"&password=",password));
+    }
+    return;
+}
 
 
 

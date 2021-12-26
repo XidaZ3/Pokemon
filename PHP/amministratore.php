@@ -11,4 +11,5 @@
         $paginaAmministratore = str_replace('<output/>',$output,$paginaAmministratore);
     }
     echo $paginaAmministratore;
+    $_SESSION['uploadError']="";
 ?>

@@ -9,7 +9,6 @@ $uploadOk = 1;
 $error = array();
 $zipFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-// Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     if(is_uploaded_file($_FILES['zipfile']['tmp_name'])){
         if (file_exists($target_file)) {

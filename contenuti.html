@@ -20,7 +20,7 @@
     </header>     
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="../index.html">Home </a> </li>
+            <li lang="en"><a href="../index.php">Home </a> </li>
             <li>Contenuti</li>
             <li><a href="../chi_siamo.html">Chi siamo</a></li>
             <li><a href="profilo.php">Profilo</a></li>
@@ -30,7 +30,7 @@
         </ul>
     </nav>
     <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en"><a href="../index.html">Home</a></span>->Contenuti</p>
+            <p>Ti trovi in: <span lang="en"><a href="../index.php">Home</a></span>->Contenuti</p>
     </nav>
     
     <div id="content" class="vflex">
@@ -38,8 +38,8 @@
             <div id="filters">
                 <div id="intestazione" class="hflex">
                     <div class="space"></div>
-                    <h2 class="hflex">Guide <img src="../Immagini/icons/guide-book.png" class="icon" alt=""/></h2>
-                    <a href="vaiAgliArticoli">vai agli articoli...</a>
+                    <h2 class="hflex"><contentTitle/> </h2>
+                    <contentLink/>
                 </div>
                 
                 <label for="filer">Ordina per:</label>
@@ -49,67 +49,18 @@
             </div>
 
             <ul class="vflex">
-                <li class="hflex itemList">
-                    <a href="">Guida Arceus</a>
-                    <ul class ="itemStats">
-                        <li>Creato:</li>
-                        <li>Karma:</li>
-                        <li>Commenti:</li>
-                    </ul>
-                    <div id="avatarBox" class="vflex">
-                        <div id="avatar" class="miniAvatar"></div>
-                        <label for="username">Username</label>
-                    </div>
-                </li>
-
-                <li class="hflex itemList">
-                    <a href="">Guida Arceus</a>
-                    <ul class ="itemStats">
-                        <li>Creato:</li>
-                        <li>Karma:</li>
-                        <li>Commenti:</li>
-                    </ul>
-                    <div id="avatarBox" class="vflex">
-                        <div id="avatar" class="miniAvatar"></div>
-                        <label for="username">Username</label>
-                    </div>
-                </li>
-
-                <li class="hflex itemList">
-                    <a href="">Guida Arceus</a>
-                    <ul class ="itemStats">
-                        <li>Creato:</li>
-                        <li>Karma:</li>
-                        <li>Commenti:</li>
-                    </ul>
-                    <div id="avatarBox" class="vflex">
-                        <div id="avatar" class="miniAvatar"></div>
-                        <label for="username">Username</label>
-                    </div>
-                </li>
-
-                <li class="hflex itemList">
-                    <a href="">Guida Arceus</a>
-                    <ul class ="itemStats">
-                        <li>Creato:</li>
-                        <li>Karma:</li>
-                        <li>Commenti:</li>
-                    </ul>
-                    <div id="avatarBox" class="vflex">
-                        <div id="avatar" class="miniAvatar"></div>
-                        <label for="username">Username</label>
-                    </div>
-                </li>
-                <guide/>
+                <content/>
             </ul>
         </div>
-
-        <div id="articoli" class="boxInside">
-            <h2>Articoli <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
-            <ul>
-                <article/>
-            </ul>
-        </div>
+        <!--
+            <div id="articoli" class="boxInside">
+                <h2>Articoli <img src="../immagini/146.png" height="35em" alt="fenice infuocata"/></h2>
+                <ul>
+                    <article/>
+                </ul>
+            </div>
+        -->
+        
     </div>
 
     <footer>

@@ -10,6 +10,7 @@
         $db->openDBconnection();
         $userData = $db->getUserById($id);
         if(isset($userData)){
+            $paginaProfilo = str_replace('<id/>', $userData['id'], $paginaProfilo);
             $paginaProfilo = str_replace('<email/>', $userData['email'], $paginaProfilo);
             $karma = $db->getKarma($id);
             $paginaProfilo = str_replace('<karma/>', isset($karma) ? $karma : '0', $paginaProfilo);

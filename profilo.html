@@ -20,7 +20,7 @@
     </header>
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="../index.html">Home </a> </li>
+            <li lang="en"><a href="../index.php">Home </a> </li>
             <li><a href="contenuti.php">Contenuti</a></li>
             <li><a href="../chi_siamo.html">Chi siamo</a></li>
             <li>Profilo</li>
@@ -31,7 +31,7 @@
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en"><a href="../index.html">Home</a></span>->Profilo</p>
+        <p>Ti trovi in: <span lang="en"><a href="../index.php">Home</a></span>->Profilo</p>
     </nav>
 
     <div id="content">
@@ -44,8 +44,9 @@
                     <div id="campiProfilo" class="vflex">
                         <label for="email">Email:</label>
                         <input type="text" value="<email/>" id="email"></input>
-                        <button>Elimina account</button>
+                        <button onclick="popUpDeleteAccount();">Elimina account</button>
                         <button id="azioneProfilo">Modifica</button>
+                        <input hidden value="<id/>" id="id">
                         <input type="submit" method="POST" form ="profiloForm" formaction="logOutUtils.php" value = "LogOut" name="logout" id="logout">
                     </div>
                 </form>
