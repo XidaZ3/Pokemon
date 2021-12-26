@@ -430,8 +430,12 @@
             
         }
 
+        public function addComment($user,$comment,$contenuto)
+        {
+            //need to sanitize comment
+            $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto',)";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+            return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+        }
     };
-
-    
-
 ?>

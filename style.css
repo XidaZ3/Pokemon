@@ -23,6 +23,10 @@ input, button, textarea, #searchBar, footer, #searchBar, select{
     border-radius: 0.3em;
 }
 
+textarea{
+    font-size: 16px;
+}
+
 header{
     margin-top: 2em;
     margin-left:2em;
@@ -214,7 +218,7 @@ footer{
     align-items: center;
 }
 
-.itemList #avatarBox{
+.itemList .avatarBox{
    margin-left: auto;
 }
 
@@ -346,7 +350,7 @@ ul{
     align-items: center;
 }
 
-#avatar
+.avatar
 {
     margin-top: 1em;
     height: 100px;
@@ -358,22 +362,22 @@ ul{
     border-radius: 5em;
 }
 
-#avatar.miniAvatar{
+.avatar.miniAvatar{
     height: 50px;
     width:50px;
     border:var(--honey-yellow) 2px solid;
 }
 
-#avatarBox{
+.avatarBox{
     width: 20%;
     align-items: center;
 }
 
-#avatarBox label{
+.avatarBox label{
     text-align: center;
 }
 
-#avatar, input, button, textarea{
+.avatar, input, button, textarea{
     background-color: var(--backgroundWidget);
 }
 
@@ -495,7 +499,7 @@ label.smalltext {
     justify-content: space-evenly;
 }
 
-#gestioneCommento button{
+.gestioneCommento button{
     margin-left: 2em;
 }
 
@@ -524,6 +528,22 @@ label.smalltext {
 #intestazione .space, #intestazione a{
     width: 20%;
  }
+
+#creaCommento{
+    width: 60%;
+    height: 40%;
+    align-self: flex-start;
+    margin-left: 5em;
+}
+
+#creaCommento *{
+     margin-top: 1em;
+}
+
+#creaCommento button{
+    width: 50%;
+    align-self: center;
+}
  
 
 /*------------------------------*/
