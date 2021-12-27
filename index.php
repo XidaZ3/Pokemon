@@ -18,7 +18,7 @@
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
-                                                <div id=\"avatarBox\" class=\"vflex\">
+                                                <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar miniAvatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
@@ -36,7 +36,7 @@
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
-                                                <div id=\"avatarBox\" class=\"vflex\">
+                                                <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar miniAvatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>

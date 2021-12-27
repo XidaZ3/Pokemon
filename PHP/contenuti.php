@@ -38,7 +38,7 @@
                                         <li>Karma:". (isset($item['karma']) ? $item['karma'] : 0)."</li>
                                         <li>Commenti:". (isset($item['ncom']) ? $item['ncom'] : 0)."</li>
                                     </ul>
-                                    <div id=\"avatarBox\" class=\"vflex\">
+                                    <div class=\"avatarBox vflex\">
                                         <div class=\"avatar miniAvatar\"></div>
                                         <label for=\"username\">{$item['username']}</label>
                                     </div>
