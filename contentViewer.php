@@ -12,6 +12,8 @@
         header("Location: 404.html");
         return;
     }
+    $_SESSION['id']=$id;
+
     $db->openDBConnection();
     $content = "";
     if(isset($guida) && isset($titolo)){
@@ -34,8 +36,8 @@
             $like = $item['valore'] == 1 ? "pieno": "vuoto";
             $dislike = $item['valore'] == -1 ? "pieno" : "vuoto";
             $commentOutput = $commentOutput. "<div class=\"boxRect hflex\">
-                                                <div id=\"avatarBox\" class=\"vflex\">
-                                                    <div id=\"avatar\"></div>
+                                                <div class=\"avatarBox vflex\">
+                                                    <div class=\"avatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                                 <div class=\"commento vflex\">

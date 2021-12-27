@@ -19,7 +19,7 @@
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div id=\"avatarBox\" class=\"vflex\">
-                                                    <div id=\"avatar\" class=\"miniAvatar\"></div>
+                                                    <div class=\"avatar miniAvatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                             </li>";
@@ -37,7 +37,7 @@
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div id=\"avatarBox\" class=\"vflex\">
-                                                    <div id=\"avatar\" class=\"miniAvatar\"></div>
+                                                    <div class=\"avatar miniAvatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                             </li>";
