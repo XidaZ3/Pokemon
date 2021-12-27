@@ -40,11 +40,12 @@
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                                 <div class=\"commento vflex\">
-                                                    <p>{$item['testo']}<br/>{$item['timestamp']}</p>
-                                                    <div id=\"gestioneCommento\" class=\"hflex\">
+                                                    <p class=\"testo\">{$item['testo']}</p>
+                                                    <div class=\"gestioneCommento hflex\">
                                                     <button class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
                                                     <button class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
                                                     ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
+                                                    <p class=\"dataCreazione\">{$item['timestamp']}</p>
                                                     </div>
                                                 </div>
                                             </div>";

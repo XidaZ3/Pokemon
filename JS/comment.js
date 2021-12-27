@@ -59,13 +59,13 @@ function createUserComment() {
 
         var buttonLike = document.createElement("button");
         buttonLike.innerHTML="Like";
-        buttonLike.classList.add("like").add("unpressed");
+        buttonLike.setAttribute("class", "like unpressed");
         var buttonDislike = document.createElement("button");
         buttonDislike.innerHTML="Dislike";
-        buttonDislike.classList.add("dislike").add("unpressed");
+        buttonDislike.setAttribute("class", "dislike unpressed");
         var buttonCancella = document.createElement("button");
         buttonCancella.innerHTML="Cancella";
-        buttonCancella.setAttribute("class","btnCancella");
+        buttonCancella.setAttribute("class","cancella");
         var dataCreazione = document.createElement("p");
         dataCreazione.setAttribute("class","dataCreazione");
         var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');

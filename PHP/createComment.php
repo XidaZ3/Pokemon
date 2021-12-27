@@ -10,6 +10,10 @@
     $res = null;
 
     $db->openDBConnection();
+    
+    error_log($id);
+    error_log($user);
+    error_log($comment);
 
     if(isset($id))
         $res=$db->addComment($user, $comment, $id);
