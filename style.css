@@ -592,4 +592,8 @@ label.smalltext {
 .dataCreazione{
     margin-left: auto;
 }
+
+button.like, button.dislike{
+    border: none;
+}
 /*------------------------------*/

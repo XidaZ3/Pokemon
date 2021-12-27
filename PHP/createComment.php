@@ -16,8 +16,22 @@
     error_log($comment);
 
     if(isset($id))
+    {
         $res=$db->addComment($user, $comment, $id);
-
+        // $output = $output . "<li class=\"hflex itemList\">
+        //                             <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
+        //                             <ul class =\"itemStats\">
+        //                                 <li>Creato:{$item['data_creazione']}</li>
+        //                                 <li>Karma:". (isset($item['karma']) ? $item['karma'] : 0)."</li>
+        //                                 <li>Commenti:". (isset($item['ncom']) ? $item['ncom'] : 0)."</li>
+        //                             </ul>
+        //                             <div class=\"avatarBox vflex\">
+        //                                 <div class=\"avatar miniAvatar\"></div>
+        //                                 <label for=\"username\">{$item['username']}</label>
+        //                             </div>
+        //                         </li>";
+        // echo output
+    }
     if(!$res)
         error_log("errore inserimento commento");
     $db->closeDBConnection();

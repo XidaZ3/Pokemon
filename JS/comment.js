@@ -60,9 +60,13 @@ function createUserComment() {
         var buttonLike = document.createElement("button");
         buttonLike.innerHTML="Like";
         buttonLike.setAttribute("class", "like unpressed");
+        buttonLike.setAttribute("onclick", "likeComment()");
+
         var buttonDislike = document.createElement("button");
         buttonDislike.innerHTML="Dislike";
         buttonDislike.setAttribute("class", "dislike unpressed");
+        buttonDislike.setAttribute("onclick", "dislikeComment()");
+
         var buttonCancella = document.createElement("button");
         buttonCancella.innerHTML="Cancella";
         buttonCancella.setAttribute("class","cancella");
@@ -94,3 +98,65 @@ function createUserComment() {
     xhttp.send("comment="+txtAreaCommento.value);
 }
 
+function likeComment() {
+  var dislike = event.target.nextElementSibling;
+  var xhttp;
+  var opinion = 0;
+  xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(event.target.getAttribute("class") == "like unpressed")
+      {
+        event.target.setAttribute("class","like pressed");
+        opinion = 1;
+        if(dislike.getAttribute("class") =="dislike pressed")
+        {
+          dislike.setAttribute("class","dislike unpressed");
+          opinion = 2;
+        }
+      }
+      else
+      {
+        event.target.setAttribute("class","like unpressed");
+        opinion = -1;
+      }
+    }
+  };
+   
+  xhttp.open("POST", "./PHP/opinion.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("opinion="+opinion);
+}
+
+function dislikeComment() {
+  var like = event.target.previousElementSibling;
+  var xhttp;
+  var opinion = 0;
+  xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(event.target.getAttribute("class")=="dislike unpressed")
+      {
+        event.target.setAttribute("class","dislike pressed");
+        opinion = -1;
+
+        if(like.getAttribute("class")=="like pressed")
+        {
+          like.setAttribute("class","like unpressed");
+          opinion = -2;
+        }
+      }
+      else
+      {
+        event.target.setAttribute("class","dislike unpressed");
+        opinion = 1;
+      }
+    }
+  };
+
+  xhttp.open("POST", "./PHP/opinion.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("opinion="+opinion);
+}
