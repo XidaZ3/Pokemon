@@ -34,7 +34,7 @@
     if(isset($comments)){
         foreach($comments as $item){
             $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
-            $commentOutput = $commentOutput. "<div class=\"boxRect hflex\">
+            $commentOutput = $commentOutput. "<div id=\"nc{$item['commentoid']}\" class=\"boxRect hflex\">
                                                 <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar\"></div>
                                                     <label for=\"username\">{$item['username']}</label>
