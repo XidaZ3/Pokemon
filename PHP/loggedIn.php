@@ -5,6 +5,7 @@
     $paginaProfilo = file_get_contents('../profilo.html');
     if(isset($_SESSION['userid']) && isset($_SESSION['privilegio'])){
         //L'utente è loggato devo mostrare le statistiche
+        str_replace('<admin/>',$_SESSION['privilegio']==1? "<a href=\"amministratore.php?\">Vai all'area Amministratore</a>":"",$paginaProfilo);
         $id = $_SESSION['userid'];
         $db = new DBAccess();
         $db->openDBconnection();
@@ -22,14 +23,14 @@
             $paginaProfilo = str_replace('<npost/>', isset($npost) ? $npost : '0', $paginaProfilo); 
             $posts = $db->getLatestPosts($id);
             $db->closeDBConnection();
-            $postHtml = "Non hai ancora creato nessun post.";
+            $postHtml = "";
             if(isset($posts)){
                 if(count($posts)>0){
                     foreach($posts as $post){
                         $postHtml=$postHtml."<div class=\"boxOutside\"><p>".$post['testo']."</p></div>";
                     }
                 }else{
-                    $postHtml = "Non hai ancora creato nessun post.";
+                    $postHtml = "Non hai ancora scritto nessun commento.";
                 }
             }
 

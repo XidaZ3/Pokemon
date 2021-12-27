@@ -33,8 +33,7 @@
     $commentOutput="";
     if(isset($comments)){
         foreach($comments as $item){
-            $like = $item['valore'] == 1 ? "pieno": "vuoto";
-            $dislike = $item['valore'] == -1 ? "pieno" : "vuoto";
+            $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
             $commentOutput = $commentOutput. "<div class=\"boxRect hflex\">
                                                 <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar\"></div>
@@ -43,9 +42,9 @@
                                                 <div class=\"commento vflex\">
                                                     <p>{$item['testo']}<br/>{$item['timestamp']}</p>
                                                     <div id=\"gestioneCommento\" class=\"hflex\">
-                                                        <img src=\"Immagini/icons/like_".$like.".png\" onclick=\"doSomethingCoolWithAjax();\">
-                                                        <img src=\"Immagini/icons/dislike_".$dislike.".png\" onclick=\"doSomethingCoolWithAjax();\">
-                                                        ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
+                                                    <button class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
+                                                    <button class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
+                                                    ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
                                                     </div>
                                                 </div>
                                             </div>";

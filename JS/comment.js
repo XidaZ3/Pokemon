@@ -59,8 +59,10 @@ function createUserComment() {
 
         var buttonLike = document.createElement("button");
         buttonLike.innerHTML="Like";
+        buttonLike.classList.add("like").add("unpressed");
         var buttonDislike = document.createElement("button");
         buttonDislike.innerHTML="Dislike";
+        buttonDislike.classList.add("dislike").add("unpressed");
         var buttonCancella = document.createElement("button");
         buttonCancella.innerHTML="Cancella";
         buttonCancella.setAttribute("class","btnCancella");

@@ -243,7 +243,45 @@ footer{
     margin-left: auto;
 }
 
+.pressed.like {
+    background-image: url("Immagini/icons/like_pieno.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 26px;
+    width: 26px;
+}
 
+.pressed.dislike {
+    background-image: url("Immagini/icons/dislike_pieno.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 26px;
+    width: 26px;
+}
+
+.unpressed.like {
+    background-image: url("Immagini/icons/like_vuoto.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 26px;
+    width: 26px;
+}
+
+.unpressed.dislike{
+    background-image: url("Immagini/icons/dislike_vuoto.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 26px;
+    width: 26px;
+}
 
 .expand{
     height: max-content;
