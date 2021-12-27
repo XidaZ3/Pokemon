@@ -26,11 +26,13 @@
     }
     $paginaContentViewer = str_replace('<content/>', $content, $paginaContentViewer);
     $paginaContentViewer = str_replace('<title/>', $titolo, $paginaContentViewer);
-    $comments = $db->getContentComments($id,$_SESSION['userid']);
+    $userid = isset($_SESSION['userid'])? $_SESSION['userid'] : 0;
+    $comments = $db->getContentComments($id,$userid);
     $commentOutput="";
     if(isset($comments)){
         foreach($comments as $item){
-            $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
+            $like = $item['valore'] == 1 ? "pieno": "vuoto";
+            $dislike = $item['valore'] == -1 ? "pieno" : "vuoto";
             $commentOutput = $commentOutput. "<div class=\"boxRect hflex\">
                                                 <div id=\"avatarBox\" class=\"vflex\">
                                                     <div id=\"avatar\"></div>
@@ -39,9 +41,9 @@
                                                 <div class=\"commento vflex\">
                                                     <p>{$item['testo']}<br/>{$item['timestamp']}</p>
                                                     <div id=\"gestioneCommento\" class=\"hflex\">
-                                                        <button class=\"".(isset($karmaClass) && $karmaClass ? "pressed" : "")."\">Like</button>
-                                                        <button class=\"".(isset($karmaClass) && !$karmaClass ? "pressed" : "")."\">Dislike</button>
-                                                        <button id=\"cancella\">Cancella</button>
+                                                        <img src=\"Immagini/icons/like_".$like.".png\" onclick=\"doSomethingCoolWithAjax();\">
+                                                        <img src=\"Immagini/icons/dislike_".$dislike.".png\" onclick=\"doSomethingCoolWithAjax();\">
+                                                        ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
                                                     </div>
                                                 </div>
                                             </div>";
