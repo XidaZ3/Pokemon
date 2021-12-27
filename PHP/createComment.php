@@ -11,9 +11,11 @@
 
     $db->openDBConnection();
     
-    error_log($id);
-    error_log($userid);
-    error_log($comment);
+    if(!isset($userid))
+    {
+        echo -1;
+        return;
+    }
 
     if(isset($id))
     {

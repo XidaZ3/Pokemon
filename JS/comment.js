@@ -8,11 +8,19 @@ function createUserComment() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        var content = document.getElementById("content");
-        var creaCommento = document.getElementById("creaCommento");
-        var boxRect = document.createElement("div");
-        content.insertBefore(boxRect,creaCommento);
-        boxRect.outerHTML = this.responseText;
+
+        if(this.responseText == -1)
+        {
+          txtAreaCommento.value="Devi loggarti prima di pubblicare!";
+        }
+        else
+        {
+          var content = document.getElementById("content");
+          var creaCommento = document.getElementById("creaCommento");
+          var boxRect = document.createElement("div");
+          content.insertBefore(boxRect,creaCommento);
+          boxRect.outerHTML = this.responseText;
+        }
       }
     };
    
