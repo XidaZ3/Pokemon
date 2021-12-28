@@ -380,7 +380,7 @@
         }
 
         public function getContentComments($id,$userid) {
-            $query = "SELECT co.id as commentoid, co.testo, co.timestamp, u.username,u.id as userid, k.valore FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid WHERE co.contenuto = $id ORDER BY commentoid DESC";
+            $query = "SELECT co.id as commentoid, co.testo, co.timestamp, u.username,u.id as userid, k.valore FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid WHERE co.contenuto = $id ORDER BY commentoid ASC";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();

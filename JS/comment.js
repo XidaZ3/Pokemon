@@ -88,6 +88,5 @@ function dislikeComment() {
 
   xhttp.open("POST", "./PHP/opinion.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  console.log(opinion);
   xhttp.send("opinion="+opinion+"&commentid="+commentid);
 }
