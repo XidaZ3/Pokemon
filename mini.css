@@ -51,15 +51,19 @@ body{
 #collabora{
     min-width: 10em;
     min-height: 30em;
+    padding: 1em 0;
 }
 
+#contatti{
+    text-align: center;
+}
 
 /*------------------------------*/
 
 #breadcrumb{
     display: flex;
     margin:auto;
-    width: 70%;
+    width: 90%;
 }
 /*------------------------------*/
 footer{
@@ -114,8 +118,32 @@ img.postuscite,img.postpopolari{
 
 .hflex{
     display: block;
-    flex-direction:row;
 }
+.itemList{
+     height: auto;
+     width: auto;
+}
+
+.hflex.itemList{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 1em;
+    width: 90%;
+    grid-template-areas: "a a"
+                         "b c";
+}
+
+.hflex.itemList a{
+    grid-area: a;
+    width:100%;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.itemList .avatarBox{
+    grid-area: c;
+    margin-right: 1em;
+ }
 
 .boxColonna{
     width: 100%;
@@ -153,6 +181,15 @@ ul{
     font-size: 1.8em;
 }
 
+#intestazione{
+    align-items: center;
+    margin-bottom: 0.3em;
+}
+
+#intestazione a{
+    margin-right: 0.5em;
+}
+
 #chiSiamo{
     display: flex;
     flex-direction: column;
@@ -178,6 +215,14 @@ ul{
 
 .boxInside{
     text-align: center;
+}
+
+
+.itemStats{
+    grid-area: b;
+    text-align: initial;
+    width: 100%;
+    
 }
 
 #profiloBordo{
@@ -215,6 +260,10 @@ ul{
     background-color: var(--backgroundWidget);
     border:black 2px solid;
     border-radius: 5em;
+}
+
+#zone .avatar {
+    width: 100px;
 }
 
 #campi {
@@ -266,6 +315,11 @@ ul{
 
 }
 
+#zone #posts, #zone #statistiche, #zone #profiloForm{
+    width: auto;
+    align-items: center;
+}
+
 #psyduckConfused{
     background-image: url("./Immagini/404.jpg");
     background-size: cover;
@@ -282,5 +336,9 @@ ul{
     top:16em;
     right:9em;
     font-size: 20px;
+}
+
+#campiLogin{
+    width: 90%;
 }
 /*------------------------------
