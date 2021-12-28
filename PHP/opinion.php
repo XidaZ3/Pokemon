@@ -4,29 +4,17 @@
     use DB\DBAccess;
     $db= new DBAccess();
 
+    $opinion= isset($_POST['opinion']) ? $_POST['opinion'] : null;
+    $commentid= isset($_POST['commentid']) ? $_POST['commentid'] : null;
     $user= isset($_SESSION['userid']) ? $_SESSION['userid'] : null;
-    $id= isset($_SESSION['id']) ? $_SESSION['id'] : null;
-    $comment = isset($_POST['comment']) ? $_POST['comment'] : null;
-    $res = null;
 
     $db->openDBConnection();
-    
-    error_log($id);
-    error_log($user);
-    error_log($comment);
+    $res = 0;
 
-    if(isset($id))
-        $res=$db->addComment($user, $comment, $id);
+    if(isset($commentid) && isset($user) && isset($opinion))
+        $res=$db->addCommentOpinion($commentid,$user,$opinion);
 
     if(!$res)
-        error_log("errore inserimento commento");
+        error_log("errore votazione likes");
     $db->closeDBConnection();
-
-
-    function pulisciInput($value){
-        $value = trim($value);
-        $value = htmlentities($value);
-        $value = htmlspecialchars($value);
-        return $value;
-    }
 ?>

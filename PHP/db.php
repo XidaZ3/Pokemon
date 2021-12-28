@@ -380,7 +380,7 @@
         }
 
         public function getContentComments($id,$userid) {
-            $query = "SELECT co.id as commentoid, co.testo, co.timestamp, u.username,u.id as userid, k.valore FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid WHERE co.contenuto = $id";
+            $query = "SELECT co.id as commentoid, co.testo, co.timestamp, u.username,u.id as userid, k.valore FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid WHERE co.contenuto = $id ORDER BY commentoid DESC";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
@@ -436,6 +436,36 @@
             $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto')";
             $queryResult = mysqli_query($this->connection, $query) or null;
             return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+        }
+
+        // public function addContentOpinion($content,$opinion)
+        // {
+        //     //need to sanitize comment
+        //     $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto')";
+        //     $queryResult = mysqli_query($this->connection, $query) or null;
+        //     return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+        // }
+
+        public function addCommentOpinion($comment,$user, $opinion)
+        {
+            $comment=substr($comment,2);
+            $query = "SELECT commento FROM karma_commenti WHERE $comment = commento";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+
+            if($queryResult)
+            {
+                if(mysqli_num_rows($queryResult)==0)
+                    $query = "INSERT INTO karma_commenti(commento,utente,valore) VALUES ('$comment', '$user', '$opinion')";
+                else{
+                    if($opinion != 0)
+                        $query = "UPDATE karma_commenti SET valore=$opinion WHERE commento=$comment AND utente=$user";
+                    else
+                        $query = "DELETE FROM karma_commenti WHERE commento=$comment AND utente=$user";
+                }
+
+                $queryResult = mysqli_query($this->connection, $query) or null;
+            }
+            return $queryResult;
         }
     };
 ?>

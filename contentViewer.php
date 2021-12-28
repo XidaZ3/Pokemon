@@ -29,7 +29,19 @@
     $paginaContentViewer = str_replace('<content/>', $content, $paginaContentViewer);
     $paginaContentViewer = str_replace('<title/>', $titolo, $paginaContentViewer);
     $userid = isset($_SESSION['userid'])? $_SESSION['userid'] : 0;
+
+
+    // Likes contenuto
+    //     <p class=\"testo\">{$item['testo']}</p>
+    //     <div class=\"gestioneCommento hflex\">
+    //     <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
+    //     <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
+    //     ".($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
+    //     <p class=\"dataCreazione\">{$item['timestamp']}</p>
+    //     </div>
+
     $comments = $db->getContentComments($id,$userid);
+    
     $commentOutput="";
     if(isset($comments)){
         foreach($comments as $item){
@@ -44,7 +56,7 @@
                                                     <div class=\"gestioneCommento hflex\">
                                                     <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
                                                     <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
-                                                    ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
+                                                    ".($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
                                                     <p class=\"dataCreazione\">{$item['timestamp']}</p>
                                                     </div>
                                                 </div>
