@@ -54,9 +54,9 @@
                                                 <div class=\"commento vflex\">
                                                     <p class=\"testo\">{$item['testo']}</p>
                                                     <div class=\"gestioneCommento hflex\">
-                                                    <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
-                                                    <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
-                                                    ".($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
+                                                    ".($userid != 0 ? "<button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>" : "")
+                                                    .($userid != 0 ? "<button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>" :"")
+                                                    .($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
                                                     <p class=\"dataCreazione\">{$item['timestamp']}</p>
                                                     </div>
                                                 </div>
