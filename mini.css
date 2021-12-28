@@ -51,8 +51,12 @@ body{
 #collabora{
     min-width: 10em;
     min-height: 30em;
+    padding: 1em 0;
 }
 
+#contatti{
+    text-align: center;
+}
 
 /*------------------------------*/
 
@@ -114,8 +118,32 @@ img.postuscite,img.postpopolari{
 
 .hflex{
     display: block;
-    flex-direction:row;
 }
+.itemList{
+     height: auto;
+     width: auto;
+}
+
+.hflex.itemList{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 1em;
+    width: 90%;
+    grid-template-areas: "a a"
+                         "b c";
+}
+
+.hflex.itemList a{
+    grid-area: a;
+    width:100%;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.itemList .avatarBox{
+    grid-area: c;
+    margin-right: 1em;
+ }
 
 .boxColonna{
     width: 100%;
@@ -158,6 +186,10 @@ ul{
     margin-bottom: 0.3em;
 }
 
+#intestazione a{
+    margin-right: 0.5em;
+}
+
 #chiSiamo{
     display: flex;
     flex-direction: column;
@@ -187,16 +219,10 @@ ul{
 
 
 .itemStats{
-    display: block;
+    grid-area: b;
     text-align: initial;
-    width: 70%;
-}
-
-.itemList a{
-    display: block;
-    width:100%;
-    font-weight: bold;
-    font-size: 125%;
+    width: 100%;
+    
 }
 
 #profiloBordo{
