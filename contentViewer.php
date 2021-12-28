@@ -18,10 +18,10 @@
     $content = "";
     if(isset($guida) && isset($titolo)){
         $content = file_get_contents('Guide/'.$guida.'/index.html');
-        $content = str_replace('img/', "Guide/".$guida."/img\/", $content);
+        $content = str_replace('img/', "Guide/".$guida."/"."img/", $content);
     }else if(isset($articolo) && isset($titolo)){
         $content = file_get_contents('Articoli/'.$articolo.'/index.html');
-        $content = str_replace('img/', "Articoli/".$articolo."/img\/", $content);
+        $content = str_replace('img/', "Articoli/".$articolo."/"."img/", $content);
     }else{
         $paginaContentViewer = file_get_contents('../404.html');
         return;
@@ -29,19 +29,25 @@
     $paginaContentViewer = str_replace('<content/>', $content, $paginaContentViewer);
     $paginaContentViewer = str_replace('<title/>', $titolo, $paginaContentViewer);
     $userid = isset($_SESSION['userid'])? $_SESSION['userid'] : 0;
+    $paginaContentViewer = str_replace('<title/>', $titolo, $paginaContentViewer);
 
+    
 
-    // Likes contenuto
-    //     <p class=\"testo\">{$item['testo']}</p>
-    //     <div class=\"gestioneCommento hflex\">
-    //     <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
-    //     <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
-    //     ".($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
-    //     <p class=\"dataCreazione\">{$item['timestamp']}</p>
-    //     </div>
+    if($userid != 0)
+    {
+        $arrayres= $db->getUserOpinionContent($id,$userid);
+        $row = $arrayres->fetch_assoc();
+        $karmaContent = $row['valore'] == 1 ? 1: ($row['valore'] == -1 ? 0 : null);
+        $opinionContent="<div class=\"gestioneContenuto hflex\">
+        <button onclick=\"likeContenuto()\" class=\"like".(isset($karmaContent) && $karmaContent ? " pressed" : " unpressed")."\">Like</button>
+        <button onclick=\"dislikeContenuto()\" class=\"dislike".(isset($karmaContent) && !$karmaContent ? " pressed" : " unpressed")."\">Dislike</button>
+        </div>";
+    }
+    else
+        $opinionContent="";
+    $paginaContentViewer = str_replace('<contentOpinion/>', $opinionContent, $paginaContentViewer);
 
     $comments = $db->getContentComments($id,$userid);
-    
     $commentOutput="";
     if(isset($comments)){
         foreach($comments as $item){

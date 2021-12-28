@@ -596,4 +596,27 @@ label.smalltext {
 button.like, button.dislike{
     border: none;
 }
+
+.gestioneContenuto{
+    margin-top: 1em;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.gestioneContenuto *{
+    margin-right: 1em;
+}
+
+.like, .dislike{
+    background-color: transparent;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.like:hover{
+    background-color: rgb(152, 255, 152);
+}
+
+.dislike:hover{
+    background-color: rgb(255, 148, 148);
+}
 /*------------------------------*/
