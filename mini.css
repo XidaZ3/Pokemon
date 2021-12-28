@@ -59,7 +59,7 @@ body{
 #breadcrumb{
     display: flex;
     margin:auto;
-    width: 70%;
+    width: 90%;
 }
 /*------------------------------*/
 footer{
@@ -153,6 +153,11 @@ ul{
     font-size: 1.8em;
 }
 
+#intestazione{
+    align-items: center;
+    margin-bottom: 0.3em;
+}
+
 #chiSiamo{
     display: flex;
     flex-direction: column;
@@ -178,6 +183,20 @@ ul{
 
 .boxInside{
     text-align: center;
+}
+
+
+.itemStats{
+    display: block;
+    text-align: initial;
+    width: 70%;
+}
+
+.itemList a{
+    display: block;
+    width:100%;
+    font-weight: bold;
+    font-size: 125%;
 }
 
 #profiloBordo{
@@ -215,6 +234,10 @@ ul{
     background-color: var(--backgroundWidget);
     border:black 2px solid;
     border-radius: 5em;
+}
+
+#zone .avatar {
+    width: 100px;
 }
 
 #campi {
@@ -266,6 +289,11 @@ ul{
 
 }
 
+#zone #posts, #zone #statistiche, #zone #profiloForm{
+    width: auto;
+    align-items: center;
+}
+
 #psyduckConfused{
     background-image: url("./Immagini/404.jpg");
     background-size: cover;
@@ -282,5 +310,9 @@ ul{
     top:16em;
     right:9em;
     font-size: 20px;
+}
+
+#campiLogin{
+    width: 90%;
 }
 /*------------------------------
