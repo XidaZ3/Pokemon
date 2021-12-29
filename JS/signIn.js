@@ -70,13 +70,13 @@ function filterChange() {
     select = document.getElementById('filter');
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const content = urlParams.has('content') ? urlParams.get('content'): 0;
+    const content = urlParams.has('tipo') ? urlParams.get('tipo'): 0;
     switch(select.value){
-        case "0": window.location.replace("contenuti.php?content=".concat(content,"&filter=0")); ;break; //Most recent 
-        case "1": window.location.replace("contenuti.php?content=".concat(content,"&filter=1")); ;break; //Most recent 
-        case "2": window.location.replace("contenuti.php?content=".concat(content,"&filter=2")); ;break; //Most recent 
-        case "3": window.location.replace("contenuti.php?content=".concat(content,"&filter=3")); ;break; //Most recent 
-        default: window.location.replace("contenuti.php?content=".concat(content,"&filter=0"));
+        case "0": window.location.replace("contenuti.php?tipo=".concat(content,"&filter=0")); ;break; //Most recent 
+        case "1": window.location.replace("contenuti.php?tipo=".concat(content,"&filter=1")); ;break; //Most recent 
+        case "2": window.location.replace("contenuti.php?tipo=".concat(content,"&filter=2")); ;break; //Most recent 
+        case "3": window.location.replace("contenuti.php?tipo=".concat(content,"&filter=3")); ;break; //Most recent 
+        default: window.location.replace("contenuti.php?tipo=".concat(content,"&filter=0"));
     }
     return;
 };

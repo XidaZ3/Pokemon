@@ -2,13 +2,23 @@
     session_start();
     require_once "db.php";
     use DB\DBAccess;
-    
+    $contenutiPerPagina = 5;
     $paginaContenuti = file_get_contents('../contenuti.html');
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 0;
     $filter = isset($_GET['filter']) && is_numeric($_GET['filter']) ? $_GET['filter'] : "0";
     $contentType = isset($_GET['tipo']) && is_numeric($_GET['tipo']) ? $_GET['tipo'] : 0;
     $privilegio = isset($_SESSION['privilegio']) && is_numeric($_SESSION['privilegio']) ? $_SESSION['privilegio'] : 0;
     $content = getContentByFilter($contentType,$filter,$page);
+    $db = new DBAccess();
+    $db->openDBConnection();
+    $numeroContenuti = $db->getContentNumberByType($contentType);
+    $db->closeDBConnection();
+    if(isset($numeroContenuti)){
+        $pagesLink = ($page == 0 ? "" : "<a href=\"contenuti.php?page=".($page-1)."&filtro={$filter}&tipo={$contentType}\"> &lt </a>");
+        $pagesLink = $pagesLink . "<p>".($page+1)." di ". (round($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)+1) ." </p>";
+        $pagesLink = $pagesLink. ($page == (round($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)) ? "" : "<a href=\"contenuti.php?page=".($page+1)."&filtro={$filter}&tipo={$contentType}\"> &gt </a>");
+        $paginaContenuti = str_replace("<pageLink/>", $pagesLink, $paginaContenuti);
+    }
     $optionOutput = "";
     $options = array("Più recenti","Più vecchi","Più votati","Più discussi");
     for($i =0; $i<4; $i++){
@@ -41,7 +51,7 @@
                                     </ul>
                                     <div class=\"avatarBox vflex\">
                                         <div class=\"avatar miniAvatar\"></div>
-                                        <label for=\"username\">{$item['username']}</label>
+                                        <label for=\"username\">{$item['editore']}</label>
                                     </div> <div class=\"vflex\">".
                                     ($privilegio == 1 ? "<a class=\"smalltext delete\" href=\"deleteContent.php?id={$item['id']}&path={$item['path']}&tipo={$item['tipo']}\">Elimina Contenuto</a>" : "")
                                 ."</div> </li>";

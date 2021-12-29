@@ -16,7 +16,7 @@
             $_SESSION['userid']= $user['id'];
             $_SESSION['privilegio']=$user['privilegio'];
             if($user['privilegio'] == "1") {
-                header("Location: ../amministratore.html");
+                header("Location: amministratore.php");
                 exit();
             }
         }

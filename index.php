@@ -20,7 +20,7 @@
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar miniAvatar\"></div>
-                                                    <label for=\"username\">{$item['username']}</label>
+                                                    <label for=\"username\">{$item['editore']}</label>
                                                 </div>
                                             </li>";
         }
@@ -38,7 +38,7 @@
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
                                                     <div class=\"avatar miniAvatar\"></div>
-                                                    <label for=\"username\">{$item['username']}</label>
+                                                    <label for=\"username\">{$item['editore']}</label>
                                                 </div>
                                             </li>";
         }

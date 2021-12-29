@@ -36,12 +36,13 @@
     if($userid != 0)
     {
         $arrayres= $db->getUserOpinionContent($id,$userid);
+        $karma = $db->getContentKarma($id);
         $row = $arrayres->fetch_assoc();
         $karmaContent = $row['valore'] == 1 ? 1: ($row['valore'] == -1 ? 0 : null);
-        $opinionContent="<div class=\"gestioneContenuto hflex\">
+        $opinionContent="<div id=\"nc{$id}\" class=\"gestioneContenuto hflex\">
         <button onclick=\"likeContenuto()\" class=\"like".(isset($karmaContent) && $karmaContent ? " pressed" : " unpressed")."\">Like</button>
-        <button onclick=\"dislikeContenuto()\" class=\"dislike".(isset($karmaContent) && !$karmaContent ? " pressed" : " unpressed")."\">Dislike</button>
-        </div>";
+        <button onclick=\"dislikeContenuto()\" class=\"dislike".(isset($karmaContent) && !$karmaContent ? " pressed" : " unpressed")."\">Dislike</button>".
+        "<p id=\"kc{$id}\" class=\"karma\">".(isset($karma) ? ($karma > 0 ? "+" : "").$karma : "0")."</p> </div>";
     }
     else
         $opinionContent="";
@@ -63,7 +64,7 @@
                                                     <div class=\"gestioneCommento hflex\">
                                                     ".($userid != 0 ? "<button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>" : "")
                                                     .($userid != 0 ? "<button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>" :"").
-                                                    "<p id=\"karma{$item['commentoid']}\" class=\"karma\">".($item['karma'] >0 ? "+" : "").$item['karma']."</p>"
+                                                    "<p id=\"karmaco{$item['commentoid']}\" class=\"karma\">".($item['karma'] >0 ? "+" : "").$item['karma']."</p>"
                                                     .($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
                                                     <p class=\"dataCreazione\">{$item['timestamp']}</p>
                                                     </div>
