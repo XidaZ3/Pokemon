@@ -9,9 +9,7 @@ function createUserComment() {
       if (this.readyState == 4 && this.status == 200) {
 
         if(this.responseText == -1)
-        {
-          txtAreaCommento.value="Devi loggarti prima di pubblicare!";
-        }
+          txtAreaCommento.setAttribute("placeholder", "Devi loggarti prima di pubblicare!");
         else
         {
           var content = document.getElementById("content");
