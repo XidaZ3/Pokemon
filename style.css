@@ -8,7 +8,9 @@
     --blue-green: #219ebcff;
     --prussian-blue: #023047ff;
     --honey-yellow: #ffb703ff;
+    --honey-yellowTran:rgba(255, 184, 3, 0.5);
     --border: #fb8500ff;
+    --borderTran:rgba(251, 134, 0, 0.5);
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
@@ -146,7 +148,14 @@ body{
 #breadcrumb{
     display: flex;
     margin:auto;
-    width: 70%;
+    width: 75%;
+    border-top:var(--borderTran) 2px solid;
+    border-bottom:var(--borderTran) 2px solid;
+    background-color: var(--honey-yellowTran);
+    padding-top:  0.25em;
+    padding-bottom:  0.25em;
+    position: relative;
+    top:3em;
 }
 /*------------------------------*/
 footer{
@@ -173,6 +182,7 @@ footer{
     margin-bottom: 4em;
     padding:2em;
     text-align: left;
+    padding-top: 4em;
 }
 
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{
