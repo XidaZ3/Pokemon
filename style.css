@@ -8,10 +8,14 @@
     --blue-green: #219ebcff;
     --prussian-blue: #023047ff;
     --honey-yellow: #ffb703ff;
+    --honey-yellowTran:rgba(255, 184, 3, 0.5);
     --border: #fb8500ff;
+    --borderTran:rgba(251, 134, 0, 0.5);
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
+    --semitransparentFilter:rgba(0,0,0,0.3);
+    --deleteHover:rgb(255, 148, 148);
 }
 
 *{
@@ -144,7 +148,14 @@ body{
 #breadcrumb{
     display: flex;
     margin:auto;
-    width: 70%;
+    width: 75%;
+    border-top:var(--borderTran) 2px solid;
+    border-bottom:var(--borderTran) 2px solid;
+    background-color: var(--honey-yellowTran);
+    padding-top:  0.25em;
+    padding-bottom:  0.25em;
+    position: relative;
+    top:3em;
 }
 /*------------------------------*/
 footer{
@@ -171,6 +182,7 @@ footer{
     margin-bottom: 4em;
     padding:2em;
     text-align: left;
+    padding-top: 4em;
 }
 
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{
@@ -258,8 +270,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .pressed.dislike {
@@ -268,8 +280,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .unpressed.like {
@@ -278,8 +290,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .unpressed.dislike{
@@ -288,8 +300,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 p.karma {
@@ -395,7 +407,7 @@ ul{
 #adminZone{
     width: 98%;
     justify-content: center;
-    height: 22em;
+    height: 15em;
 }
 
 #adminZone *{
@@ -604,5 +616,100 @@ ul{
 
 button.like, button.dislike{
     border: none;
+}
+
+.gestioneContenuto{
+    margin-top: 1em;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.gestioneContenuto *{
+    margin-right: 1em;
+}
+
+.like, .dislike{
+    background-color: transparent;
+}
+
+.unpressed.like, .unpressed.dislike{
+    transition: background-color 0.1s;
+    transition: background-size 0.1s;
+    background-size: 100%;
+}
+
+.unpressed.like:hover, .unpressed.dislike:hover{
+    background-size: 105%;
+}
+
+.cancella{
+    margin-left: auto;
+    transition: background-size 0.2s ease-in-out;
+    background-image: url("Immagini/icons/x.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-size: 50%;
+    border-radius: 5em;
+}
+
+.cancella:hover{
+    background-color: var(--deleteHover);   
+}
+
+#popUpWrapper{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--semitransparentFilter);
+    justify-content: center;
+    align-items: center;
+
+    /* per coprire anche il footer */
+    z-index: 2;
+}
+
+#popUp{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundWidget);
+    width: 40%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+}
+
+#confermaCancella{
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;  
+}
+
+#confermaCancella button{
+    width: 30%;
+    margin-top:1em;
+}
+
+#adminZone form{
+    justify-content: center;
+    align-items: center;
+}
+
+#adminZone *{
+    margin-top: 0.5em;
+    text-align: left;
+}
+
+#adminZone input[type='submit']{
+    width: 40%;
+    text-align: center;
 }
 /*------------------------------*/

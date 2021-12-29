@@ -1,18 +1,15 @@
 function createUserComment() {
-    var xhttp;
+    var xhttp = new XMLHttpRequest();
     var txtAreaCommento=document.getElementById("textCommento");
     if (txtAreaCommento.value == "") {
         txtAreaCommento.setAttribute("placeholder", "Commento vuoto, scrivere prima di pubblicare!");
         return;
     }
-    xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
 
         if(this.responseText == -1)
-        {
-          txtAreaCommento.value="Devi loggarti prima di pubblicare!";
-        }
+          txtAreaCommento.setAttribute("placeholder", "Devi loggarti prima di pubblicare!");
         else
         {
           var content = document.getElementById("content");
@@ -21,6 +18,7 @@ function createUserComment() {
           content.insertBefore(boxRect,creaCommento);
           boxRect.outerHTML = this.responseText;
         }
+        txtAreaCommento.value="";
       }
     };
    
@@ -32,7 +30,7 @@ function createUserComment() {
 function likeComment() {
   var dislike = event.target.nextElementSibling;
   var like = event.target;
-  var xhttp;
+  var xhttp = new XMLHttpRequest();
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
   var karmaTag = document.getElementById("karma".concat(commentid.substring(2)));
@@ -68,7 +66,7 @@ function likeComment() {
 function dislikeComment() {
   var like = event.target.previousElementSibling;
   var dislike = event.target;
-  var xhttp;
+  var xhttp = new XMLHttpRequest();
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
   var karmaTag = document.getElementById("karma".concat(commentid.substring(2)));
@@ -99,4 +97,139 @@ function dislikeComment() {
   xhttp.open("POST", "./PHP/opinion.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("opinion="+opinion+"&commentid="+commentid);
+}
+
+function dislikeComment() {
+  var like = event.target.previousElementSibling;
+  var dislike = event.target;
+  var xhttp = new XMLHttpRequest();
+  var opinion = 0;
+  var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(dislike.getAttribute("class")=="dislike unpressed")
+      {
+        dislike.setAttribute("class","dislike pressed");
+        if(like.getAttribute("class")=="like pressed")
+          like.setAttribute("class","like unpressed");
+      }
+      else
+        dislike.setAttribute("class","dislike unpressed");
+    }
+  };
+
+  if(dislike.getAttribute("class")=="dislike unpressed")
+    opinion = -1;
+  else
+    opinion = 0;
+
+  xhttp.open("POST", "./PHP/opinion.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("opinion="+opinion+"&commentid="+commentid);
+}
+
+function likeContenuto(){
+  var dislike = event.target.nextElementSibling;
+  var like = event.target;
+  var xhttp = new XMLHttpRequest();
+  var opinion = 0;
+  var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(like.getAttribute("class") == "like unpressed")
+      {
+        like.setAttribute("class","like pressed");      
+        if(dislike.getAttribute("class") =="dislike pressed")
+          dislike.setAttribute("class","dislike unpressed");
+      }
+      else
+        like.setAttribute("class","like unpressed");
+    }
+  };
+   
+  if(like.getAttribute("class")=="like unpressed")
+    opinion = 1;
+  else
+    opinion = 0;
+
+  xhttp.open("POST", "./PHP/contentOpinion.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("opinion="+opinion);
+}
+
+function dislikeContenuto(){
+  var like = event.target.previousElementSibling;
+  var dislike = event.target;
+  var xhttp = new XMLHttpRequest();;
+  var opinion = 0;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(dislike.getAttribute("class")=="dislike unpressed")
+      {
+        dislike.setAttribute("class","dislike pressed");
+        if(like.getAttribute("class")=="like pressed")
+          like.setAttribute("class","like unpressed");
+      }
+      else
+        dislike.setAttribute("class","dislike unpressed");
+    }
+  };
+
+  if(dislike.getAttribute("class")=="dislike unpressed")
+    opinion = -1;
+  else
+    opinion = 0;
+
+  xhttp.open("POST", "./PHP/contentOpinion.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("opinion="+opinion);
+}
+
+function deleteComment(){
+  var popup=document.createElement("div");
+  var parentClose = event.target.parentElement;
+  popup.setAttribute("id", "popUp");
+  popup.innerHTML = "Sei sicuro di voler cancellare il tuo commento?";
+
+  var conferma = document.createElement("div");
+  conferma.setAttribute("id","confermaCancella");
+  var si=document.createElement("button");
+  si.setAttribute("onclick","confirmDelete()");
+  si.innerHTML = "Sì";
+  var no=document.createElement("button");
+  no.setAttribute("onclick","closePopUp()");
+  no.innerHTML = "No";
+
+  conferma.appendChild(si);
+  conferma.appendChild(no);
+  popup.appendChild(conferma);
+
+  var popupWrapper = document.createElement("div");
+  popupWrapper.setAttribute("id","popUpWrapper");
+  popupWrapper.appendChild(popup);
+
+  parentClose.appendChild(popupWrapper);
+}
+
+function confirmDelete(){
+  var xhttp = new XMLHttpRequest();
+  var comment = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      comment.remove();
+      closePopUp();
+    };
+  }
+  xhttp.open("POST", "./PHP/deleteComment.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("commentid="+comment.getAttribute("id"));
+}
+
+function closePopUp()
+{
+   document.getElementById("popUpWrapper").remove();
 }

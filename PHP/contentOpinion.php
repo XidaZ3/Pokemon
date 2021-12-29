@@ -5,14 +5,15 @@
     $db= new DBAccess();
 
     $opinion= isset($_POST['opinion']) ? $_POST['opinion'] : null;
-    $commentid= isset($_POST['commentid']) ? $_POST['commentid'] : null;
+    $contentid= isset($_SESSION['id']) ? $_SESSION['id'] : null;
     $user= isset($_SESSION['userid']) ? $_SESSION['userid'] : null;
-    $db->openDBConnection();
 
-    if(isset($commentid) && isset($user) && isset($opinion))
-    {
-        $commentid=substr($commentid,2);
-        $res=$db->addCommentOpinion($commentid,$user,$opinion);
-    }
+    $db->openDBConnection();
+    $res = 0;
+
+    if(isset($contentid) && isset($user) && isset($opinion))
+        $res=$db->addContentOpinion($contentid,$user,$opinion);
+    if(!$res)
+        error_log("errore votazione likes");
     $db->closeDBConnection();
 ?>

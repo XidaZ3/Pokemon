@@ -458,13 +458,26 @@
             return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
         }
 
-        // public function addContentOpinion($content,$opinion)
-        // {
-        //     //need to sanitize comment
-        //     $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto')";
-        //     $queryResult = mysqli_query($this->connection, $query) or null;
-        //     return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
-        // }
+        public function addContentOpinion($contenuto,$user,$opinion)
+        {
+            $query = "SELECT contenuto FROM karma_contenuti WHERE $contenuto = contenuto AND $user=utente";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+
+            if($queryResult)
+            {
+                if(mysqli_num_rows($queryResult)==0)
+                    $query = "INSERT INTO karma_contenuti(contenuto,utente,valore) VALUES ('$contenuto', '$user', '$opinion')";
+                else{
+                    if($opinion != 0)
+                        $query = "UPDATE  karma_contenuti SET valore=$opinion WHERE contenuto=$contenuto AND utente=$user";
+                    else
+                        $query = "DELETE FROM  karma_contenuti WHERE contenuto=$contenuto AND utente=$user";
+                }
+
+                $queryResult = mysqli_query($this->connection, $query) or null;
+            }
+            return $queryResult;
+        }
 
         public function addCommentOpinion($comment,$user, $opinion)
         {
@@ -483,8 +496,20 @@
                         $query = "DELETE FROM karma_commenti WHERE commento=$comment AND utente=$user";
                 }
 
-                $queryResult = mysqli_query($this->connection, $query) or null;
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in addCommentOpinion: ".mysqli_error($this->connection));
             }
+        }
+
+        // public function getContentKarma($contentid){
+        //     $query = "SELECT SUM(valore) as karma FROM karma_contenuti WHERE $contentid = contenuto";
+        //     $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentKarma: ".mysqli_error($this->connection));
+        //     $karma = $queryResult->fetch_assoc();
+        //     return $karma['karma'];
+        // }
+
+        public function getUserOpinionContent($contentid, $user){
+            $query = "SELECT valore FROM karma_contenuti WHERE $contentid = contenuto AND $user = utente";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUserOpinionContent: ".mysqli_error($this->connection));
             return $queryResult;
         }
 
@@ -494,6 +519,13 @@
             $query = "DELETE FROM contenuti WHERE id = $id";
             $queryResult = mysqli_query($this->connection, $query) or null;
             return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
+        }
+        
+        public function deleteComment($comment){
+            $query = "DELETE FROM karma_commenti WHERE $comment = commento";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in deleteComment: ".mysqli_error($this->connection));
+            $query = "DELETE FROM commenti WHERE $comment = id";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in deleteComment: ".mysqli_error($this->connection));
         }
     };
 ?>

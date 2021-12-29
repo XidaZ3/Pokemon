@@ -17,7 +17,7 @@
         return;
     }
 
-    if(isset($id))
+    if(isset($id) && isset($comment))
     {
         $res=$db->addComment($userid, $comment, $id);
         $arrayitem = $db->getContentComments($id,$userid);
@@ -32,11 +32,11 @@
             <label for=\"username\">{$item['username']}</label>
         </div>
         <div class=\"commento vflex\">
+            <button onclick=\"deleteComment()\" class=\"cancella\">Cancella</button>
             <p class=\"testo\">{$item['testo']}</p>
             <div class=\"gestioneCommento hflex\">
             <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
             <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
-            ".($userid == $item['userid'] ? "<button id=\"cancella\">Cancella</button>" : "")."
             <p class=\"dataCreazione\">{$item['timestamp']}</p>
             </div>
         </div>";
