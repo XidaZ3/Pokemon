@@ -6,7 +6,8 @@
     $paginaContenuti = file_get_contents('../contenuti.html');
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 0;
     $filter = isset($_GET['filter']) && is_numeric($_GET['filter']) ? $_GET['filter'] : "0";
-    $contentType = isset($_GET['content']) && is_numeric($_GET['content']) ? $_GET['content'] : 0;
+    $contentType = isset($_GET['tipo']) && is_numeric($_GET['tipo']) ? $_GET['tipo'] : 0;
+    $privilegio = isset($_SESSION['privilegio']) && is_numeric($_SESSION['privilegio']) ? $_SESSION['privilegio'] : 0;
     $content = getContentByFilter($contentType,$filter,$page);
     $optionOutput = "";
     $options = array("Più recenti","Più vecchi","Più votati","Più discussi");
@@ -20,10 +21,10 @@
     $link = "";
     $title = "";
     if($contentType){
-        $link = "<a href=\"contenuti.php?content=0\">Vai alle guide...</a>";
+        $link = "<a href=\"contenuti.php?tipo=0\">Vai alle guide...</a>";
         $title = "Articoli <img src=\"../Immagini/icons/article.png\" class=\"icon\" alt=\"\"/>";
     }else{
-        $link = "<a href=\"contenuti.php?content=1\">Vai agli articoli...</a>";
+        $link = "<a href=\"contenuti.php?tipo=1\">Vai agli articoli...</a>";
         $title = "Guide <img src=\"../Immagini/icons/guide-book.png\" class=\"icon\" alt=\"\"/>";
     }
     $paginaContenuti = str_replace('<contentLink/>', $link, $paginaContenuti);
@@ -41,8 +42,9 @@
                                     <div class=\"avatarBox vflex\">
                                         <div class=\"avatar miniAvatar\"></div>
                                         <label for=\"username\">{$item['username']}</label>
-                                    </div>
-                                </li>";
+                                    </div> <div class=\"vflex\">".
+                                    ($privilegio == 1 ? "<a class=\"smalltext delete\" href=\"deleteContent.php?id={$item['id']}&path={$item['path']}&tipo={$item['tipo']}\">Elimina Contenuto</a>" : "")
+                                ."</div> </li>";
         }
     }
     $paginaContenuti = str_replace('<content/>', $output, $paginaContenuti);

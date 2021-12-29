@@ -5,7 +5,7 @@
     $paginaProfilo = file_get_contents('../profilo.html');
     if(isset($_SESSION['userid']) && isset($_SESSION['privilegio'])){
         //L'utente è loggato devo mostrare le statistiche
-        str_replace('<admin/>',$_SESSION['privilegio']==1? "<a href=\"amministratore.php?\">Vai all'area Amministratore</a>":"",$paginaProfilo);
+        $paginaProfilo = str_replace('<admin/>',($_SESSION['privilegio']==1? "<a href=\"amministratore.php?\">Vai all'area Amministratore</a>":""),$paginaProfilo);
         $id = $_SESSION['userid'];
         $db = new DBAccess();
         $db->openDBconnection();
@@ -39,6 +39,8 @@
         }else{
             $paginaProfilo = str_replace('<uname/>', 'Errore caricamento', $userForm);
         }
+        
         echo $paginaProfilo;
+        
     }
 ?>

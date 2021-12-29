@@ -44,15 +44,19 @@ if(isset($_POST["submit"])) {
                     array_push($error,"Il file è stato aggiunto correttamente nella directory del server.");
                     $db = new DBAccess();
                     $db->openDBConnection();
-                    $result = $db->addContent($filename,$tipo,$title);
+                    $result = $db->addContent($filename,$tipo,$title,$_SESSION['userid']);
                     if(isset($result) && $result){
-                        if($tipo == 0)
-                            $link = "<a href=\"../contentViewer.php?guida={$filename}&titolo={$title}\">{$title}</a>";
-                        else if($tipo ==1)
-                            $link = "<a href=\"../contentViewer.php?articolo={$filename}&titolo={$title}\">{$title}</a>";
-                        array_push($error,$link);
-                        $_SESSION['uploadError']=$error;
-                        header("Location: amministratore.php");
+                        $result = $db->getContentByPath($filename);
+                        if(isset($result)){
+                            if($tipo == 0)
+                                $link = "<a href=\"../contentViewer.php?id={$result['id']}&guida={$filename}&titolo={$title}\">{$title}</a>";
+                            else if($tipo ==1)
+                                $link = "<a href=\"../contentViewer.php?id={$result['id']}&articolo={$filename}&titolo={$title}\">{$title}</a>";
+                            array_push($error,$link);
+                            $_SESSION['uploadError']=$error;
+                            header("Location: amministratore.php");
+                        }
+                        
                     }else if (isset($result)){
                         array_push($error,"Non è stato possibile aggiornare il database.");
                     }else{

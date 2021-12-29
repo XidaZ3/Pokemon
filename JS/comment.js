@@ -35,18 +35,23 @@ function likeComment() {
   var xhttp;
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
+  var karmaTag = document.getElementById("karma".concat(commentid.substring(2)));
   xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       if(like.getAttribute("class") == "like unpressed")
       {
-        like.setAttribute("class","like pressed");      
+        like.setAttribute("class","like pressed");
+        karmaTag.innerText = parseInt(karmaTag.innerText) +1;
         if(dislike.getAttribute("class") =="dislike pressed")
           dislike.setAttribute("class","dislike unpressed");
       }
-      else
+      else{
         like.setAttribute("class","like unpressed");
+        karmaTag.innerText = parseInt(karmaTag.innerText) -1;
+      }
+        
     }
   };
    
@@ -66,6 +71,7 @@ function dislikeComment() {
   var xhttp;
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
+  var karmaTag = document.getElementById("karma".concat(commentid.substring(2)));
   xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
@@ -73,11 +79,15 @@ function dislikeComment() {
       if(dislike.getAttribute("class")=="dislike unpressed")
       {
         dislike.setAttribute("class","dislike pressed");
+        karmaTag.innerText = parseInt(karmaTag.innerText) -1;
         if(like.getAttribute("class")=="like pressed")
           like.setAttribute("class","like unpressed");
       }
-      else
+      else{
         dislike.setAttribute("class","dislike unpressed");
+        karmaTag.innerText = parseInt(karmaTag.innerText) +1;
+      }
+        
     }
   };
 

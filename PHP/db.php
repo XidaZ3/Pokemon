@@ -141,6 +141,23 @@
             }
         }
 
+        public function getContentByPath($path) {
+            if(isset($path)){
+                $query = "SELECT contenuti.* FROM contenuti WHERE path = '$path'";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentByPath: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result[0];
+                }else{
+                    return null;
+                }
+            }
+        }
+
         public function getEta($id) {
             if(isset($id)){
                 $query = "SELECT data_iscrizione as dataI from utenti WHERE utenti.id = $id";
@@ -192,10 +209,10 @@
             }
         }
 
-        public function addContent($path,$tipo,$titolo) {
+        public function addContent($path,$tipo,$titolo,$editore) {
             $pathUsed = $this->isPathUsed($path); // Verifico che l'email non sia già stata utilizzata, se questa variabile è vuota proseguo
             if(is_null($pathUsed)){
-                $query = "INSERT INTO contenuti (path,tipo, titolo) VALUES ('$path', $tipo,'$titolo')";
+                $query = "INSERT INTO contenuti (path,tipo, titolo, editore) VALUES ('$path', $tipo,'$titolo', $editore)";
                     $queryResult = mysqli_query($this->connection, $query) or null;
                     return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
             }else{
@@ -221,7 +238,7 @@
 
         public function getGuideContentsMostRecent($page) {
             $offset = $page * 10;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             WHERE tipo = 0
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY c.data_creazione DESC LIMIT $offset, 10 ";
@@ -240,7 +257,7 @@
 
         public function getGuideContentsLeastRecent($page) {
             $offset = $page * 10;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             WHERE tipo = 0
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY c.data_creazione ASC LIMIT $offset, 10 ";
@@ -259,7 +276,7 @@
 
         public function getGuideContentsMostKarma($page) {
             $offset = $page * 10;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             WHERE tipo = 0
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY karma DESC LIMIT $offset, 10 ";
@@ -278,7 +295,7 @@
 
         public function getGuideContentsMostComments($page) {
             $offset = $page * 10;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             WHERE tipo = 0
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY ncom DESC LIMIT $offset, 10 ";
@@ -298,7 +315,7 @@
         public function getArticleContentsMostRecent($page) {
             $offset = $page * 10;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
                 WHERE tipo = 1
                 GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY c.data_creazione DESC LIMIT $offset, 10";
@@ -319,7 +336,7 @@
         public function getArticleContentsLeastRecent($page) {
             $offset = $page * 10;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
                 WHERE tipo = 1
                 GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY c.data_creazione ASC LIMIT $offset, 10";
@@ -340,7 +357,7 @@
         public function getArticleContentsMostKarma($page) {
             $offset = $page * 10;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
                 WHERE tipo = 1
                 GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY karma DESC LIMIT $offset, 10";
@@ -361,7 +378,7 @@
         public function getArticleContentsMostComments($page) {
             $offset = $page * 10;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
                 WHERE tipo = 1
                 GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY ncom DESC LIMIT $offset, 10";
@@ -380,7 +397,10 @@
         }
 
         public function getContentComments($id,$userid) {
-            $query = "SELECT co.id as commentoid, co.testo, co.timestamp, u.username,u.id as userid, k.valore FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid WHERE co.contenuto = $id ORDER BY commentoid ASC";
+            $query = "SELECT co.id as commentoid, co.contenuto, co.testo, co.timestamp, u.username,u.id as userid, k.valore, IFNULL(SUM(k.valore),0) as karma
+             FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid
+             WHERE co.contenuto = $id GROUP BY commentoid 
+             ORDER BY co.timestamp DESC";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
@@ -395,7 +415,7 @@
         }
 
         public function getContentsMostRecent() {
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY c.data_creazione DESC LIMIT 5";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentsMostRecent: ".mysqli_error($this->connection));
@@ -413,7 +433,7 @@
         }
 
         public function getContentsMostKarma() {
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(NULL), 0) as karma, COUNT(co.contenuto) as ncom   
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username, IFNULL(SUM(k.valore), 0) as karma, COUNT(co.contenuto) as ncom   
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id
             GROUP BY c.path,c.tipo,c.titolo,c.data_creazione,c.id,u.username ORDER BY karma DESC LIMIT 5";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentsMostKarma: ".mysqli_error($this->connection));
@@ -449,10 +469,10 @@
         public function addCommentOpinion($comment,$user, $opinion)
         {
             $comment=substr($comment,2);
-            $query = "SELECT commento FROM karma_commenti WHERE $comment = commento";
+            $query = "SELECT commento FROM karma_commenti WHERE $comment = commento AND $user = utente";
             $queryResult = mysqli_query($this->connection, $query) or null;
 
-            if($queryResult)
+            if(isset($queryResult) && $queryResult)
             {
                 if(mysqli_num_rows($queryResult)==0)
                     $query = "INSERT INTO karma_commenti(commento,utente,valore) VALUES ('$comment', '$user', '$opinion')";
@@ -466,6 +486,14 @@
                 $queryResult = mysqli_query($this->connection, $query) or null;
             }
             return $queryResult;
+        }
+
+        public function deleteContent($id)
+        {
+            //need to sanitize comment
+            $query = "DELETE FROM contenuti WHERE id = $id";
+            $queryResult = mysqli_query($this->connection, $query) or null;
+            return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
         }
     };
 ?>

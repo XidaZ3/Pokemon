@@ -228,6 +228,15 @@ footer{
     font-size: 125%;
 }
 
+.smalltext.delete {
+    font-size: 75%;
+}
+
+.smalltext {
+    font-size: 75%;
+}
+
+
 /* Eventuale animazione .itemList a:hover{
 } */
 
@@ -281,6 +290,10 @@ footer{
     text-indent: -99999em;
     height: 26px;
     width: 26px;
+}
+
+p.karma {
+    margin-left: 1.5em;
 }
 
 .expand{
@@ -442,10 +455,6 @@ ul{
 
     height: 60%;
     width: 70%;
-}
-
-label.smalltext {
-    font-size: 75%;
 }
 
 #infoProfilo, #posts{
