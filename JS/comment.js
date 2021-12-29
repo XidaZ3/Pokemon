@@ -179,16 +179,47 @@ function dislikeContenuto(){
 }
 
 function deleteComment(){
+  var popup=document.createElement("div");
+  var parentClose = event.target.parentElement;
+  popup.setAttribute("id", "popUp");
+  popup.innerHTML = "Sei sicuro di voler cancellare il tuo commento?";
+
+  var conferma = document.createElement("div");
+  conferma.setAttribute("id","confermaCancella");
+  var si=document.createElement("button");
+  si.setAttribute("onclick","confirmDelete()");
+  si.innerHTML = "Sì";
+  var no=document.createElement("button");
+  no.setAttribute("onclick","closePopUp()");
+  no.innerHTML = "No";
+
+  conferma.appendChild(si);
+  conferma.appendChild(no);
+  popup.appendChild(conferma);
+
+  var popupWrapper = document.createElement("div");
+  popupWrapper.setAttribute("id","popUpWrapper");
+  popupWrapper.appendChild(popup);
+
+  parentClose.appendChild(popupWrapper);
+}
+
+function confirmDelete(){
   var xhttp = new XMLHttpRequest();
-  var comment = event.target.parentElement.parentElement;
+  var comment = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       comment.remove();
-    }
-  };
-   
+      closePopUp();
+    };
+  }
   xhttp.open("POST", "./PHP/deleteComment.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("commentid="+comment.getAttribute("id"));
+}
+
+function closePopUp()
+{
+   document.getElementById("popUpWrapper").remove();
 }

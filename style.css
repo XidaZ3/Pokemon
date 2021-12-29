@@ -12,6 +12,8 @@
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
+    --semitransparentFilter:rgba(0,0,0,0.3);
+    --deleteHover:rgb(255, 148, 148);
 }
 
 *{
@@ -637,6 +639,43 @@ button.like, button.dislike{
 }
 
 .cancella:hover{
-    background-color: rgb(255, 148, 148);   
+    background-color: var(--deleteHover);   
+}
+
+#popUpWrapper{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--semitransparentFilter);
+    justify-content: center;
+    align-items: center;
+
+    /* per coprire anche il footer */
+    z-index: 2;
+}
+
+#popUp{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundWidget);
+    width: 40%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+}
+
+#confermaCancella{
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;  
+}
+
+#confermaCancella button{
+    width: 30%;
+    margin-top:1em;
 }
 /*------------------------------*/
