@@ -1,11 +1,10 @@
 function createUserComment() {
-    var xhttp;
+    var xhttp = new XMLHttpRequest();
     var txtAreaCommento=document.getElementById("textCommento");
     if (txtAreaCommento.value == "") {
         txtAreaCommento.setAttribute("placeholder", "Commento vuoto, scrivere prima di pubblicare!");
         return;
     }
-    xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
 
@@ -21,6 +20,7 @@ function createUserComment() {
           content.insertBefore(boxRect,creaCommento);
           boxRect.outerHTML = this.responseText;
         }
+        txtAreaCommento.value="";
       }
     };
    
@@ -32,10 +32,9 @@ function createUserComment() {
 function likeComment() {
   var dislike = event.target.nextElementSibling;
   var like = event.target;
-  var xhttp;
+  var xhttp = new XMLHttpRequest();
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
-  xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -177,4 +176,19 @@ function dislikeContenuto(){
   xhttp.open("POST", "./PHP/contentOpinion.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("opinion="+opinion);
+}
+
+function deleteComment(){
+  var xhttp = new XMLHttpRequest();
+  var comment = event.target.parentElement.parentElement;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      comment.remove();
+    }
+  };
+   
+  xhttp.open("POST", "./PHP/deleteComment.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("commentid="+comment.getAttribute("id"));
 }

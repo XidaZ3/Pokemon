@@ -58,7 +58,7 @@
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                                 <div class=\"commento vflex\">
-                                                    ".($userid == $item['userid'] ? "<button class=\"cancella\">Cancella</button>" : "")."
+                                                    ".($userid == $item['userid'] ? "<button onclick=\"deleteComment()\" class=\"cancella\">Cancella</button>" : "")."
                                                     <p class=\"testo\">{$item['testo']}</p>
                                                     <div class=\"gestioneCommento hflex\">
                                                     ".($userid != 0 ? "<button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>" : "")

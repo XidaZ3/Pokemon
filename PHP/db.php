@@ -461,9 +461,8 @@
 
         public function addCommentOpinion($comment,$user, $opinion)
         {
-            $comment=substr($comment,2);
             $query = "SELECT commento FROM karma_commenti WHERE $comment = commento AND $user=utente";
-            $queryResult = mysqli_query($this->connection, $query) or null;
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in addCommentOpinion: ".mysqli_error($this->connection));
 
             if($queryResult)
             {
@@ -476,9 +475,8 @@
                         $query = "DELETE FROM karma_commenti WHERE commento=$comment AND utente=$user";
                 }
 
-                $queryResult = mysqli_query($this->connection, $query) or null;
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in addCommentOpinion: ".mysqli_error($this->connection));
             }
-            return $queryResult;
         }
 
         // public function getContentKarma($contentid){
@@ -492,6 +490,13 @@
             $query = "SELECT valore FROM karma_contenuti WHERE $contentid = contenuto AND $user = utente";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUserOpinionContent: ".mysqli_error($this->connection));
             return $queryResult;
+        }
+
+        public function deleteComment($comment){
+            $query = "DELETE FROM karma_commenti WHERE $comment = commento";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in deleteComment: ".mysqli_error($this->connection));
+            $query = "DELETE FROM commenti WHERE $comment = id";
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in deleteComment: ".mysqli_error($this->connection));
         }
     };
 ?>
