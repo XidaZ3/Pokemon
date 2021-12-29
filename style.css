@@ -384,7 +384,7 @@ ul{
 #adminZone{
     width: 98%;
     justify-content: center;
-    height: 22em;
+    height: 15em;
 }
 
 #adminZone *{
@@ -677,5 +677,20 @@ button.like, button.dislike{
 #confermaCancella button{
     width: 30%;
     margin-top:1em;
+}
+
+#adminZone form{
+    justify-content: center;
+    align-items: center;
+}
+
+#adminZone *{
+    margin-top: 0.5em;
+    text-align: left;
+}
+
+#adminZone input[type='submit']{
+    width: 40%;
+    text-align: center;
 }
 /*------------------------------*/
