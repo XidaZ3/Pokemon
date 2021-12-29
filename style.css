@@ -249,8 +249,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .pressed.dislike {
@@ -259,8 +259,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .unpressed.like {
@@ -269,8 +269,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .unpressed.dislike{
@@ -279,8 +279,8 @@ footer{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -99999em;
-    height: 26px;
-    width: 26px;
+    height: 24px;
+    width: 24px;
 }
 
 .expand{
@@ -609,14 +609,34 @@ button.like, button.dislike{
 
 .like, .dislike{
     background-color: transparent;
-    transition: background-color 0.25s ease-in-out;
 }
 
-.like:hover{
-    background-color: rgb(152, 255, 152);
+.unpressed.like, .unpressed.dislike{
+    transition: background-color 0.1s;
+    transition: background-size 0.1s;
+    background-size: 100%;
 }
 
-.dislike:hover{
-    background-color: rgb(255, 148, 148);
+.unpressed.like:hover, .unpressed.dislike:hover{
+    background-size: 105%;
+}
+
+.cancella{
+    margin-left: auto;
+    transition: background-size 0.2s ease-in-out;
+    background-image: url("Immagini/icons/x.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -99999em;
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-size: 50%;
+    border-radius: 5em;
+}
+
+.cancella:hover{
+    background-color: rgb(255, 148, 148);   
 }
 /*------------------------------*/
