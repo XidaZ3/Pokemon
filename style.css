@@ -721,6 +721,108 @@ button.like, button.dislike{
 
 
 
+@media only screen and (max-width: 1050px){
+
+    #menu ul{
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 750px;
+
+    }
+    #content{
+        display: block;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .boxColonna{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #guide{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hflex.itemList{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-gap: 1em;
+        width: 90%;
+        height: auto;
+        grid-template-areas: "a c"
+                             "b c"
+                             "d d";
+    }
+    
+    .hflex.itemList a{
+        grid-area: a;
+        width:100%;
+        font-weight: bold;
+        font-size: 125%;
+    }
+    
+    .itemList .avatarBox{
+        grid-area: c;
+        margin-right: 1em;
+     }
+
+     .itemStats{
+        grid-area: b;
+        text-align: initial;
+        width: 100%;
+        
+    }
+
+    .smalltext.delete{
+        grid-area: d;
+    }
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 768px){
+
+    #menu ul {
+        display: block;
+        text-align: center;
+        min-width: 200px;
+    }
+    
+    #menu li{
+        margin-top: 0.15em;
+        margin-bottom: 0.15em;
+    }
+
+    #searchBar {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center
+    }
+    #adminZone form {
+        width: 90%;
+    }
+
+    #profiloBordo{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
+
+
+
+
+
+
 @media only screen and (max-width: 600px) {
     nav{
         display: inline;
@@ -735,13 +837,15 @@ button.like, button.dislike{
     #mainLogo{
         height: 3em;
         width: 6em;
-        margin-left: 20%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     
     #menu ul {
         display: block;
         text-align: center;
+        min-width: 200px;
     }
     
     #menu li{
@@ -763,7 +867,8 @@ button.like, button.dislike{
     #breadcrumb{
         display: flex;
         margin:auto;
-        width: 90%;
+        width: 100%;
+        position: inherit;
     }
     /*------------------------------*/
     footer{
@@ -782,6 +887,7 @@ button.like, button.dislike{
         width: 100%;
         margin: 0;
         border-radius: 0;
+        box-sizing: border-box;
         padding: 0;
         display: block;
         text-align: center;
@@ -829,13 +935,15 @@ button.like, button.dislike{
         grid-template-columns: 3fr 1fr;
         grid-gap: 1em;
         width: 90%;
-        grid-template-areas: "a a"
-                             "b c";
+        grid-template-areas: "a c"
+                             "b c"
+                             "d d";
     }
     
     .hflex.itemList a{
         grid-area: a;
         width:100%;
+        height: auto;
         font-weight: bold;
         font-size: 125%;
     }
@@ -844,6 +952,16 @@ button.like, button.dislike{
         grid-area: c;
         margin-right: 1em;
      }
+
+     .itemStats{
+        grid-area: b;
+        text-align: initial;
+        width: 100%;
+    }
+
+    .smalltext.delete{
+        grid-area: d;
+    }
     
     .boxColonna{
         width: 100%;
@@ -865,11 +983,11 @@ button.like, button.dislike{
     ul{
         list-style-type: none;
     }
+
     #searchBar {
         margin-right: auto;
         margin-left: auto;
         text-align: center
-        
     }
     
     #content h2{
@@ -909,14 +1027,6 @@ button.like, button.dislike{
         text-align: center;
     }
     
-    
-    .itemStats{
-        grid-area: b;
-        text-align: initial;
-        width: 100%;
-        
-    }
-    
     #profiloBordo{
         align-items: center;
         padding-top: 1em;
@@ -924,10 +1034,12 @@ button.like, button.dislike{
     
     #ultimeUscite{
         padding: 1em 0;
+        margin: 0;
     }
-    
-    #ultimeUscite{
+
+    #popolari{
         padding: 1em 0;
+        margin: 0;
     }
     
     #zone{
@@ -981,5 +1093,9 @@ button.like, button.dislike{
     
     #campiLogin{
         width: 90%;
+    }
+
+    #adminZone *{
+        width: inherit;
     }
   }
