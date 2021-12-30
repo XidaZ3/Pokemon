@@ -211,7 +211,6 @@ function confirmDelete(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       comment.remove();
-      closePopUp();
     };
   }
   xhttp.open("POST", "./PHP/deleteComment.php", true);

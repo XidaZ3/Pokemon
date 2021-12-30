@@ -21,7 +21,7 @@
     {
         $res=$db->addComment($userid, $comment, $id);
         $arrayitem = $db->getContentComments($id,$userid);
-        $item = end($arrayitem);
+        $item = reset($arrayitem);
 
         $db->closeDBConnection();
 
