@@ -919,12 +919,9 @@ button.like, button.dislike{
         display: block;
         width: 100%;
         border-radius: 0;
-        margin-left:0%;
-        margin-top: auto;
-        margin-bottom: 0;
-        position: relative;
+        margin-left:0;
         text-align: center;
-        padding: 0.3em 0
+        border-top: 2px var(--border) solid;
     }
     /*------------------------------*/
     #content{
@@ -961,14 +958,7 @@ button.like, button.dislike{
     img.postuscite,img.postpopolari{
        width: 6em;
     }
-    .vflex{
-        display: flex;
-        flex-direction:column;
-    }
-    
-    .hflex{
-        display: block;
-    }
+
     .itemList{
          height: auto;
          width: auto;
@@ -1104,16 +1094,29 @@ button.like, button.dislike{
     }
     
     #zone{
-        width: 98%;
-        justify-content: center;
-        height: 22em;
+        flex-direction: column;  
     }
-    
-    #zone *{
-        width: auto;
-        align-items: center;
+
+    #zone{
+        height: max-content;
+        padding-bottom: 2em;
+        margin-top: 1em;
     }
-    
+
+
+    #zone #profiloForm, #zone #statistiche, #zone #posts{
+        margin-bottom: 1em;
+        padding-bottom: 2em;
+    }
+
+    #zone #posts .boxOutside{
+        padding: 1em;
+       margin-top: 1em;
+       width: 90%;
+       border: 2px var(--border) solid;
+       border-radius: 0.3em;
+    }
+
     #avatar
     {
         margin-top: 1em;
