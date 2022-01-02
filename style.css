@@ -781,6 +781,50 @@ button.like, button.dislike{
         grid-area: d;
     }
 
+    #content.contenutiTesto img{
+        width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .boxRect{
+        height: auto;
+    }
+
+    #nc4{
+        width:90%;
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+
+    .commento{
+        border:var(--honey-yellow) 3px solid;
+        padding: 0.5em;
+        margin-left: 5%;
+        margin-right: 5%;
+        width:90%;
+        
+    }
+    
+    .commento p.testo{
+        margin: 0;
+    }
+
+    #nc4 .avatarBox{
+        margin-bottom: 1em;
+        width: auto;
+    }
+
+    #creaCommento{
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    button#crea{
+        margin-bottom: 5%;
+    }
 }
 
 
@@ -814,47 +858,7 @@ button.like, button.dislike{
         margin-left: auto;
         margin-right: auto;
     }
-    #content.contenutiTesto img{
-        width: 95%;
-    }
 
-    .boxRect{
-        height: auto;
-    }
-
-    #nc4{
-        width:90%;
-        margin-right: auto;
-        margin-left: auto;
-        box-sizing: border-box;
-    }
-
-    .commento{
-        border:var(--honey-yellow) 3px solid;
-        margin-left: 5%;
-        margin-right: 5%;
-        width:90%;
-        
-    }
-    
-    .commento p.testo{
-        margin: 0;
-    }
-
-    #nc4 .avatarBox{
-        margin-bottom: 1em;
-        width: auto;
-    }
-
-    #creaCommento{
-        width: 90%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    button#crea{
-        margin-bottom: 5%;
-    }
 }
 
 
@@ -974,7 +978,9 @@ button.like, button.dislike{
         display: grid;
         grid-template-columns: 3fr 1fr;
         grid-gap: 1em;
-        width: auto;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
         grid-template-areas: "a c"
                              "b c"
                              "d d";
