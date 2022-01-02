@@ -814,7 +814,47 @@ button.like, button.dislike{
         margin-left: auto;
         margin-right: auto;
     }
+    #content.contenutiTesto img{
+        width: 95%;
+    }
+
+    .boxRect{
+        height: auto;
+    }
+
+    #nc4{
+        width:90%;
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+
+    .commento{
+        border:var(--honey-yellow) 3px solid;
+        margin-left: 5%;
+        margin-right: 5%;
+        width:90%;
+        
+    }
     
+    .commento p.testo{
+        margin: 0;
+    }
+
+    #nc4 .avatarBox{
+        margin-bottom: 1em;
+        width: auto;
+    }
+
+    #creaCommento{
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    button#crea{
+        margin-bottom: 5%;
+    }
 }
 
 
@@ -934,7 +974,7 @@ button.like, button.dislike{
         display: grid;
         grid-template-columns: 3fr 1fr;
         grid-gap: 1em;
-        width: 90%;
+        width: auto;
         grid-template-areas: "a c"
                              "b c"
                              "d d";
@@ -1035,8 +1075,23 @@ button.like, button.dislike{
     #ultimeUscite{
         padding: 1em 0;
         margin: 0;
+        box-sizing: border-box;
     }
 
+    #ultimeUscite ul{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #popolari ul{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #guide{
+        width:100%;
+        box-sizing: border-box;
+    }
     #popolari{
         padding: 1em 0;
         margin: 0;
@@ -1095,7 +1150,61 @@ button.like, button.dislike{
         width: 90%;
     }
 
+    #adminZone{
+        height: inherit;
+    }
+
     #adminZone *{
         width: inherit;
+    }
+
+    #adminZone .hflex{
+        padding: 1em 0;
+    }
+
+    #adminZone label{
+        display: inline;
+        width: auto;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+    #adminZone label[for='zipfile']{
+        width:90%;
+        padding:0;
+        margin-top: 4%;
+        margin-bottom:0;
+        margin-left:10%;
+        margin-right:auto;
+    }
+
+    #adminZone .hflex input {
+        display: inline;
+        width: 5%;
+        margin-top: 4%;
+        margin-bottom: 4%;
+        margin-right:10%
+        
+    }
+    
+    input#zipfile {
+        width:80%;
+    }
+
+    #adminZone label[for='titolo']{
+        margin-bottom: 1%;
+        margin-left: 5%;
+        margin-right:auto;
+    }
+
+    #adminZone input[name='titolo'] {
+        width:90%;
+        margin-top: 0;
+    }
+
+    #adminZone input[type='submit'] {
+        width:80%;
+        height: 15%;
+        font-size: 1.5em;
     }
   }
