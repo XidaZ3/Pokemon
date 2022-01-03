@@ -15,8 +15,8 @@
     $db->closeDBConnection();
     if(isset($numeroContenuti)){
         $pagesLink = ($page == 0 ? "" : "<a href=\"contenuti.php?page=".($page-1)."&filtro={$filter}&tipo={$contentType}\"> &lt </a>");
-        $pagesLink = $pagesLink . "<p>".($page+1)." di ". (round($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)+1) ." </p>";
-        $pagesLink = $pagesLink. ($page == (round($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)) ? "" : "<a href=\"contenuti.php?page=".($page+1)."&filtro={$filter}&tipo={$contentType}\"> &gt </a>");
+        $pagesLink = $pagesLink . "<p>".($page+1)." di ". (ceil($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)) ." </p>";
+        $pagesLink = $pagesLink. ($page == (ceil($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)-1) ? "" : "<a href=\"contenuti.php?page=".($page+1)."&filtro={$filter}&tipo={$contentType}\"> &gt </a>");
         $paginaContenuti = str_replace("<pageLink/>", $pagesLink, $paginaContenuti);
     }
     $optionOutput = "";
