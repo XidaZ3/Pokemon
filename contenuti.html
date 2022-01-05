@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" >
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +21,9 @@
             <li>Contenuti</li>
             <li><a href="../chi_siamo.html">Chi siamo</a></li>
             <li><a href="profilo.php">Profilo</a></li>
+            <li>   
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="toggle dark mode"></button>
+            </li>
             <li id="ricerca"> 
                 <input type="search" id="searchBar" name="searchBar" placeholder="Cerca sul sito">
             </li>
@@ -55,5 +58,42 @@
     <footer>
         The Best Pokemon Company TM.
     </footer>
+    <!--<script src="JS/dark.js"></script>-->
+    
+    <script >
+        let darkmode = localStorage.getItem('darkmode');
+        const darkmodetoggle = document.querySelector('#dark-mode-toggle');
+        //check if dark omode is enable and turn off, else on
+
+        const enabledarkmode = () =>{ 
+            //add class dark mode to body
+            document.body.classList.add("darkmode");
+            //update darkmode to localstorage
+            localStorage.setItem("darkmode" ,"enabled");
+        };
+
+        const disabledarkmode = () =>{
+            //remove class dark mode to body
+            document.body.classList.remove("darkmode");
+            //disupdate darkmode to localstorage
+            localStorage.setItem("darkmode" ,null);
+        };
+
+        //rimanga anche se aggiorni
+        if(darkmode === "enabled"){
+            enabledarkmode();
+        }
+
+
+        darkmodetoggle.addEventListener("click", ()=>{
+            darkmode = localStorage.getItem("darkmode");
+            if(darkmode !== "enabled"){
+                enabledarkmode();
+
+            }else{
+                disabledarkmode();
+            }
+        })
+    </script>
 </body>
 </html>
