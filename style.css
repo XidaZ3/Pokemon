@@ -2,22 +2,60 @@
     font-family: "Questrial";
     src: url("./fonts/Questrial-Regular.ttf");
 }
-
-:root{
+:root {
     --light-cornflower-blue: #8ecae6ff;
     --blue-green: #219ebcff;
-    --prussian-blue: #023047ff;
-    --honey-yellow: #ffb703ff;
-    --honey-yellowTran:rgba(255, 184, 3, 0.5);
+    --mainText: #023047ff;
+    --mediumColor: #ffb703ff;
+    --mediumColorTran:rgba(255, 184, 3, 0.5);
     --border: #fb8500ff;
     --borderTran:rgba(251, 134, 0, 0.5);
+
+    --link:#551a89;
+
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
     --semitransparentFilter:rgba(0,0,0,0.3);
     --deleteHover:rgb(255, 148, 148);
-}
 
+    color: #000;
+    border:none;
+    background-image: url("./Immagini/backgroundgiorno.png");
+     background-size:cover;
+     background-attachment: fixed;
+}
+/*DARK MODE*/
+.darkmode {
+    --light-cornflower-blue: #8ecae6ff;
+    --blue-green: #219ebcff;
+    --mainText:#fff;
+    --mediumColor: #219ebcff;
+    --mediumColorTran:rgba(33, 157, 188, 0.596);
+    --border:rgb(1, 39, 58) ;
+    --borderTran:#023047ff;
+
+    --link: gray;
+
+
+    --contentItem:#023047ff;
+    --backgroundWidget:#8ecae6ff;
+    --errorFont:#800000;
+    --semitransparentFilter:rgba(0,0,0,0.3);
+    --deleteHover:rgb(255, 148, 148);
+
+    color: lightgray;
+    border:none;
+    background-image: url("./Immagini/backgroundnotte.png");
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: absolute;
+    display: grid;
+}
+.darkmode a{
+    color: lightblue;
+}
+/*------------------------------*/
 *{
     margin:0;
     padding: 0;
@@ -40,14 +78,7 @@ html, body{
    
     font-family: "Questrial",sans-serif;
     font-size: 100%;
-}
 
-body{
-    border:none;
-   /* background-color: var(--light-cornflower-blue);*/
-   background-image: url("./Immagini/backgroundgiorno.png");
-    background-size:cover;
-    background-attachment: fixed;
 }
 
 #mainLogo{
@@ -64,11 +95,52 @@ body{
     font-weight: bold;
 }
 
+/*aggiunta bottone dark*/
+
+#dark-mode-toggle
+{  
+    position: relative;
+    display: block;
+    height: 25px;
+    width: 25px;
+   background-color: white;
+    background-image: url("./Immagini/dark.png");
+   background-repeat: none;
+   background-size:contain ;
+   border-radius: 20px;
+    margin-left: auto;
+    border:none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+} 
+#dark-mode-toggle:hover {
+    background-color: var(--backgroundWidget);
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+
+.darkmode #dark-mode-toggle
+{  
+     position: relative;
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    background-image: url("./Immagini/light.png");
+   background-repeat: none;
+   background-size:contain ;
+   border-radius: 20px;
+    margin-left: auto;
+    border:none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+} 
+
+
+/*MENU*/
 #menu ul {
     display: flex;
     border: var(--border) inset 2px;
     border-radius: 0.5em;
-    background-color: var(--honey-yellow);
+    background-color: var(--mediumColor);
     width: 70%;
     height: auto;
     margin: auto;
@@ -77,17 +149,17 @@ body{
 }
 #menu a{
     text-decoration: none;
-    color: var(--prussian-blue);
+    color: var(--mainText);
 }
 #menu ul li{
     padding-left: 0.5em;
     padding-right: 0.5em;
     font-size: 1.5em;
-    color: var(--prussian-blue);
+    color: var(--mainText);
 }
 #menu ul li:hover a,#menu ul li:active a{
     background-color:var(--contentItem) ;
-    color: var(--prussian-blue);
+    color: var(--mainText);
     border-radius: 0.3em;
 
 }
@@ -147,21 +219,41 @@ body{
 
 #breadcrumb{
     display: flex;
-    margin:auto;
-    width: 75%;
+    width: 62%;
+    height: auto;
+    margin: auto;
+    position: relative;
+    margin-top: 0.1em;
     border-top:var(--borderTran) 2px solid;
     border-bottom:var(--borderTran) 2px solid;
-    background-color: var(--honey-yellowTran);
+    background-color: var(--mediumColorTran);
     padding-top:  0.25em;
     padding-bottom:  0.25em;
+
+    top: 2.5em;
+}
+
+.darkmode #breadcrumb{
+    color: #fff;
+    display: flex;
+    width: 62%;
+    height: auto;
+    margin: auto;
     position: relative;
-    top:3em;
+    margin-top: 0.1em;
+    border-top:var(--backgroundWidget) 2px solid;
+    border-bottom:var(--backgroundWidget) 2px solid;
+    background-color: var(--blue-green);
+    padding-top:  0.25em;
+    padding-bottom:  0.25em;
+
+    top: 2.5em;
 }
 /*------------------------------*/
 footer{
     display: flex;
     width: 70%;
-    background-color: var(--honey-yellow);
+    background-color: var(--mediumColor);
     padding: 0.3em;
     bottom: 0;
     margin-left:15%;
@@ -182,7 +274,7 @@ footer{
     margin-bottom: 4em;
     padding:2em;
     text-align: left;
-    padding-top: 4em;
+    padding-top: 3em;
 }
 
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{
@@ -235,6 +327,7 @@ footer{
 }
 
 .itemList a{
+    color: var(--link);
     width:50%;
     font-weight: bold;
     font-size: 125%;
@@ -319,7 +412,7 @@ p.karma {
     /* min-height: 24em; */
     border:var(--border) solid 5px;
     border-radius: 0.5em;
-    background-color: var(--honey-yellow);
+    background-color: var(--mediumColor);
     text-align: center;
     justify-content: center;
     align-self: center;
@@ -344,7 +437,7 @@ img.postuscite,img.postpopolari{
     min-height: var(--boxHeight);
     border:var(--border) solid 5px;
     border-radius: 0.5em;
-    background-color: var(--honey-yellow);
+    background-color: var(--mediumColor);
     text-align: center;
 }
 .boxDestra {
@@ -368,7 +461,7 @@ ul{
 }
 
 #content h2{
-    color: var(--prussian-blue);
+    color: var(--mainText);
     font-size: 1.8em;
 }
 
@@ -423,14 +516,14 @@ ul{
     background-image: url("./Immagini/emerald/54.png");
     background-size: contain;
     background-repeat: no-repeat;
-    border:var(--honey-yellow) 5px solid;
+    border:var(--mediumColor) 5px solid;
     border-radius: 5em;
 }
 
 .avatar.miniAvatar{
     height: 50px;
     width:50px;
-    border:var(--honey-yellow) 2px solid;
+    border:var(--mediumColor) 2px solid;
 }
 
 .avatarBox{
@@ -716,11 +809,6 @@ button.like, button.dislike{
 
 
 
-
-
-
-
-
 @media only screen and (max-width: 1050px){
 
     #menu ul{
@@ -799,7 +887,7 @@ button.like, button.dislike{
     }
 
     .commento{
-        border:var(--honey-yellow) 3px solid;
+        border:var(--mediumColor) 3px solid;
         padding: 0.5em;
         margin-left: 5%;
         margin-right: 5%;
@@ -941,7 +1029,7 @@ button.like, button.dislike{
         /* min-height: 24em; */
         border: 0;
         border-radius: 0;
-        background-color: var(--honey-yellow);
+        background-color: var(--mediumColor);
         text-align: center;
         justify-content: center;
         align-self: center;
@@ -1027,7 +1115,7 @@ button.like, button.dislike{
     }
     
     #content h2{
-        color: var(--prussian-blue);
+        color: var(--mainText);
         font-size: 1.8em;
     }
     
