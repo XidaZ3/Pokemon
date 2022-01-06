@@ -42,5 +42,7 @@
         
         echo $paginaProfilo;
         
+    }{
+        header("Location: profilo.php");
     }
 ?>
