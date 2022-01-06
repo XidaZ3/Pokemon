@@ -274,7 +274,7 @@ footer{
     align-items: left;
     margin-bottom: 4em;
     padding:2em;
-    text-align: left;
+    text-align: justify;
     padding-top: 3em;
 }
 
@@ -1030,7 +1030,7 @@ button.like, button.dislike{
         box-sizing: border-box;
         padding: 0;
         display: block;
-        text-align: left;
+        text-align: justify;
         justify-content: center;
      
     }
