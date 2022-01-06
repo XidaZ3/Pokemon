@@ -35,7 +35,7 @@
     --border:rgb(1, 39, 58) ;
     --borderTran:#023047ff;
 
-    --link: gray;
+    --link: #808080;
 
 
     --contentItem:#023047ff;
@@ -44,7 +44,7 @@
     --semitransparentFilter:rgba(0,0,0,0.3);
     --deleteHover:rgb(255, 148, 148);
 
-    color: lightgray;
+    color: #d3d3d3;
     border:none;
     background-image: url("./Immagini/backgroundnotte.png");
     background-size:cover;
@@ -53,7 +53,7 @@
     display: grid;
 }
 .darkmode a{
-    color: lightblue;
+    color: #add8e6;
 }
 /*------------------------------*/
 *{
@@ -103,7 +103,7 @@ html, body{
     display: block;
     height: 25px;
     width: 25px;
-   background-color: white;
+   background-color: #ffffff;
     background-image: url("./Immagini/dark.png");
    background-repeat: none;
    background-size:contain ;
@@ -124,7 +124,7 @@ html, body{
     display: block;
     height: 25px;
     width: 25px;
-    background-color: white;
+    background-color: #ffffff;
     background-image: url("./Immagini/light.png");
    background-repeat: none;
    background-size:contain ;
