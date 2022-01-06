@@ -271,7 +271,7 @@ footer{
     border-radius: 0.5em;
     height: max-content;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     margin-bottom: 4em;
     padding:2em;
     text-align: left;
@@ -289,7 +289,11 @@ footer{
     display: block;
     border-radius: 0.5em;
 }
-
+.contenutiTesto ul{
+    padding-left: 1.5em;
+    padding-bottom: 1em;
+    list-style-type:circle;
+}
 
 .boxInside{
     margin:0.5em;
@@ -1026,7 +1030,9 @@ button.like, button.dislike{
         box-sizing: border-box;
         padding: 0;
         display: block;
-        text-align: center;
+        text-align: left;
+        justify-content: center;
+     
     }
     
     .boxOutside{
