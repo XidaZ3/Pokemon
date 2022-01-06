@@ -255,6 +255,7 @@ footer{
     width: 70%;
     background-color: var(--mediumColor);
     padding: 0.3em;
+    padding-left: 1em;
     bottom: 0;
     margin-left:15%;
     position: fixed;
@@ -997,6 +998,12 @@ button.like, button.dislike{
     /*------------------------------*/
     
     #breadcrumb{
+        display: flex;
+        margin:auto;
+        width: 100%;
+        position: inherit;
+    }
+     .darkmode #breadcrumb{
         display: flex;
         margin:auto;
         width: 100%;
