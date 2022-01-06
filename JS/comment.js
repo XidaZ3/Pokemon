@@ -33,23 +33,23 @@ function likeComment() {
   var xhttp = new XMLHttpRequest();
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
-  var karmaTag = document.getElementById("karmacommento".concat(commentid.substring(2)));
-
+  var karmaTag = document.getElementById("karmaco".concat(commentid.substring(2)));
+  console.log(commentid);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       if(like.getAttribute("class") == "like unpressed")
       {
         like.setAttribute("class","like pressed");
-        karmaTag.innerText = parseInt(karmaTag.innerText) +1;
+        karmaTag.innerText = parseInt(karmaTag.innerHTML) +1;
         if(dislike.getAttribute("class") =="dislike pressed"){
           dislike.setAttribute("class","dislike unpressed");
-          karmaTag.innerText = parseInt(karmaTag.innerText) +1;
+          karmaTag.innerText = parseInt(karmaTag.innerHTML) +1;
         }
           
       }
       else{
         like.setAttribute("class","like unpressed");
-        karmaTag.innerText = parseInt(karmaTag.innerText) -1;
+        karmaTag.innerText = parseInt(karmaTag.innerHTML) -1;
       }
         
     }
@@ -71,7 +71,7 @@ function dislikeComment() {
   var xhttp = new XMLHttpRequest();
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
-  var karmaTag = document.getElementById("karmacommento".concat(commentid.substring(2)));
+  var karmaTag = document.getElementById("karmaco".concat(commentid.substring(2)));
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
