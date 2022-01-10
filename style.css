@@ -997,10 +997,6 @@ button.like, button.dislike{
      #chiSiamo .boxOutside{
         display: inline;
     } 
-    #collabora.boxInside{
-        width: 100%;
-
-    }   
 
     #presentazione{
         text-align: center;
