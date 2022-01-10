@@ -353,9 +353,10 @@ ul{
     height: 22em;
 }
 
-#zone #posts, #zone #statistiche, #zone #profiloForm{
-    width: 30%;
+#zone #statistiche, #zone #profiloForm{
+    width: 45%;
     align-items: center;
+
 }
 
 #adminZone{
@@ -411,9 +412,6 @@ ul{
 }
 
 #campiProfilo button {
-    background-image: url("./Immagini/icons/brush.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
     width: 70%;
 }
 
@@ -422,7 +420,7 @@ ul{
     width: 70%;
 }
 
-#infoProfilo, #posts{
+#infoProfilo{
     padding-top: 1em;
     display: flex;
     flex-direction: column;
@@ -438,11 +436,6 @@ ul{
 #statistiche *{
     width: 85%;
     padding:0.5em;
-}
-
-#posts .boxOutside{
-    min-width: 10em ;
-    font-size: 14px;
 }
 
 #profiloForm{
@@ -1050,17 +1043,9 @@ button.like, button.dislike{
         margin-top: 1em;
     }
 
-    #zone #profiloForm, #zone #statistiche, #zone #posts{
+    #zone #profiloForm, #zone #statistiche{
         margin-bottom: 1em;
         padding-bottom: 2em;
-    }
-
-    #zone #posts .boxOutside{
-        padding: 1em;
-       margin-top: 1em;
-       width: 90%;
-       border: 2px var(--border) solid;
-       border-radius: 0.3em;
     }
 
     #avatar
@@ -1096,7 +1081,7 @@ button.like, button.dislike{
         margin-top: 1.5em;
     }
     
-    #zone #posts, #zone #statistiche, #zone #profiloForm{
+    #zone #statistiche, #zone #profiloForm{
         width: auto;
         align-items: center;
     }

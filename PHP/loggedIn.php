@@ -21,21 +21,7 @@
             $paginaProfilo = str_replace('<eta/>', isset($eta) ? round(($eta / (60*60*24)))." giorni": '0 giorni', $paginaProfilo);
             $npost = $db->getNumeroPost($id);
             $paginaProfilo = str_replace('<npost/>', isset($npost) ? $npost : '0', $paginaProfilo); 
-            $posts = $db->getLatestPosts($id);
-            $db->closeDBConnection();
-            $postHtml = "";
-            if(isset($posts)){
-                if(count($posts)>0){
-                    foreach($posts as $post){
-                        $postHtml=$postHtml."<div class=\"boxOutside\"><p>".$post['testo']."</p></div>";
-                    }
-                }else{
-                    $postHtml = "Non hai ancora scritto nessun commento.";
-                }
-            }
-
-            $paginaProfilo = str_replace('<latestPosts/>', $postHtml, $paginaProfilo);
-            
+            $db->closeDBConnection();        
         }else{
             $paginaProfilo = str_replace('<uname/>', 'Errore caricamento', $userForm);
         }
