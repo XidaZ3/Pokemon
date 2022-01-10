@@ -25,36 +25,6 @@
      background-size:cover;
      background-attachment: fixed;
 }
-/*DARK MODE*/
-.darkmode {
-    --light-cornflower-blue: #8ecae6ff;
-    --blue-green: #219ebcff;
-    --mainText:#fff;
-    --mediumColor: #219ebcff;
-    --mediumColorTran:rgba(33, 157, 188, 0.596);
-    --border:rgb(1, 39, 58) ;
-    --borderTran:#023047ff;
-
-    --link: #808080;
-
-
-    --contentItem:#023047ff;
-    --backgroundWidget:#8ecae6ff;
-    --errorFont:#800000;
-    --semitransparentFilter:rgba(0,0,0,0.3);
-    --deleteHover:rgb(255, 148, 148);
-
-    color: #d3d3d3;
-    border:none;
-    background-image: url("./Immagini/backgroundnotte.png");
-    background-size:cover;
-    background-attachment: fixed;
-    background-position: absolute;
-    display: grid;
-}
-.darkmode a{
-    color: #add8e6;
-}
 /*------------------------------*/
 *{
     margin:0;
@@ -95,45 +65,6 @@ html, body{
     font-weight: bold;
 }
 
-/*aggiunta bottone dark*/
-
-#dark-mode-toggle
-{  
-    display: block;
-    height: 25px;
-    width: 25px;
-   background-color: #ffffff;
-    background-image: url("./Immagini/dark.png");
-   background-repeat: none;
-   background-size:contain ;
-   border-radius: 20px;
-    margin-left: auto;
-    border:none;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-} 
-#dark-mode-toggle:hover {
-    background-color: var(--backgroundWidget);
-    box-shadow: 0 2px #666;
-    transform: translateY(2px);
-}
-
-.darkmode #dark-mode-toggle
-{  
-     position: relative;
-    display: block;
-    height: 25px;
-    width: 25px;
-    background-color: #ffffff;
-    background-image: url("./Immagini/light.png");
-   background-repeat: none;
-   background-size:contain ;
-   border-radius: 20px;
-    margin-left: auto;
-    border:none;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-} 
-
-
 /*MENU*/
 #menu ul {
     display: flex;
@@ -163,41 +94,6 @@ html, body{
     border-radius: 0.3em;
 
 }
-#ricerca{
-    display: flex;
-    margin-left: auto;
-}
-
-#collabora input, #collabora textarea{
-    width: 70%;
-}
-
-#collabora{
-    min-width: 15em;
-    min-height: 30em;
-}
-
-#collabora h2{
-    margin-top: 0.5em;
-}
-
-#collaboraForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#collaboraForm *{
-    margin-top: 0.25em;
-}
-
-#collabora textarea{
-    min-height: 15em;
-}
-
-#collabora input[type="submit"]{
-    margin-top: 1.2em;
-}
 
 #contatti, #presentazione{
     text-align: start;
@@ -222,7 +118,6 @@ html, body{
     min-width: 750px;
     position: relative;
     bottom: 2em;
-    
 }
 
 footer{
@@ -320,11 +215,8 @@ footer{
 .smalltext {
     font-size: 75%;
 }
-
-
 /* Eventuale animazione .itemList a:hover{
 } */
-
 .itemStats{
     width: 20%;
 }
@@ -451,15 +343,6 @@ ul{
     text-align: center;
 }
 
-.internaSinistra{
-    margin-left: 1%;
-    margin-right: 0.2%;
-}
-
-.internaDestra{
-    margin-right: 1%;
-}
-
 #profiloBordo{
     align-items: center;
     padding-top: 1em;
@@ -535,7 +418,6 @@ ul{
 }
 
 #campiProfilo input, #campiProfilo button{
-
     height: 60%;
     width: 70%;
 }
@@ -783,9 +665,6 @@ button.like, button.dislike{
     text-align: center;
 }
 /*------------------------------*/
-
-
-
 @media only screen and (max-width: 1050px){
 
     #menu ul{
@@ -984,19 +863,11 @@ button.like, button.dislike{
     #contatti{
         text-align: center;
     }
-    
     /*------------------------------*/
-    
     #breadcrumb{
         margin:auto;
         position: inherit;
         min-width: 200px;
-    }
-     .darkmode #breadcrumb{
-        display: flex;
-        margin:auto;
-        width: 100%;
-        position: inherit;
     }
     /*------------------------------*/
     footer{
@@ -1134,17 +1005,9 @@ button.like, button.dislike{
         width: 100%;
 
     }   
- 
-    .internaSinistra{
-        margin: 1%;
-    }
-    
+
     #presentazione{
         text-align: center;
-    }
-    
-    .internaDestra{
-        margin-right: 1%;
     }
     
     .boxInside{
@@ -1190,7 +1053,6 @@ button.like, button.dislike{
         padding-bottom: 2em;
         margin-top: 1em;
     }
-
 
     #zone #profiloForm, #zone #statistiche, #zone #posts{
         margin-bottom: 1em;
