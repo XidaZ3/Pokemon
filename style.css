@@ -840,6 +840,10 @@ button.like, button.dislike{
         margin-right: auto;
     }
 
+    .hflex{
+        display: block;
+    }
+    
     .hflex.itemList{
         display: grid;
         grid-template-columns: 3fr 1fr;
@@ -917,6 +921,21 @@ button.like, button.dislike{
 
     button#crea{
         margin-bottom: 5%;
+    }
+
+    #page404 #psyduckConfused{
+        height: auto;
+        background-size: 100%;
+        background-color: var(--mediumColorTran);
+       
+        
+    }
+
+    #page404{
+        width: 100%;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
