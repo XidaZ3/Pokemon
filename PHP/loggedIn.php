@@ -42,7 +42,7 @@
         
         echo $paginaProfilo;
         
-    }{
-        header("Location: profilo.php");
+    }else{
+        header("Location: logInPage.php");
     }
 ?>
