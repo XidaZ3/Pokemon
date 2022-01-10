@@ -215,8 +215,8 @@ footer{
 .smalltext {
     font-size: 75%;
 }
-/* Eventuale animazione .itemList a:hover{
-} */
+
+
 .itemStats{
     width: 20%;
 }
@@ -831,11 +831,7 @@ button.like, button.dislike{
         background-color: var(--contentItem);
         display: grid;
     }
-    .darkmode {
-        background-image: none;
-        background-color: var(--contentItem);
-        display:grid;
-    }
+
     #mainLogo{
         height: 3em;
         width: 6em;
