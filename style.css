@@ -970,6 +970,12 @@ button.like, button.dislike{
     body{
         background-image: none;
         background-color: var(--contentItem);
+        display: grid;
+    }
+    .darkmode {
+        background-image: none;
+        background-color: var(--contentItem);
+        display:grid;
     }
     #mainLogo{
         height: 3em;
@@ -1028,7 +1034,8 @@ button.like, button.dislike{
         margin: 0;
         border-radius: 0;
         box-sizing: border-box;
-        padding: 0;
+        padding-left: 0.4em;
+        padding-right: 0.4em;
         display: block;
         text-align: justify;
         justify-content: center;
