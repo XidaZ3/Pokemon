@@ -61,7 +61,7 @@
     padding: 0;
 }
 
-input, button, textarea, #searchBar, footer, #searchBar, select{
+input, button, textarea, footer, select{
     border-radius: 0.3em;
 }
 
@@ -99,7 +99,6 @@ html, body{
 
 #dark-mode-toggle
 {  
-    position: relative;
     display: block;
     height: 25px;
     width: 25px;
@@ -146,6 +145,7 @@ html, body{
     margin: auto;
     margin-bottom: 0.1em;
     padding: 0.2em;
+    padding-bottom: 2em;
 }
 #menu a{
     text-decoration: none;
@@ -210,45 +210,21 @@ html, body{
     margin-top: 0.5em ;
     margin-bottom: 0.2em ;
 }
-
-#searchBar {
-    align-self: center;
-}
-
 /*------------------------------*/
 
 #breadcrumb{
     display: flex;
-    width:70%;
-    height: auto;
+    width:68%;
     margin: auto;
-    margin-top: 0.1em;
     border:var(--borderTran) 2px solid;
     border-radius: 0.5em;
-    background-color: var(--mediumColor);
-    padding-top:  0.25em;
-    padding-bottom:  0.25em;
+    background-color: var(--contentItem);
     min-width: 750px;
-
-}
-
-.darkmode #breadcrumb{
-    color: #fff;
-    display: flex;
-    width: 62%;
-    height: auto;
-    margin: auto;
     position: relative;
-    margin-top: 0.1em;
-    border-top:var(--backgroundWidget) 2px solid;
-    border-bottom:var(--backgroundWidget) 2px solid;
-    background-color: var(--blue-green);
-    padding-top:  0.25em;
-    padding-bottom:  0.25em;
-
-    top: 2.5em;
+    bottom: 2em;
+    
 }
-/*------------------------------*/
+
 footer{
     display: flex;
     width: 70%;
@@ -263,7 +239,7 @@ footer{
 #content{
     display: flex;
     height: 90%;
-    width: 60em;
+    width: 70%;
     margin: auto;
     border: var(--border) inset 1px;
     background-color: var(--contentItem);
@@ -413,7 +389,6 @@ p.karma {
     width: 80%;
     height:80%;
     margin: 4%;
-    /* min-height: 24em; */
     border:var(--border) solid 5px;
     border-radius: 0.5em;
     background-color: var(--mediumColor);
@@ -458,7 +433,6 @@ img.postuscite,img.postpopolari{
     margin-bottom: 5%;
     margin-right: 1%;
 }
-
 
 ul{
     list-style-type: none;
@@ -633,7 +607,6 @@ ul{
     vertical-align: middle;
     text-align: left;
 }
-
 
 #campiLogin *{
     height: 100%;
@@ -819,7 +792,6 @@ button.like, button.dislike{
         margin-left: auto;
         margin-right: auto;
         min-width: 750px;
-
     }
 
     #content{
@@ -937,11 +909,6 @@ button.like, button.dislike{
     }
 }
 
-
-
-
-
-
 @media only screen and (max-width: 768px){
 
     #menu ul {
@@ -959,11 +926,6 @@ button.like, button.dislike{
         min-width: 200px;
     }
 
-    #searchBar {
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center
-    }
     #adminZone form {
         width: 90%;
     }
@@ -977,12 +939,6 @@ button.like, button.dislike{
         display: block;
     }
 }
-
-
-
-
-
-
 
 @media only screen and (max-width: 600px) {
     nav{
@@ -1032,9 +988,7 @@ button.like, button.dislike{
     /*------------------------------*/
     
     #breadcrumb{
-        display: flex;
         margin:auto;
-        width: 70%;
         position: inherit;
         min-width: 200px;
     }
@@ -1064,7 +1018,7 @@ button.like, button.dislike{
         display: block;
         text-align: justify;
         justify-content: center;
-     
+        border:none;
     }
     
     .boxOutside{
@@ -1136,7 +1090,6 @@ button.like, button.dislike{
         width: 100%;
         border:0;
         border-radius: 0;
-        
     }
     
     .guide{
@@ -1151,12 +1104,6 @@ button.like, button.dislike{
     
     ul{
         list-style-type: none;
-    }
-
-    #searchBar {
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center
     }
     
     #content h2{
@@ -1334,7 +1281,6 @@ button.like, button.dislike{
         margin-top: 4%;
         margin-bottom: 4%;
         margin-right:10%
-        
     }
     
     input#zipfile {
