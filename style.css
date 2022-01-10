@@ -219,18 +219,17 @@ html, body{
 
 #breadcrumb{
     display: flex;
-    width: 62%;
+    width:70%;
     height: auto;
     margin: auto;
-    position: relative;
     margin-top: 0.1em;
-    border-top:var(--borderTran) 2px solid;
-    border-bottom:var(--borderTran) 2px solid;
-    background-color: var(--mediumColorTran);
+    border:var(--borderTran) 2px solid;
+    border-radius: 0.5em;
+    background-color: var(--mediumColor);
     padding-top:  0.25em;
     padding-bottom:  0.25em;
+    min-width: 750px;
 
-    top: 2.5em;
 }
 
 .darkmode #breadcrumb{
@@ -822,12 +821,14 @@ button.like, button.dislike{
         min-width: 750px;
 
     }
+
     #content{
         display: block;
         width: 85%;
         margin-left: auto;
         margin-right: auto;
     }
+
     .boxColonna{
         width: 90%;
         margin-left: auto;
@@ -840,9 +841,6 @@ button.like, button.dislike{
         margin-right: auto;
     }
 
-    .hflex{
-        display: block;
-    }
     
     .hflex.itemList{
         display: grid;
@@ -957,6 +955,10 @@ button.like, button.dislike{
         margin-bottom: 0.15em;
     }
 
+    #breadcrumb{
+        min-width: 200px;
+    }
+
     #searchBar {
         margin-right: auto;
         margin-left: auto;
@@ -971,6 +973,9 @@ button.like, button.dislike{
         margin-right: auto;
     }
 
+    .hflex{
+        display: block;
+    }
 }
 
 
@@ -1029,8 +1034,9 @@ button.like, button.dislike{
     #breadcrumb{
         display: flex;
         margin:auto;
-        width: 100%;
+        width: 70%;
         position: inherit;
+        min-width: 200px;
     }
      .darkmode #breadcrumb{
         display: flex;
