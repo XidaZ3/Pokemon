@@ -11,7 +11,8 @@
     $outputRecent = "";
     if(isset($mostRecent) && is_array($mostRecent)){
         foreach($mostRecent as $key => $item){
-            $outputRecent = $outputRecent . "<li class=\"hflex itemList\">
+            $outputRecent = $outputRecent . "<a name=\"contenutotab\"></a>
+                                               <li class=\"hflex itemList\">
                                                 <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
                                                     <li>Creato:{$item['data_creazione']}</li>
