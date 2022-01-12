@@ -18,40 +18,41 @@
     </header>
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="../index.php">Home </a> </li>
-            <li><a href="contenuti.php">Contenuti</a></li>
-            <li><a href="../chi_siamo.html">Chi siamo</a></li>
-            <li><a href="profilo.php">Profilo</a></li>
+            <li lang="en"><a href="../index.php" tabindex="2">Home </a> </li>
+            <li><a href="contenuti.php" tabindex="2">Contenuti</a></li>
+            <li><a href="../chi_siamo.html" tabindex="2">Chi siamo</a></li>
+            <li><a href="profilo.php" tabindex="2">Profilo</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en"><a href="../index.php">Home</a></span>->Profilo</p>
+        <p>Ti trovi in: <span lang="en"><a href="../index.php" tabindex="2">Home</a></span>->Profilo</p>
     </nav>
 
     <div id="content">
         <div id="profiloBordo" class="boxOutside vflex">
-            <h2>Registrazione</h2>
+            <a href=#proftab tabindex="1" style="text-decoration: none"><h2>Registrazione</h2></a>
 
             <form id="loginForm" class="boxInside vflex enlarge" action="signInUtils.php?" method="POST" target="_self" >
                 <div id="campiLogin" class="vflex">
+                    <a name="proftab"></a>
                     <div id="cuserfound" class="errormsg"><userFoundError/></div>
                     <label for="email"><b>Email:</b></label>
-                    <input type="text" placeholder="Inserisci Email" name="email" value="<email/>" id="email" oninput="return clearEmailErrorMessage()" required>
+                    <input type="text" placeholder="Inserisci Email" name="email" value="<email/>" id="email" oninput="return clearEmailErrorMessage()" required tabindex="2">
                     <div class="hflex errormsg" id="cemail"><emailError/></div>
                     <label for="password"><b>Password:</b></label>
-                    <input type="password" placeholder="Inserisci Password" name="password"  id="password" required>
+                    <input type="password" placeholder="Inserisci Password" name="password"  id="password" required tabindex="2">
                     <div id="visualizzaPass">
-                        <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show">
+                        <input type="checkbox" name="showPassword" id="showPassword" onclick="return togglePassword()" value="show" tabindex="2">
                         <label for="showPassword" class='smalltext'>Mostra password</label>
                     </div>
                     <label for="uname"><b>Username:</b></label>
-                    <input type="text" placeholder="Inserisci Username" name="uname" value="<uname/>" id="uname" oninput="return clearUsernameErrorMessage()" required>
+                    <input type="text" placeholder="Inserisci Username" name="uname" value="<uname/>" id="uname" oninput="return clearUsernameErrorMessage()" required tabindex="2">
                     <div id="cuname" class="errormsg"><usernameError/></div>
                     <div id="buttonLogin" class="hflex">
-                        <button type="button" class="cancelbtn" onclick="return clearLoginFields()">Cancella</button>
-                        <button type="submit">Registrami</button>
+                        <button type="button" class="cancelbtn" onclick="return clearLoginFields()" tabindex="2">Cancella</button>
+                        <button type="submit" tabindex="2">Registrami</button>
                     </div>
-                    <p>Possiedi già un account? <a href = "profilo.php">Log In</a></a></p>
+                    <p>Possiedi già un account? <a href = "profilo.php" tabindex="1">Log In</a></a></p>
                 </div>
             </form>      
         </div>
