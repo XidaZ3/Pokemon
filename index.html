@@ -17,18 +17,20 @@
     <nav id="menu">
         <ul>
             <li lang="en"> Home</li>
-            <li><a href="PHP/contenuti.php">Contenuti</a></li>
-            <li><a href="chi_siamo.html">Chi siamo</a></li>
-            <li><a href="PHP/profilo.php">Profilo</a></li>
+            <li><a href="PHP/contenuti.php" tabindex="2">Contenuti</a></li>
+            <li><a href="chi_siamo.html" tabindex="2">Chi siamo</a></li>
+            <li><a href="PHP/profilo.php" tabindex="2">Profilo</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en">Home</span></p>
+        <p>Ti trovi in: <span lang="en" tabindex="2">Home</span></p>
     </nav>
 
     <div id="content">
         <div id="ultimeUscite" class="boxColonna boxSinistra">
-            <h2>Ultime uscite <img src="Immagini/146.png" height="35em" alt=""/></h2>
+            <a href=#contenutotab tabindex="1" style="text-decoration: none">
+                <h2>Ultime uscite <img src="Immagini/146.png" height="35em" alt=""/></h2>
+            </a>
             <ul>
                 <mostRecent/>
             </ul>
