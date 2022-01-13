@@ -20,7 +20,7 @@
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
-                                                    <div class=\"avatar miniAvatar\"></div>
+                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\">
                                                     <label for=\"username\">{$item['editore']}</label>
                                                 </div>
                                             </li>";
@@ -38,7 +38,7 @@
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
-                                                    <div class=\"avatar miniAvatar\"></div>
+                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\">
                                                     <label for=\"username\">{$item['editore']}</label>
                                                 </div>
                                             </li>";
