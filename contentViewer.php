@@ -55,7 +55,7 @@
             $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
             $commentOutput = $commentOutput. "<div id=\"nc{$item['commentoid']}\" class=\"boxRect hflex\">
                                                 <div class=\"avatarBox vflex\">
-                                                    <div class=\"avatar\"></div>
+                                                    <img class=\"avatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" >
                                                     <label for=\"username\">{$item['username']}</label>
                                                 </div>
                                                 <div class=\"commento vflex\">
