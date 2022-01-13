@@ -375,9 +375,6 @@ ul{
     margin-top: 1em;
     height: 100px;
     width:100px;
-    background-image: url("./Immagini/emerald/54.png");
-    background-size: contain;
-    background-repeat: no-repeat;
     border:var(--mediumColor) 5px solid;
     border-radius: 5em;
 }
@@ -1047,19 +1044,6 @@ button.like, button.dislike{
         padding-bottom: 2em;
     }
 
-    #avatar
-    {
-        margin-top: 1em;
-        height: 100px;
-        width:100px;
-        background-image: url("./Immagini/emerald/54.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-color: var(--backgroundWidget);
-        border:black 2px solid;
-        border-radius: 5em;
-    }
-    
     #zone .avatar {
         width: 100px;
     }
