@@ -478,8 +478,11 @@
 
         public function addComment($user,$comment,$contenuto)
         {
-            //need to sanitize comment
+            $comment = strip_tags($comment);
+            $comment =  $this->connection->real_escape_string($comment);
+
             $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto')";
+            // codice per fare inject (double insert) --> OOOPS', '19'), ('9', 'Rotto
             $queryResult = mysqli_query($this->connection, $query) or null;
             return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
         }

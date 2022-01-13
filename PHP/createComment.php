@@ -44,12 +44,4 @@
     }
     if(!$res)
         error_log("errore inserimento commento");
-
-    function pulisciInput($value){
-        $value = trim($value);
-        $value = htmlentities($value);
-        $value = htmlspecialchars($value);
-        return $value;
-    }
-
 ?>
