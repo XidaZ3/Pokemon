@@ -50,7 +50,7 @@
                                         <li>Commenti:". (isset($item['ncom']) ? $item['ncom'] : 0)."</li>
                                     </ul>
                                     <div class=\"avatarBox vflex\">
-                                        <div class=\"avatar miniAvatar\"></div>
+                                        <img class=\"avatar miniAvatar\" src=\"../Immagini/emerald/{$item['avatar']}.png\">
                                         <label for=\"username\">{$item['editore']}</label>
                                     </div> <div class=\"vflex\">".
                                     ($privilegio == 1 ? "<a class=\"smalltext delete\" href=\"deleteContent.php?id={$item['id']}&path={$item['path']}&tipo={$item['tipo']}\">Elimina Contenuto</a>" : "")

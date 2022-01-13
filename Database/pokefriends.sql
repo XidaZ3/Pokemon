@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 26, 2021 alle 19:59
--- Versione del server: 10.4.17-MariaDB
--- Versione PHP: 7.2.34
+-- Generation Time: Jan 13, 2022 at 10:36 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `commenti`
+-- Table structure for table `commenti`
 --
 
 CREATE TABLE `commenti` (
@@ -35,10 +35,26 @@ CREATE TABLE `commenti` (
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `commenti`
+--
+
+INSERT INTO `commenti` (`id`, `utente`, `testo`, `contenuto`, `timestamp`) VALUES
+(17, 9, 'bsdgsdgsdgsdgsdgsd', 21, '2021-12-27'),
+(18, 9, 'bsdgsdgsdgsdgsdgsdgwegwegwegew', 21, '2021-12-27'),
+(92, 48, 'feffwfwfwef', 21, '2021-12-28'),
+(93, 48, 'feffwfwfwef', 21, '2021-12-28'),
+(94, 48, 'OUUUUUU', 21, '2021-12-28'),
+(95, 48, 'HUHHHHHH', 21, '2021-12-28'),
+(96, 48, 'HUHHHHHH', 21, '2021-12-28'),
+(97, 48, 'fefwew', 21, '2021-12-28'),
+(103, 48, 'xdlul comment', 19, '2021-12-29'),
+(108, 9, 'gegrege', 19, '2021-12-30');
+
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `contenuti`
+-- Table structure for table `contenuti`
 --
 
 CREATE TABLE `contenuti` (
@@ -51,23 +67,24 @@ CREATE TABLE `contenuti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `contenuti`
+-- Dumping data for table `contenuti`
 --
 
 INSERT INTO `contenuti` (`id`, `path`, `tipo`, `titolo`, `data_creazione`, `editore`) VALUES
 (19, 'arceus', 0, 'Come ottenere Arceus in 4a generazione', '2021-12-24', 9),
-(20, 'ditto', 0, 'Come catturare Ditto in Pokèmon Diamante Brillante e Perla Splendente', '2021-12-24', 9),
-(21, 'twoberrymagikarp', 0, 'Come aumentare il livello dei Magikarp velocemente in Magikarp Jump', '2021-12-24', 9),
-(22, 'decimastagione', 1, 'Svelata la decima stagione della Lega Lotte Go', '2021-12-22', 9),
-(23, 'mewundertruck', 1, 'C\'è un Mew nascosto sotto il camioncino in Pokèmon Rosso e Blu', '2021-12-17', 9),
-(24, 'pokemonsocialimpact', 1, 'Pokemon Go e il suo impatto sociale', '2021-12-21', 9),
-(25, 'pokemonstory', 1, 'La Storia di Pokèmon', '2021-12-09', 9),
-(26, 'php134', 0, 'Vediamo se funziona', '2021-12-24', 9);
+(20, 'ditto', 0, 'Come catturare Ditto in Pokèmon Diamante Brillante e Perla Splendente', '2021-12-24', 47),
+(21, 'twoberrymagikarp', 0, 'Come aumentare il livello dei Magikarp velocemente in Magikarp Jump', '2021-12-24', 44),
+(22, 'decimastagione', 1, 'Svelata la decima stagione della Lega Lotte Go', '2021-12-22', 48),
+(23, 'mewundertruck', 1, 'C\'è un Mew nascosto sotto il camioncino in Pokèmon Rosso e Blu', '2021-12-17', 49),
+(24, 'pokemonsocialimpact', 1, 'Pokemon Go e il suo impatto sociale', '2021-12-21', 43),
+(25, 'pokemonstory', 1, 'La Storia di Pokèmon', '2021-12-09', 50),
+(26, 'php134', 0, 'Vediamo se funziona', '2021-12-24', 9),
+(28, 'php7B94', 0, 'Guida 5', '2022-01-13', 51);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `karma_commenti`
+-- Table structure for table `karma_commenti`
 --
 
 CREATE TABLE `karma_commenti` (
@@ -77,22 +94,37 @@ CREATE TABLE `karma_commenti` (
   `valore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `karma_commenti`
+--
+
+INSERT INTO `karma_commenti` (`id`, `commento`, `utente`, `valore`) VALUES
+(8, 17, 48, 1);
+
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `karma_contenuti`
+-- Table structure for table `karma_contenuti`
 --
 
 CREATE TABLE `karma_contenuti` (
   `id` int(11) NOT NULL,
   `contenuto` int(11) NOT NULL,
+  `utente` int(11) NOT NULL,
   `valore` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `karma_contenuti`
+--
+
+INSERT INTO `karma_contenuti` (`id`, `contenuto`, `utente`, `valore`) VALUES
+(9, 19, 9, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utenti`
+-- Table structure for table `utenti`
 --
 
 CREATE TABLE `utenti` (
@@ -102,25 +134,30 @@ CREATE TABLE `utenti` (
   `username` varchar(30) COLLATE utf8_bin NOT NULL,
   `privilegio` tinyint(4) NOT NULL,
   `data_iscrizione` date NOT NULL DEFAULT current_timestamp(),
-  `attivo` tinyint(4) NOT NULL DEFAULT 1
+  `attivo` tinyint(4) NOT NULL DEFAULT 1,
+  `avatar` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `utenti`
+-- Dumping data for table `utenti`
 --
 
-INSERT INTO `utenti` (`id`, `email`, `password`, `username`, `privilegio`, `data_iscrizione`, `attivo`) VALUES
-(9, 'prova@gmail.com', '$2y$10$rx4qtx2dLrUq7Xpvm81iGupb71kJeYNpZtBFBwJb9ATjM0.iyj.hu', 'pieri', 1, '2021-12-16', 1),
-(43, 'gianni@gmail.com', '$2y$10$M4r7JxoMS7JiS7/ABVtZKeE8sLJZ6PPAQlaZqypxvCWYL1WIj4Z1.', 'carlo', 0, '2021-12-23', 1),
-(44, 'carlo@gasdf', '$2y$10$XAm7.Or258CZ7HOm.OPPVO/8A8ZYsN20.uGLOJp/RvPSHT3ILABr6', 'mario', 0, '2021-12-23', 1),
-(47, 'paolo@gmail.com', '$2y$10$aYlBpwMU7jJWW3yv3NoHwOQdYVnrRW6mSATgP4oqBlkE/3TOPB10e', 'arturo', 0, '2021-12-23', 1);
+INSERT INTO `utenti` (`id`, `email`, `password`, `username`, `privilegio`, `data_iscrizione`, `attivo`, `avatar`) VALUES
+(9, 'prova@gmail.com', '$2y$10$rx4qtx2dLrUq7Xpvm81iGupb71kJeYNpZtBFBwJb9ATjM0.iyj.hu', 'pieri', 1, '2021-12-16', 1, 30),
+(43, 'gianni@gmail.com', '$2y$10$M4r7JxoMS7JiS7/ABVtZKeE8sLJZ6PPAQlaZqypxvCWYL1WIj4Z1.', 'carlo', 0, '2021-12-23', 1, 20),
+(44, 'carlo@gasdf', '$2y$10$XAm7.Or258CZ7HOm.OPPVO/8A8ZYsN20.uGLOJp/RvPSHT3ILABr6', 'mario', 0, '2021-12-23', 1, 40),
+(47, 'paolo@gmail.com', '$2y$10$aYlBpwMU7jJWW3yv3NoHwOQdYVnrRW6mSATgP4oqBlkE/3TOPB10e', 'arturo', 0, '2021-12-23', 1, 50),
+(48, 'xd@lul.com', '$2y$10$JRyDF3Jjgg3nxSwEXAIw4uIRGbP2b9dSPU0WgQp/WGrONiFcMhJay', 'xd', 0, '2021-12-28', 1, 25),
+(49, 'user', '$2y$10$Demfim8mckMVdjgy5r7bP.zRByFGToTfyl68xgTFa3AwTTG69228a', 'user', 0, '2022-01-10', 1, 33),
+(50, 'pietro.marcatti@gmail.com', '$2y$10$pARkHknVeCA76wH1v5VCtOdxMARMYLxoGlIljXFs5ftdV838BffUa', 'prova', 0, '2022-01-13', 1, 178),
+(51, 'admin', '$2y$10$7wqxpNqvQyG9y7QWYYrJKOux/G6BT/qlSQWvfa.DKr7MKvM7VbcF2', 'admin', 1, '2022-01-13', 1, 317);
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `commenti`
+-- Indexes for table `commenti`
 --
 ALTER TABLE `commenti`
   ADD PRIMARY KEY (`id`),
@@ -128,7 +165,7 @@ ALTER TABLE `commenti`
   ADD KEY `utente` (`utente`);
 
 --
--- Indici per le tabelle `contenuti`
+-- Indexes for table `contenuti`
 --
 ALTER TABLE `contenuti`
   ADD PRIMARY KEY (`id`),
@@ -136,7 +173,7 @@ ALTER TABLE `contenuti`
   ADD KEY `editore` (`editore`);
 
 --
--- Indici per le tabelle `karma_commenti`
+-- Indexes for table `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
   ADD PRIMARY KEY (`id`),
@@ -144,14 +181,14 @@ ALTER TABLE `karma_commenti`
   ADD KEY `utente` (`utente`);
 
 --
--- Indici per le tabelle `karma_contenuti`
+-- Indexes for table `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
   ADD PRIMARY KEY (`id`),
   ADD KEY `contenuto` (`contenuto`);
 
 --
--- Indici per le tabelle `utenti`
+-- Indexes for table `utenti`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id`),
@@ -159,64 +196,64 @@ ALTER TABLE `utenti`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `commenti`
+-- AUTO_INCREMENT for table `commenti`
 --
 ALTER TABLE `commenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
--- AUTO_INCREMENT per la tabella `contenuti`
+-- AUTO_INCREMENT for table `contenuti`
 --
 ALTER TABLE `contenuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT per la tabella `karma_commenti`
+-- AUTO_INCREMENT for table `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT per la tabella `karma_contenuti`
+-- AUTO_INCREMENT for table `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT per la tabella `utenti`
+-- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `commenti`
+-- Constraints for table `commenti`
 --
 ALTER TABLE `commenti`
   ADD CONSTRAINT `content` FOREIGN KEY (`contenuto`) REFERENCES `contenuti` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `utente` FOREIGN KEY (`utente`) REFERENCES `utenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limiti per la tabella `contenuti`
+-- Constraints for table `contenuti`
 --
 ALTER TABLE `contenuti`
   ADD CONSTRAINT `editore` FOREIGN KEY (`editore`) REFERENCES `utenti` (`id`);
 
 --
--- Limiti per la tabella `karma_commenti`
+-- Constraints for table `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
   ADD CONSTRAINT `karma_commento` FOREIGN KEY (`commento`) REFERENCES `commenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limiti per la tabella `karma_contenuti`
+-- Constraints for table `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
   ADD CONSTRAINT `contenuto` FOREIGN KEY (`contenuto`) REFERENCES `contenuti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

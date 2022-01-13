@@ -99,8 +99,6 @@
         }
 
         public function isEmailUsed($email){
-            $email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); 
-            //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
             $query = "SELECT id FROM utenti WHERE email = '$email'";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in isEmailUsed: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult) >1){
@@ -111,12 +109,11 @@
         }
 
         public function addUser($email, $psw, $uname) {
-            //$email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
-            //$psw = $this->pulisciInput($psw, FILTER_DEFAULT, [FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING]); //Filtraggio della password
+            $avatar = rand(1,386);
             $emailUsed = $this->isEmailUsed($email); // Verifico che l'email non sia già stata utilizzata, se questa variabile è vuota proseguo
             if(!$emailUsed){
                 $psw = password_hash($psw,PASSWORD_BCRYPT);//Hash della password che unisce anche il salt per la verifica in un unica stringa di 60 caratteri
-                $query = "INSERT INTO utenti (email,password,username,privilegio) VALUES ('$email', '$psw', '$uname',0)";
+                $query = "INSERT INTO utenti (email,password,username,privilegio,avatar) VALUES ('$email', '$psw', '$uname',0,$avatar)";
                     $queryResult = mysqli_query($this->connection, $query) or null;
                     return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti
             }
@@ -252,7 +249,7 @@
 
         public function getGuideContentsMostRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
             IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
@@ -272,7 +269,7 @@
 
         public function getGuideContentsLeastRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
             IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
@@ -292,7 +289,7 @@
 
         public function getGuideContentsMostKarma($page) {
             $offset = $page * $this->contenutiPerPagina;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
             IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
@@ -312,7 +309,7 @@
 
         public function getGuideContentsMostComments($page) {
             $offset = $page * $this->contenutiPerPagina;
-            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+            $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
             IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
@@ -333,7 +330,7 @@
         public function getArticleContentsMostRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
                 IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
@@ -355,7 +352,7 @@
         public function getArticleContentsLeastRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
                 IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
@@ -377,7 +374,7 @@
         public function getArticleContentsMostKarma($page) {
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
                 IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
@@ -399,7 +396,7 @@
         public function getArticleContentsMostComments($page) {
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
-                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore,
+                $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
                 IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
@@ -419,7 +416,7 @@
         }
 
         public function getContentComments($id,$userid) {
-            $query = "SELECT co.id as commentoid, co.contenuto, co.testo, co.timestamp, u.username,u.id as userid, k.valore, IFNULL(SUM(k.valore),0) as karma
+            $query = "SELECT co.id as commentoid, co.contenuto, co.testo, co.timestamp, u.username,u.id as userid, u.avatar as avatar, k.valore, IFNULL(SUM(k.valore),0) as karma
              FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid
              WHERE co.contenuto = $id GROUP BY commentoid 
              ORDER BY co.timestamp DESC, commentoid DESC";
