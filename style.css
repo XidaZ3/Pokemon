@@ -362,7 +362,19 @@ ul{
 #adminZone{
     width: 98%;
     justify-content: center;
-    height: 15em;
+    /* height: 15em; */
+    height: max-content;
+}
+
+#adminZone form{
+    height: max-content;
+    padding-top: 1em;
+    padding-bottom: 1em; 
+}
+
+#adminZone form b {
+    text-align: center;
+    margin-top: 1em;
 }
 
 #adminZone *{
