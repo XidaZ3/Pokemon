@@ -12,7 +12,6 @@
     if(isset($comment) && isset($userid))
     {
         $comment=substr($comment,2);
-        error_log($comment);
         $db->deleteComment($comment);
     }
     $db->closeDBConnection();
