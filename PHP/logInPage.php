@@ -6,12 +6,12 @@
     $paginaLogIn = file_get_contents('../logInPage.html');
 
     if(isset($_SESSION['msg']['loginError']) && $_SESSION['msg']['loginError']){
-        $paginaLogIn = str_replace('<loginError/>', 'Nessun utente con questa email e password', $paginaLogIn);
-        $paginaLogIn = str_replace('<email/>',$_SESSION['msg']['usedEmail'],$paginaLogIn);
+        $paginaLogIn = str_replace('<loginError/>', 'Nessun utente con questo username e password', $paginaLogIn);
+        $paginaLogIn = str_replace('<username/>',$_SESSION['msg']['usedUsername'],$paginaLogIn);
     }   
     else{
         $paginaLogIn = str_replace('<loginError/>', '', $paginaLogIn);
-        $paginaLogIn = str_replace('<email/>','',$paginaLogIn);
+        $paginaLogIn = str_replace('<username/>','',$paginaLogIn);
     }
     echo $paginaLogIn;
 

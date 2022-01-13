@@ -4,14 +4,15 @@
     use DB\DBAccess;
     $db= new DBAccess();
     $db->openDBConnection();
-    if(isset($_POST['email']) && isset($_POST['password'])){
-        $email = pulisciInput($_POST['email']);
+    
+    if(isset($_POST['username']) && isset($_POST['password'])){
+        $username = pulisciInput($_POST['username']);
         $psw =$_POST['password'];
-        $user = $db->getUser($email, $psw);
+        $user = $db->getUser($username, $psw);
         $db->closeDBConnection();
         if(!isset($user)){
             $_SESSION['msg']['loginError']=true;
-            $_SESSION['msg']['usedEmail']=$email;
+            $_SESSION['msg']['usedUsername']=$username;
         }else {
             $_SESSION['userid']= $user['id'];
             $_SESSION['privilegio']=$user['privilegio'];

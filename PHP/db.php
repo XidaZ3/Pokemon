@@ -22,10 +22,8 @@
             return filter_input(INPUT_POST, $valore, $filters);
         }
 
-        public function getUser($email, $psw){
-            //$email = $this->pulisciInput($email, FILTER_DEFAULT,[/*FILTER_SANITIZE_EMAIL, FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING*/]); //Filtraggio dell'input, vuoto perchè la prof deve poter inserire le stesse credenziali in automatico
-            //$psw = $this->pulisciInput($psw, FILTER_DEFAULT, [FILTER_SANITIZE_MAGIC_QUOTES, FILTER_SANITIZE_STRING]); //Filtraggio della password
-            $query = "SELECT * FROM utenti WHERE email = '$email' AND attivo=1";
+        public function getUser($username, $psw){
+            $query = "SELECT * FROM utenti WHERE username = '$username' AND attivo=1";
             $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUser: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult) >0){
                 //Mail trovata nel database, viene fetchato "l'array" (1 solo elemento)
