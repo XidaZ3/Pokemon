@@ -489,6 +489,9 @@ ul{
     margin:auto;
 }
 
+#cuserfound{
+    display: none;
+}
 #loginForm{
     width: 95%;
     height: 15em;
