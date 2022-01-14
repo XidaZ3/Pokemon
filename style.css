@@ -417,6 +417,11 @@ ul{
     width: 70%;
 }
 
+#confermaDisabilita button {
+    width: 30%;
+    margin-right: 1em;
+}
+
 #infoProfilo{
     padding-top: 1em;
     display: flex;
@@ -637,7 +642,6 @@ button.like, button.dislike{
 
 #confermaCancella button{
     width: 30%;
-    margin-top:1em;
 }
 
 #adminZone form{

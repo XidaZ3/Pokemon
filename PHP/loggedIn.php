@@ -25,7 +25,7 @@
             $paginaProfilo = str_replace('<npost/>', isset($npost) ? $npost : '0', $paginaProfilo); 
             $db->closeDBConnection();
         }else{
-            $paginaProfilo = str_replace('<uname/>', 'Errore caricamento', $userForm);
+            $paginaProfilo = str_replace('<uname/>', 'Errore caricamento', $paginaProfilo);
             $db->closeDBConnection();
         }
         

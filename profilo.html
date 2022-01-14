@@ -39,10 +39,10 @@
                     <img class="avatar" src="../Immagini/emerald/<avatar/>.png">
                     <div id="campiProfilo" class="vflex">
                         <label for="email">Email:</label>
-                        <input type="text" value="<email/>" id="email" tabindex="2"></input>
-                        <button onclick="popUpDeleteAccount();" tabindex="2">Elimina account</button>
+                        <p type="text" id="email" tabindex="2"><email/></p>
                         <input hidden value="<id/>" id="id">
-                        <input type="submit" method="POST" form ="profiloForm" formaction="logOutUtils.php" value = "LogOut" name="logout" id="logout" tabindex="2">
+                        <input type="submit" method="POST" form ="profiloForm" formaction="logOutUtils.php" value = "Log Out" name="logout" id="logout" tabindex="2">
+                        <button onclick="disableAccount()" tabindex="2">Elimina account</button>
                     </div>
                 </form>
                 <div id="statistiche" class="boxInside vflex">
@@ -50,7 +50,7 @@
                     <ul id="infoProfilo" class="boxInside highlight">
                         <li id="karma\">Karma: <karma/></li>
                         <li id="eta">Età virtuale: <br/> <eta/></li>
-                        <li id="numeroPosts">Numero posts: <npost/></li>
+                        <li id="numeroPosts">Numero post: <npost/></li>
                     </ul>
                 </div>
         </div>

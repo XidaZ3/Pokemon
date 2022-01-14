@@ -44,9 +44,9 @@
             
         }
 
-        public function deleteUser($id){
+        public function disableUser($id){
             $query = "UPDATE utenti SET attivo = 0 WHERE id=$id";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getUser: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in disableUser: ".mysqli_error($this->connection));
             return $queryResult;
         }
 
