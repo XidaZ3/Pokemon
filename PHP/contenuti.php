@@ -42,16 +42,17 @@
     $output = "";
     if(isset($content) && is_array($content)){
         foreach($content as $key => $item){
+            $titoloTrim = str_replace(' ', '%20', $item['titolo']);
             $output = $output . "<li class=\"hflex itemList\">
-                                    <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
+                                    <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                     <ul class =\"itemStats\">
                                         <li>Creato:{$item['data_creazione']}</li>
                                         <li>Karma:". (isset($item['karma']) ? $item['karma'] : 0)."</li>
                                         <li>Commenti:". (isset($item['ncom']) ? $item['ncom'] : 0)."</li>
                                     </ul>
                                     <div class=\"avatarBox vflex\">
-                                        <img class=\"avatar miniAvatar\" src=\"../Immagini/emerald/{$item['avatar']}.png\">
-                                        <label for=\"username\">{$item['editore']}</label>
+                                        <img class=\"avatar miniAvatar\" src=\"../Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
+                                        <span>{$item['editore']}</span>
                                     </div> <div class=\"vflex\">".
                                     ($privilegio == 1 ? "<a class=\"smalltext delete\" href=\"deleteContent.php?id={$item['id']}&path={$item['path']}&tipo={$item['tipo']}\">Elimina Contenuto</a>" : "")
                                 ."</div> </li>";

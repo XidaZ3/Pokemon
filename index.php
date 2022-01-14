@@ -21,7 +21,7 @@
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
                                                     <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
-                                                    <span>{$item['editore']}</span>
+                                                    {$item['editore']}
                                                 </div>
                                             </li>";
         }
@@ -40,7 +40,7 @@
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
                                                     <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
-                                                    <span>{$item['editore']}</span>
+                                                    {$item['editore']}
                                                 </div>
                                             </li>";
         }
