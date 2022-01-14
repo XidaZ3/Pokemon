@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style.css">
     <link rel="stylesheet" type ="text/css" media="print" href="../print.css">
     <link rel="icon" type="image/png" href="../Immagini/icons/favicon.ico"/>
-    <script type="text/javascript" src="../JS/signIn.js"></script>
+    <script src="../JS/signIn.js"></script>
     <title>PokèFriends</title>
 </head>
 
@@ -34,15 +34,15 @@
             <a href=#proftab tabindex="1" style="text-decoration: none"><h2>Profilo</h2></a>
             <admin/>
             <div id="zone" class="hflex">
-                <a name="proftab"></a>
-                <form id="profiloForm" class="boxInside vflex">
-                    <img class="avatar" src="../Immagini/emerald/<avatar/>.png">
+                <a id="proftab"></a>
+                <form id="profiloForm" class="boxInside vflex" method="POST" action="logOutUtils.php">
+                    <img class="avatar" src="../Immagini/emerald/<avatar/>.png" alt="" />
                     <div id="campiProfilo" class="vflex">
                         <label for="email">Email:</label>
-                        <input type="text" value="<email/>" id="email" tabindex="2"></input>
+                        <input type="text" value="<email/>" id="email" tabindex="2">
                         <button onclick="popUpDeleteAccount();" tabindex="2">Elimina account</button>
-                        <input hidden value="<id/>" id="id">
-                        <input type="submit" method="POST" form ="profiloForm" formaction="logOutUtils.php" value = "LogOut" name="logout" id="logout" tabindex="2">
+                        <input hidden value="<id/>" id="id" />
+                        <input type="submit" form ="profiloForm" value = "LogOut" name="logout" id="logout" tabindex="2" />
                     </div>
                 </form>
                 <div id="statistiche" class="boxInside vflex">

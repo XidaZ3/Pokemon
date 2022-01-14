@@ -55,8 +55,8 @@
             $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
             $commentOutput = $commentOutput. "<div id=\"nc{$item['commentoid']}\" class=\"boxRect hflex\">
                                                 <div class=\"avatarBox vflex\">
-                                                    <img class=\"avatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" >
-                                                    <label for=\"username\">{$item['username']}</label>
+                                                    <img class=\"avatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
+                                                    {$item['username']}
                                                 </div>
                                                 <div class=\"commento vflex\">
                                                     ".($userid == $item['userid'] ? "<button onclick=\"deleteComment()\" class=\"cancella\">Cancella</button>" : "")."
