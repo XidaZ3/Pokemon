@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style.css">
     <link rel="stylesheet" type ="text/css" media="print" href="../print.css">
     <link rel="icon" type="image/png" href="../Immagini/icons/favicon.ico"/>
-    <script type="text/javascript" src="../JS/signIn.js"></script>
+    <script src="../JS/signIn.js"></script>
     <title>PokèFriends</title>
 </head>
 
@@ -34,7 +34,7 @@
             <a href=#proftab tabindex="1" style="text-decoration: none"><h2>Profilo</h2> </a>
             <form id="loginForm" class="boxInside vflex" action="logInUtils.php?" method="POST" target="_self">
                 <div id="campiLogin" class="vflex">
-                    <a name="proftab"></a>
+                    <a id="proftab"></a>
                     <label for="username"><span class="highlight">Username:</span></label>
                     <input type="text" placeholder="Inserisci Username" name="username" value="<username/>" id="username" oninput="return clearLoginErrorMessage()" required tabindex="3">
                     <label for="password"><span class="highlight">Password:</span></label>
@@ -52,7 +52,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 
     <footer>
