@@ -669,6 +669,10 @@ button.like, button.dislike{
 /*------------------------------*/
 @media only screen and (max-width: 1050px){
 
+    :root{
+        background-image: none;
+    }
+
     #menu ul{
         margin-left: auto;
         margin-right: auto;
@@ -778,8 +782,6 @@ button.like, button.dislike{
         height: auto;
         background-size: 100%;
         background-color: var(--mediumColorTran);
-       
-        
     }
 
     #page404{
@@ -787,6 +789,46 @@ button.like, button.dislike{
         margin: 0;
         margin-left: auto;
         margin-right: auto;
+    }
+    
+    #buttonLogin button {
+        min-width: 60px;
+    }
+    
+    #zone{
+        height: auto;
+    }
+
+    #zone #profiloForm{
+        width: auto;
+        padding-bottom: 1em;
+    }
+
+    #zone #statistiche{
+        width: auto;
+    }
+    
+    #adminZone .hflex{
+        display: grid;
+        grid-template-columns: 2fr 1fr 3fr;
+        grid-template-areas: "a b ."
+                             "c d .";
+    }
+
+    #adminZone label[for='guida']{
+        grid-area: a;
+    }
+
+    #adminZone #guida{
+        grid-area: b;
+    }
+
+    #adminZone label[for='articolo']{
+        grid-area: c;
+    }
+
+    #adminZone #guida{
+        grid-area: d;
     }
 }
 
@@ -1023,11 +1065,13 @@ button.like, button.dislike{
     }
 
     #ultimeUscite ul{
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
 
     #popolari ul{
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -1115,7 +1159,6 @@ button.like, button.dislike{
 
     #adminZone .hflex input {
         display: inline;
-        width: 5%;
         margin-top: 4%;
         margin-bottom: 4%;
         margin-right:10%
@@ -1141,4 +1184,5 @@ button.like, button.dislike{
         height: 15%;
         font-size: 1.5em;
     }
+
   }
