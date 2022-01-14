@@ -48,7 +48,7 @@ html, body{
    
     font-family: "Questrial",sans-serif;
     font-size: 100%;
-
+    scroll-behavior: smooth;
 }
 
 #mainLogo{
@@ -489,9 +489,14 @@ ul{
     margin:auto;
 }
 
-#cuserfound{
+#cuserfound, #output{
     display: none;
 }
+
+#aiutoCommenti{
+    text-align: right;
+}
+
 #loginForm{
     width: 95%;
     height: 15em;

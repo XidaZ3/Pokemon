@@ -9,7 +9,7 @@
             $output = $output."{$message}<br />";
         }
         $output = $output."</b>";
-        $paginaAmministratore = str_replace('<output/>',$output,$paginaAmministratore);
+        $paginaAmministratore = str_replace('<div id="output"></div>',$output,$paginaAmministratore);
     }
     echo $paginaAmministratore;
     $_SESSION['uploadError']="";
