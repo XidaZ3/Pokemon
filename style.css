@@ -150,6 +150,13 @@ footer{
 
 .sectionTitle{
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionTitle img{
+    display: block;
 }
 
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{

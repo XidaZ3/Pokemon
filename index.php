@@ -11,17 +11,17 @@
     $outputRecent = "";
     if(isset($mostRecent) && is_array($mostRecent)){
         foreach($mostRecent as $key => $item){
-            $outputRecent = $outputRecent . "<a id=\"tabUltime\"></a>
-                                               <li class=\"hflex itemList\">
-                                                <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
+            $titoloTrim = str_replace(' ', '%20', $item['titolo']);
+            $outputRecent = $outputRecent . "<li class=\"hflex itemList\">
+                                                <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
                                                     <li>Creato:{$item['data_creazione']}</li>
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
-                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\">
-                                                    <label for=\"username\">{$item['editore']}</label>
+                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
+                                                    <span>{$item['editore']}</span>
                                                 </div>
                                             </li>";
         }
@@ -30,17 +30,17 @@
     $outputLiked = "";
     if(isset($mostLiked) && is_array($mostLiked)){
         foreach($mostLiked as $key => $item){
-            $outputLiked = $outputLiked . "<a id=\"tabPopolari\"></a> 
-                                            <li class=\"hflex itemList\">
-                                                <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
+            $titoloTrim = str_replace(' ', '%20', $item['titolo']);
+            $outputLiked = $outputLiked . "<li class=\"hflex itemList\">
+                                                <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
                                                     <li>Creato:{$item['data_creazione']}</li>
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
                                                 <div class=\"avatarBox vflex\">
-                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\">
-                                                    <label for=\"username\">{$item['editore']}</label>
+                                                    <img class=\"avatar miniAvatar\" src=\"Immagini/emerald/{$item['avatar']}.png\" alt=\"\" />
+                                                    <span>{$item['editore']}</span>
                                                 </div>
                                             </li>";
         }
