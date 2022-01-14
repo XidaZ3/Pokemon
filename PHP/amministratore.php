@@ -4,11 +4,12 @@
     $paginaAmministratore = file_get_contents('../amministratore.html');
     if(isset($_SESSION['uploadError']) && is_array($_SESSION['uploadError'])){
         $error = $_SESSION['uploadError'];
-        $output ="";
+        $output ="<b>";
         foreach($error as $message){
-            $output = $output."<li><b>{$message}</b></li>";
+            $output = $output."{$message}<br />";
         }
-        $paginaAmministratore = str_replace('<output/>',$output,$paginaAmministratore);
+        $output = $output."</b>";
+        $paginaAmministratore = str_replace('<div id="output"></div>',$output,$paginaAmministratore);
     }
     echo $paginaAmministratore;
     $_SESSION['uploadError']="";

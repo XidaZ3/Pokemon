@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <link rel="stylesheet" type ="text/css" media="print" href="print.css">
     <link rel="icon" type="image/png" href="Immagini/icons/favicon.ico"/>
-    <script type="text/javascript" src="JS/comment.js"></script>
+    <script src="JS/comment.js"></script>
     
     <title>PokèFriends</title>
 </head>
@@ -33,12 +33,17 @@
     <div id="content" class="vflex contenutiTesto">
         <content/>
         <contentOpinion/>
-        <h3>Commenti</h3>
-        <commenti/>
+        <h3 id="listaCommenti">Commenti</h3>
         <div id="creaCommento" class="vflex">
-            <textarea name="textCommento" id="textCommento" cols="15" rows="5" placeholder="Cosa ne pensi?"></textarea>
-            <button id="crea" onclick="createUserComment()">Crea commento</button>
+            <textarea name="textCommento" id="textCommento" cols="15" rows="5" maxlength="255" placeholder="Cosa ne pensi?" onkeyup="countChars()"></textarea>
+            <div id=zonaCreazioneCommento>
+                <button id="crea" onclick="createUserComment()">Crea commento</button>
+                <span id=contaChars>0/255</span>
+            </div>   
         </div>
+
+        <commenti/>
+        <a id="aiutoCommenti" href="#listaCommenti">Torna all'inizio dei commenti...</a>
     </div>
     <footer>
         The Best Pokemon Company TM.

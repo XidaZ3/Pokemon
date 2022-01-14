@@ -1,5 +1,6 @@
 function createUserComment() {
     var xhttp = new XMLHttpRequest();
+    var count = document.getElementById("contaChars");
     var txtAreaCommento=document.getElementById("textCommento");
     if (txtAreaCommento.value == "") {
         txtAreaCommento.setAttribute("placeholder", "Commento vuoto, scrivere prima di pubblicare!");
@@ -15,8 +16,9 @@ function createUserComment() {
           var content = document.getElementById("content");
           var creaCommento = document.getElementById("creaCommento");
           var boxRect = document.createElement("div");
-          content.insertBefore(boxRect,creaCommento);
+          content.insertBefore(boxRect,creaCommento.nextElementSibling);
           boxRect.outerHTML = this.responseText;
+          count.innerHTML = "0/255";
         }
         txtAreaCommento.value="";
       }
@@ -45,13 +47,11 @@ function likeComment() {
           dislike.setAttribute("class","dislike unpressed");
           karmaTag.innerText = parseInt(karmaTag.innerHTML) +1;
         }
-          
       }
       else{
         like.setAttribute("class","like unpressed");
         karmaTag.innerText = parseInt(karmaTag.innerHTML) -1;
       }
-        
     }
   };
    
@@ -89,7 +89,6 @@ function dislikeComment() {
         dislike.setAttribute("class","dislike unpressed");
         karmaTag.innerText = parseInt(karmaTag.innerText) +1;
       }
-        
     }
   };
 
@@ -221,4 +220,10 @@ function confirmDelete(){
 function closePopUp()
 {
    document.getElementById("popUpWrapper").remove();
+}
+
+function countChars(){
+  var txtAreaCommento=document.getElementById("textCommento");
+  var count = document.getElementById("contaChars");
+  count.innerHTML = txtAreaCommento.value.length+"/255";
 }

@@ -476,6 +476,7 @@
         public function addComment($user,$comment,$contenuto)
         {
             $comment = strip_tags($comment);
+            // $comment = preg_replace('/\s+/',' ', $comment);
             $comment =  $this->connection->real_escape_string($comment);
 
             $query = "INSERT INTO commenti(utente,testo,contenuto) VALUES ('$user', '$comment', '$contenuto')";
@@ -541,7 +542,6 @@
 
         public function deleteContent($id)
         {
-            //need to sanitize comment
             $query = "DELETE FROM contenuti WHERE id = $id";
             $queryResult = mysqli_query($this->connection, $query) or null;
             return $queryResult; //Ritorna true se l'inserimento è avvenuto con successo, false altrimenti

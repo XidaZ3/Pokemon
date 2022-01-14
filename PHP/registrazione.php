@@ -25,7 +25,7 @@
         //Non ci sono stati errori nè di email nè di username duplicati
         if(isset($_SESSION['msg']['userFound']) && !$_SESSION['msg']['userFound']){
             //L'utente è stato inserito ma c'è stato un errore nella query per richiamare l'id autogenerato da inserire nella sessione
-            $paginaRegistrazione = str_replace('<userFoundError/>', 'Profilo creato con successo, ma c\'è stato un errore nel caricarlo. Ricarica.', $paginaRegistrazione);
+            $paginaRegistrazione = str_replace('<div id="cuserfound"></div>', '<div id="cuserfound" class="errormsg"> Profilo creato con successo, ma c\'è stato un errore nel caricarlo. Ricarica. </div>', $paginaRegistrazione);
         }
         $paginaRegistrazione = str_replace('<email/>', '', $paginaRegistrazione);
         $paginaRegistrazione = str_replace('<emailError/>','', $paginaRegistrazione);

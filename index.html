@@ -17,28 +17,30 @@
     <nav id="menu">
         <ul>
             <li lang="en"> Home</li>
-            <li><a href="PHP/contenuti.php" tabindex="2">Contenuti</a></li>
-            <li><a href="chi_siamo.html" tabindex="2">Chi siamo</a></li>
-            <li><a href="PHP/profilo.php" tabindex="2">Profilo</a></li>
+            <li><a href="PHP/contenuti.php" tabindex="3">Contenuti</a></li>
+            <li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
+            <li><a href="PHP/profilo.php" tabindex="5">Profilo</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en" tabindex="2">Home</span></p>
+        <p>Ti trovi in: <span lang="en" tabindex="6">Home</span></p>
     </nav>
 
     <div id="content">
         <div id="ultimeUscite" class="boxColonna boxSinistra">
-            <a href=#contenutotab tabindex="1" style="text-decoration: none">
-                <h2>Ultime uscite <img src="Immagini/146.png" height="35em" alt=""/></h2>
+            <a class="sectionTitle" href=#tabUltime tabindex="1">
+                <h2>Ultime uscite </h2><img src="Immagini/146.png" alt=""/>
             </a>
-            <ul>
+            <ul id="tabUltime">
                 <mostRecent/>
             </ul>
         </div>
 
         <div id="popolari" class="boxColonna boxDestra">
-            <h2>I più popolari<img src="Immagini/144.png" height="35em" alt=""/></h2>
-            <ul>
+            <a class="sectionTitle" href=#tabPopolari tabindex="2">
+                <h2>I più popolari</h2><img src="Immagini/144.png" alt=""/>
+            </a>
+            <ul id="tabPopolari">
                 <mostLiked/>
             </ul>
         </div>
