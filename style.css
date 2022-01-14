@@ -115,7 +115,7 @@ html, body{
     border:var(--borderTran) 2px solid;
     border-radius: 0.5em;
     background-color: var(--contentItem);
-    min-width: 750px;
+    min-width: 700px;
     position: relative;
     bottom: 2em;
 }
@@ -699,6 +699,7 @@ button.like, button.dislike{
 
     :root{
         background-image: none;
+        background-color: var(--contentItem)
     }
 
     #menu ul{
@@ -761,13 +762,14 @@ button.like, button.dislike{
         grid-area: d;
     }
 
-    #content.contenutiTesto img{
+    .contenutiTesto img{
         width: 95%;
         margin-right: auto;
         margin-left: auto;
     }
 
-    .boxRect{
+    .boxRect.hflex{
+        display: flex;
         height: auto;
     }
 
@@ -781,12 +783,19 @@ button.like, button.dislike{
     .commento{
         border:var(--mediumColor) 3px solid;
         padding: 0.5em;
-        margin-left: 5%;
-        margin-right: 5%;
-        width:90%;
-        
+        margin-top: 0;
     }
     
+    .boxRect{
+        width:90%;
+    }
+
+    .boxRect .avatarBox img{
+        margin: 0;
+        width:50px;
+        height: 50px;
+    }
+
     .commento p.testo{
         margin: 0;
     }
@@ -934,7 +943,6 @@ button.like, button.dislike{
     /*------------------------------*/
     #breadcrumb{
         margin:auto;
-        position: inherit;
         min-width: 200px;
     }
     /*------------------------------*/
@@ -1108,6 +1116,12 @@ button.like, button.dislike{
         width:100%;
         box-sizing: border-box;
     }
+
+    .commento{
+        margin-left: 5%;
+        width:70%
+    }
+
     #popolari{
         padding: 1em 0;
         margin: 0;
