@@ -11,7 +11,7 @@
     $outputRecent = "";
     if(isset($mostRecent) && is_array($mostRecent)){
         foreach($mostRecent as $key => $item){
-            $outputRecent = $outputRecent . "<a name=\"contenutotab\"></a>
+            $outputRecent = $outputRecent . "<a id=\"tabUltime\"></a>
                                                <li class=\"hflex itemList\">
                                                 <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
@@ -30,7 +30,8 @@
     $outputLiked = "";
     if(isset($mostLiked) && is_array($mostLiked)){
         foreach($mostLiked as $key => $item){
-            $outputLiked = $outputLiked . "<li class=\"hflex itemList\">
+            $outputLiked = $outputLiked . "<a id=\"tabPopolari\"></a> 
+                                            <li class=\"hflex itemList\">
                                                 <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo={$item['titolo']}\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
                                                     <li>Creato:{$item['data_creazione']}</li>

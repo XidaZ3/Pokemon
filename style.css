@@ -148,6 +148,10 @@ footer{
     padding-top: 3em;
 }
 
+.sectionTitle{
+    text-decoration: none;
+}
+
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{
     margin-top: 1em;
     align-self: flex-start;
