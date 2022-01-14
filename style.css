@@ -158,6 +158,11 @@ footer{
     display: block;
 }
 
+#pageLinks a{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
 .contenutiTesto h2, .contenutiTesto h3, .contenutiTesto h4{
     margin-top: 1em;
     align-self: flex-start;
