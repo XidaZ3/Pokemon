@@ -731,6 +731,7 @@ button.like, button.dislike{
         margin-left: auto;
         margin-right: auto;
         min-width: 750px;
+        padding-bottom: 3em;
     }
 
     #content{
@@ -909,6 +910,7 @@ button.like, button.dislike{
 
     #breadcrumb{
         min-width: 200px;
+        bottom: 3em;
     }
 
     #adminZone form {
