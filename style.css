@@ -923,6 +923,10 @@ button.like, button.dislike{
     .hflex{
         display: block;
     }
+
+    .gestioneCommento{
+        display: flex;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -1145,6 +1149,11 @@ button.like, button.dislike{
     .commento{
         margin-left: 5%;
         width:70%
+    }
+
+    .dataCreazione{
+        white-space: nowrap;
+        padding-left: min(5%);
     }
 
     #popolari{
