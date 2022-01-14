@@ -406,6 +406,11 @@ ul{
     border-radius: 5em;
 }
 
+img.avatar
+{
+    border-radius: 5em;
+}
+
 .avatar.miniAvatar{
     height: 50px;
     width:50px;
