@@ -113,6 +113,8 @@ function disableAccount(){
   password.setAttribute("id", "password");
   password.setAttribute("type", "password");
 
+  var gestioneButton = document.createElement("div");
+  gestioneButton.setAttribute("class","hflex");
   var si=document.createElement("button");
   si.setAttribute("onclick","confirmDisable()");
   si.setAttribute("class", "popUpButton");
@@ -125,8 +127,11 @@ function disableAccount(){
 
   conferma.appendChild(messaggio);
   conferma.appendChild(password);
-  conferma.appendChild(no);
-  conferma.appendChild(si);
+
+  gestioneButton.appendChild(no);
+  gestioneButton.appendChild(si);
+  conferma.appendChild(gestioneButton);
+
   popup.appendChild(conferma);
 
   var popupWrapper = document.createElement("div");

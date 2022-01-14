@@ -451,7 +451,12 @@ img.avatar
 
 #confermaDisabilita button {
     width: 30%;
-    margin-right: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+#confermaDisabilita div{
+    justify-content:center;
 }
 
 #infoProfilo{
@@ -678,10 +683,16 @@ button.like, button.dislike{
     flex-direction: column;
     background-color: var(--backgroundWidget);
     width: 40%;
-    height: 20%;
+    height: max-content;
     justify-content: center;
     align-items: center;
     border-radius: 1em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#popUp *{
+    margin-top: 0.5em;
 }
 
 #confermaCancella{
@@ -690,7 +701,7 @@ button.like, button.dislike{
     justify-content: space-evenly;  
 }
 
-#confermaCancella button{
+#confermaCancella button,#confermaDisabilita button, #confermaDisabilita input{
     width: 30%;
 }
 
