@@ -504,6 +504,8 @@ img.avatar
 
 #aiutoCommenti{
     text-align: right;
+    width: 23%;
+    align-self: flex-end;
 }
 
 #loginForm{
@@ -548,6 +550,7 @@ img.avatar
 
 .commento p.testo{
     margin-top: 2.5em;
+    word-wrap: break-word;
 }
 
 #filters img.icon{
@@ -574,17 +577,24 @@ img.avatar
 }
 #intestazione .space, #intestazione a{
     width: 20%;
- }
+}
+
+#zonaCreazioneCommento{
+    display: flex;
+    justify-content: space-between;
+}
 
 #creaCommento{
     width: 60%;
     height: 40%;
     align-self: flex-start;
     margin-left: 5em;
+    margin-top: 1em;
+    margin-bottom: 2em;
 }
 
 #creaCommento *{
-     margin-top: 1em;
+     margin-top: 0.5em;
 }
 
 #creaCommento button{

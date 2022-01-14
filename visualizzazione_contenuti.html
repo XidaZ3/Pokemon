@@ -34,13 +34,16 @@
         <content/>
         <contentOpinion/>
         <h3 id="listaCommenti">Commenti</h3>
-        
-        <commenti/>
         <div id="creaCommento" class="vflex">
-            <textarea name="textCommento" id="textCommento" cols="15" rows="5" placeholder="Cosa ne pensi?"></textarea>
-            <button id="crea" onclick="createUserComment()">Crea commento</button>
+            <textarea name="textCommento" id="textCommento" cols="15" rows="5" maxlength="255" placeholder="Cosa ne pensi?" onkeyup="countChars()"></textarea>
+            <div id=zonaCreazioneCommento>
+                <button id="crea" onclick="createUserComment()">Crea commento</button>
+                <span id=contaChars>0/255</span>
+            </div>   
         </div>
-        <a id="aiutoCommenti" href="#listaCommenti">Torna su</a>
+
+        <commenti/>
+        <a id="aiutoCommenti" href="#listaCommenti">Torna all'inizio dei commenti...</a>
     </div>
     <footer>
         The Best Pokemon Company TM.
