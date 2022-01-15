@@ -206,9 +206,10 @@ footer{
     border-radius: 0.5em;
     background-color: var(--contentItem);
     height: 6em;
-    width: 90%;
+    width: 85%;
     padding: 1em;
     align-self: center;
+    justify-self: center;
     align-items: center;
 }
 
@@ -720,6 +721,7 @@ button.like, button.dislike{
     text-align: center;
 }
 /*------------------------------*/
+
 @media only screen and (max-width: 1050px){
 
     :root{
@@ -962,12 +964,7 @@ button.like, button.dislike{
         margin-top: 0.15em;
         margin-bottom: 0.15em;
     }
-    #collabora{
-        min-width: 10em;
-        min-height: 30em;
-        padding: 1em 0;
-    }
-    
+
     #contatti{
         text-align: center;
     }
