@@ -38,10 +38,10 @@
                 <form id="profiloForm" class="boxInside vflex" method="POST" action="logOutUtils.php">
                     <img class="avatar" src="../Immagini/emerald/<avatar/>.png" alt="" />
                     <div id="campiProfilo" class="vflex">
-                        <label for="email">Email:</label>
-                        <p type="text" id="email" tabindex="2"><email/></p>
+                        Email:
+                        <span tabindex="2"><email/></span>
                         <input hidden value="<id/>" id="id">
-                        <input type="submit" method="POST" form ="profiloForm" formaction="logOutUtils.php" value = "Log Out" name="logout" id="logout" tabindex="2">
+                        <input type="submit" value = "Log Out" name="logout" id="logout" tabindex="2">
                         <button onclick="disableAccount()" tabindex="2">Elimina account</button>
                     </div>
                 </form>
