@@ -3,15 +3,16 @@
     src: url("./fonts/Questrial-Regular.ttf");
 }
 :root {
-    --light-cornflower-blue: #8ecae6ff;
-    --blue-green: #219ebcff;
-    --mainText: #023047ff;
-    --mediumColor: #ffb703ff;
+    --light-cornflower-blue: #8ecae6;
+    --blue-green: #219ebc;
+    --mainText: #023047;
+    --mediumColor: #ffb703;
     --mediumColorTran:rgba(255, 184, 3, 0.5);
-    --border: #fb8500ff;
+    --border: #fb8500;
     --borderTran:rgba(251, 134, 0, 0.5);
 
-    --link:#551a89;
+    --visitedLink:#551a89;
+    --unvisitedLink:#00009E;
 
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
@@ -218,10 +219,14 @@ footer{
 }
 
 .itemList a{
-    color: var(--link);
+    color: var(--unvisitedLink);
     width:50%;
     font-weight: bold;
     font-size: 125%;
+}
+
+.itemList a:visited{
+    color: var(--visitedLink);
 }
 
 .smalltext.delete {
