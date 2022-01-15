@@ -17,14 +17,14 @@
     </header>     
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="../index.php">Home </a> </li>
+            <li lang="en"><a href="../index.php" tabindex="2">Home </a> </li>
             <li>Contenuti</li>
-            <li><a href="../chi_siamo.html">Chi siamo</a></li>
-            <li><a href="profilo.php">Profilo</a></li>
+            <li><a href="../chi_siamo.html" tabindex="2">Chi siamo</a></li>
+            <li><a href="profilo.php" tabindex="2">Profilo</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-            <p>Ti trovi in: <span lang="en"><a href="../index.php">Home</a></span>->Contenuti</p>
+            <p>Ti trovi in: <span lang="en"><a href="../index.php" tabindex="2">Home</a></span>->Contenuti</p>
     </nav>
     
     <div id="content" class="vflex">
@@ -32,12 +32,12 @@
             <div id="filters">
                 <div id="intestazione" class="hflex">
                     <div class="space"></div>
-                    <h2 class="hflex"><contentTitle/> </h2>
+                    <a class="sectionTitle" href=#conttab tabindex="1" ><h2 class="hflex"><contentTitle/> </h2></a>
                     <contentLink/>
                 </div>
                 
                 Ordina per:
-                <select name="filter" id="filter" onchange="filterChange()">
+                <select name="filter" id="filter" onchange="filterChange()" tabindex="3">
                     <filterOptions/>
                 </select>
             </div>

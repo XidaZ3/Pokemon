@@ -20,14 +20,14 @@
     </header>
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="index.php">Home </a> </li>
+            <li lang="en"><a href="index.php" tabindex="4">Home </a> </li>
             <li>Contenuti</li>
-            <li><a href="chi_siamo.html">Chi siamo</a> </li>
-            <li><a href="PHP/profilo.php">Profilo</a></li>
+            <li><a href="chi_siamo.html" tabindex="5">Chi siamo</a> </li>
+            <li><a href="PHP/profilo.php" tabindex="6">Profilo</a></li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en"><a href="index.php">Home</a></span>-><a href="PHP/contenuti.php">Contenuti</a>-> <title/></p>
+        <p>Ti trovi in: <span lang="en"><a href="index.php" tabindex="7">Home</a></span>-><a href="PHP/contenuti.php" tabindex="8">Contenuti</a>-> <title/></p>
     </nav>
     
     <div id="content" class="vflex contenutiTesto">
@@ -35,15 +35,15 @@
         <contentOpinion/>
         <h3 id="listaCommenti">Commenti</h3>
         <div id="creaCommento" class="vflex">
-            <textarea name="textCommento" id="textCommento" cols="15" rows="5" maxlength="255" placeholder="Cosa ne pensi?" onkeyup="countChars()"></textarea>
+            <textarea name="textCommento" id="textCommento" cols="15" rows="5" maxlength="255" placeholder="Cosa ne pensi?" onkeyup="countChars()" tabindex="1"></textarea>
             <div id=zonaCreazioneCommento>
-                <button id="crea" onclick="createUserComment()">Crea commento</button>
+                <button id="crea" onclick="createUserComment()" tabindex="2">Crea commento</button>
                 <span id=contaChars>0/255</span>
             </div>   
         </div>
 
         <commenti/>
-        <a id="aiutoCommenti" href="#listaCommenti">Torna all'inizio dei commenti...</a>
+        <a id="aiutoCommenti" href="#listaCommenti" tabindex="3">Torna all'inizio dei commenti...</a>
     </div>
     <footer>
         The Best Pokemon Company TM.

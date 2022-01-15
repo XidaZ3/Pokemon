@@ -19,34 +19,35 @@
     </header>
     <nav id="menu">
         <ul>
-            <li lang="en"><a href="../index.php">Home </a> </li>
-            <li><a href="contenuti.php">Contenuti</a></li>
-            <li><a href="../chi_siamo.html">Chi siamo</a></li>
-            <li><a href="profilo.php">Profilo</a></li>
+            <li lang="en"><a href="../index.php" tabindex="2">Home </a> </li>
+            <li><a href="contenuti.php" tabindex="2">Contenuti</a></li>
+            <li><a href="../chi_siamo.html" tabindex="2">Chi siamo</a></li>
+            <li><a href="profilo.php" tabindex="2">Profilo</a></li>
             <li>Admin</li>
         </ul>
     </nav>
     <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en"><a href="../index.php">Home</a></span>->Admin</p>
+        <p>Ti trovi in: <span lang="en"><a href="../index.php" tabindex="2">Home</a></span>->Admin</p>
     </nav>
 
     <div id="content">
         <div id="profiloBordo" class="boxOutside vflex">
-            <h2>Carica Contenuti</h2>
+            <a href=#proftab tabindex="1" style="text-decoration: none"><h2>Carica Contenuti</h2></a>
 
             <div id="adminZone" class="hflex">
                 <form action="upload.php" method="POST" enctype="multipart/form-data" class="boxInside vflex">
+                    <a id="proftab"></a>
                     <label for="zipfile">Scegli un file zip:</label>
-                    <input type="file" name="zipfile" id="zipfile" accept=".zip,.rar,.7zip" required>
+                    <input type="file" name="zipfile" id="zipfile" accept=".zip,.rar,.7zip" required tabindex="2">
                     <div class="hflex">
                         <label for="guida">Guida</label>
-                        <input type="radio" id="guida" name="tipo" value="Guide" required>
+                        <input type="radio" id="guida" name="tipo" value="Guide" required tabindex="2">
                         <label for="articolo">Articolo</label>
-                        <input type="radio" id="articolo" name="tipo" value="Articoli">
+                        <input type="radio" id="articolo" name="tipo" value="Articoli" tabindex="2">
                     </div>
                     Titolo:
-                    <input type="text" name="titolo" required>
-                    <input type="submit" name="submit" id="submit" value="Carica">
+                    <input type="text" name="titolo" required tabindex="2">
+                    <input type="submit" name="submit" id="submit" value="Carica" tabindex="2">
 
                     <div id="output"></div>
                 </form>

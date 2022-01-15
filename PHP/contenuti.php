@@ -31,10 +31,10 @@
     $link = "";
     $title = "";
     if($contentType){
-        $link = "<a href=\"contenuti.php?tipo=0\">Vai alle guide...</a>";
+        $link = "<a href=\"contenuti.php?tipo=0\" tabindex=\"3\">Vai alle guide...</a>";
         $title = "Articoli <img src=\"../Immagini/icons/article.png\" class=\"icon\" alt=\"\"/>";
     }else{
-        $link = "<a href=\"contenuti.php?tipo=1\">Vai agli articoli...</a>";
+        $link = "<a href=\"contenuti.php?tipo=1\" tabindex=\"3\">Vai agli articoli...</a>";
         $title = "Guide <img src=\"../Immagini/icons/guide-book.png\" class=\"icon\" alt=\"\"/>";
     }
     $paginaContenuti = str_replace('<contentLink/>', $link, $paginaContenuti);
@@ -44,6 +44,7 @@
         foreach($content as $key => $item){
             $titoloTrim = str_replace(' ', '%20', $item['titolo']);
             $output = $output . "<li class=\"hflex itemList\">
+                                    <a id=\"conttab\"></a>
                                     <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                     <ul class =\"itemStats\">
                                         <li>Creato:{$item['data_creazione']}</li>
