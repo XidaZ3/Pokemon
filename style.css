@@ -990,6 +990,9 @@ button.like, button.dislike{
     #breadcrumb{
         margin:auto;
         min-width: 200px;
+        max-height: 2em;
+        overflow:hidden;
+        text-overflow: ellipsis;
     }
     /*------------------------------*/
     footer{
