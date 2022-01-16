@@ -53,8 +53,8 @@
     if(isset($content) && is_array($content)){
         foreach($content as $key => $item){
             $titoloTrim = str_replace(' ', '%20', $item['titolo']);
-            $output = $output . " <a id=\"conttab\"></a>
-                                   <li class=\"hflex itemList\">
+            
+            $output = $output . "<li class=\"hflex itemList\">
                                     <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                     <ul class =\"itemStats\">
                                         <li>Creato:<br/>{$item['data_creazione']}
