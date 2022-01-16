@@ -508,7 +508,6 @@
 
         public function addCommentOpinion($comment,$user, $opinion)
         {
-            $comment=substr($comment,2);
             $query = "SELECT commento FROM karma_commenti WHERE $comment = commento AND $user = utente";
             $queryResult = mysqli_query($this->connection, $query) or null;
 
