@@ -3,10 +3,12 @@
     require_once "db.php";
     use DB\DBAccess;
     $paginaRegistrazione = file_get_contents('../registrazione.html');
+    //Recupero i messaggi di errore che potrebbero o meno essere stati generati in una immediatamente precedente visita della pagina
     $errorEmail = isset($_SESSION['msg']['errorEmail']) && is_bool($_SESSION['msg']['errorEmail']) ? $_SESSION['msg']['errorEmail'] : null; //Se $_SESSION['msg']['email'] è string significa che ha causato problemi
     $errorUsername = isset($_SESSION['msg']['errorUsername']) && is_bool($_SESSION['msg']['errorUsername']) ? $_SESSION['msg']['errorUsername'] : null;
     $userAdded = isset($_SESSION['msg']['userAdded']) && is_bool($_SESSION['msg']['userAdded']) ? $_SESSION['msg']['userAdded'] : null;
     $userFound = isset($_SESSION['msg']['userFound']) && is_bool($_SESSION['msg']['userFound']) ? $_SESSION['msg']['userFound'] : null;
+    //Per tutti gli if/else statemente sotto vengono iniettati dei messaggi di errore se necessari
     if(isset($errorEmail) && $errorEmail) $paginaRegistrazione = str_replace('<emailError/>','Questa email è già utilizzata', $paginaRegistrazione);
     else                                  $paginaRegistrazione = str_replace('<emailError/>','', $paginaRegistrazione);
     

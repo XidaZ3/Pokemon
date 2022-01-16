@@ -16,22 +16,20 @@ if(isset($_POST["submit"])) {
             array_push($error,'Esiste già un file con questo nome.');
         }
         
-        // Check file size
+        // Controllo per verificare che il file compresso non superi 1MB
         if ($_FILES["zipfile"]["size"] > 1000000) {
             $uploadOk = 0;
             array_push($error,"Il file supera la dimensione massima. (1MB)");
         }
         
-        // Allow certain file formats
-        if($zipFileType != "zip" && $zipFileType != "rar" && $zipFileType != "7z") {
+        // Controllo per permettere solo i file in formato .zip
+        if($zipFileType != "zip") {
             $uploadOk = 0;
             array_push($error,"L'estensioni supportate sono .zip, .rar e .7z");
         }
         
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-        // if everything is ok, try to upload file
-        } else {
+        // Se non ci sono stati errori nei controlli procedo all'unzip
+        if ($uploadOk != 0) {
             $path = $_FILES['zipfile']['tmp_name'];
             $destination= "../".$_POST['tipo']."/";
             $title = $_POST['titolo'];
@@ -48,6 +46,8 @@ if(isset($_POST["submit"])) {
                     if(isset($result) && $result){
                         $result = $db->getContentByPath($filename);
                         if(isset($result)){
+                            //Il contenuto è stato effettivamente aggiunto ed è stato possibile recuperare il suo id autogenerato
+                            //Creo quindi il link alla sua pagina
                             if($tipo == 0)
                                 $link = "<a href=\"../contentViewer.php?id={$result['id']}&guida={$filename}&titolo={$title}\">{$title}</a>";
                             else if($tipo ==1)
@@ -58,8 +58,10 @@ if(isset($_POST["submit"])) {
                         }
                         
                     }else if (isset($result)){
+                        //result è null, la query non è stata eseguita
                         array_push($error,"Non è stato possibile aggiornare il database.");
                     }else{
+                        //result è false, la query è stata eseguita ma non è andata a buon fine
                         array_push($error,"Errore nel tentativo di aggiornare il database");
                     }
                 }

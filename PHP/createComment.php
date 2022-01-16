@@ -4,6 +4,7 @@
     use DB\DBAccess;
     $db= new DBAccess();
 
+    //Recupero le informazioni necessarie ad individuare l'utente, il contenuto a cui viene fatto un commento e il contenuto del commento
     $userid= isset($_SESSION['userid']) ? $_SESSION['userid'] : null;
     $id= isset($_SESSION['id']) ? $_SESSION['id'] : null;
     $comment = isset($_POST['comment']) ? $_POST['comment'] : null;
@@ -19,12 +20,14 @@
 
     if(isset($id) && isset($comment))
     {
+        //Aggiungo il commento al database e subito dopo richiedo lo stesso contenuto al fine di ottenere l'id autoincrementale
+        //generato dal db per poter inserire il commento nella struttura html con un id significativo ed univoco
         $res=$db->addComment($userid, $comment, $id);
         $arrayitem = $db->getContentComments($id,$userid);
         $item = reset($arrayitem);
 
         $db->closeDBConnection();
-
+        //Procedo a creare l'html per poter inserire il commento
         $karmaClass = $item['valore'] == 1 ? 1: ($item['valore'] == -1 ? 0 : null);
         $output =   "<div id=\"nc{$item['commentoid']}\" class=\"boxRect hflex\">
         <div class=\"avatarBox vflex\">
@@ -42,6 +45,7 @@
         </div>";
         echo $output;
     }
+    $db->closeDBConnection();
     if(!$res)
         error_log("errore inserimento commento");
 ?>

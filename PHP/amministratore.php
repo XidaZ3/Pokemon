@@ -1,7 +1,8 @@
 <?php
+    
     session_start();
-    require_once "db.php";
     $paginaAmministratore = file_get_contents('../amministratore.html');
+    //Se la variabile è settata allora prevedo la costruzione di una serie di tag b per la visualizzazione dei messaggi necessari
     if(isset($_SESSION['uploadError']) && is_array($_SESSION['uploadError'])){
         $error = $_SESSION['uploadError'];
         $output ="<b>";
