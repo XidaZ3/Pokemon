@@ -39,8 +39,6 @@
     $paginaContentViewer = str_replace('<description/>', $description, $paginaContentViewer);
     $paginaContentViewer = str_replace('<PokeFriendsTitolo/>', $titoloPagina, $paginaContentViewer);
 
-    
-
     if($userid != 0)
     {
         $arrayres= $db->getUserOpinionContent($id,$userid);
