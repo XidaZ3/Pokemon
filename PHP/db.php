@@ -250,7 +250,7 @@
         public function getGuideContentsMostRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY c.data_creazione DESC LIMIT $offset, 5";
@@ -270,7 +270,7 @@
         public function getGuideContentsLeastRecent($page) {
             $offset = $page * $this->contenutiPerPagina;
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY c.data_creazione ASC LIMIT $offset, 5";
@@ -290,7 +290,7 @@
         public function getGuideContentsMostKarma($page) {
             $offset = $page * $this->contenutiPerPagina;
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY karma DESC LIMIT $offset, 5";
@@ -310,7 +310,7 @@
         public function getGuideContentsMostComments($page) {
             $offset = $page * $this->contenutiPerPagina;
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY ncom DESC LIMIT $offset, 5";
@@ -331,7 +331,7 @@
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
                 $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY c.data_creazione DESC LIMIT $offset, 5";
@@ -353,7 +353,7 @@
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
                 $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY c.data_creazione Asc LIMIT $offset, 5";
@@ -375,7 +375,7 @@
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
                 $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY karma DESC LIMIT $offset, 5";
@@ -397,7 +397,7 @@
             $offset = $page * $this->contenutiPerPagina;
             if(isset($page)){
                 $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+                IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY ncom DESC LIMIT $offset, 5";
@@ -435,7 +435,7 @@
 
         public function getContentsMostRecent() {
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             GROUP BY c.id 
             ORDER BY c.data_creazione DESC LIMIT 3";
@@ -455,7 +455,7 @@
 
         public function getContentsMostKarma() {
             $query = "SELECT c.path, c.tipo, c.titolo,c.id, c.data_creazione,u.username editore, u.avatar avatar,
-            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(co.contenuto) as ncom 
+            IFNULL((SELECT SUM(valore) from karma_contenuti k WHERE k.contenuto = c.id),0) karma, COUNT(DISTINCT co.id) as ncom 
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             GROUP BY c.id 
             ORDER BY karma DESC LIMIT 3";

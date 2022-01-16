@@ -36,7 +36,6 @@ function likeComment() {
   var opinion = 0;
   var commentid = event.target.parentElement.parentElement.parentElement.getAttribute("id");
   var karmaTag = document.getElementById("karmaco".concat(commentid.substring(2)));
-  console.log(commentid);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       if(like.getAttribute("class") == "like unpressed")

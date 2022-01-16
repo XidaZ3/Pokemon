@@ -41,8 +41,7 @@
 
     
 
-    if($userid != 0)
-    {
+    if($userid != 0){
         $arrayres= $db->getUserOpinionContent($id,$userid);
         $karma = $db->getContentKarma($id);
         $row = $arrayres->fetch_assoc();
