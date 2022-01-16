@@ -10,10 +10,6 @@
     --mediumColorTran:rgba(255, 184, 3, 0.5);
     --border: #fb8500;
     --borderTran:rgba(251, 134, 0, 0.5);
-
-    --visitedLink:#551a89;
-    --unvisitedLink:#00009E;
-
     --contentItem:#ffe566;
     --backgroundWidget:rgb(255, 247, 239);
     --errorFont:#800000;
@@ -224,7 +220,6 @@ footer{
 }
 
 .itemList a{
-    color: var(--unvisitedLink);
     width:50%;
     font-weight: bold;
     font-size: 125%;
@@ -232,10 +227,6 @@ footer{
 
 .itemList ul{
     width: 30%;
-}
-
-.itemList a:visited{
-    color: var(--visitedLink);
 }
 
 .smalltext.delete {
