@@ -40,12 +40,15 @@
             <div class=\"gestioneCommento hflex\">
             <button onclick=\"likeComment()\" class=\"like".(isset($karmaClass) && $karmaClass ? " pressed" : " unpressed")."\">Like</button>
             <button onclick=\"dislikeComment()\" class=\"dislike".(isset($karmaClass) && !$karmaClass ? " pressed" : " unpressed")."\">Dislike</button>
+            <p id=\"karmaco{$item['commentoid']}\" class=\"karma\">0</p>
             <p class=\"dataCreazione\">{$item['timestamp']}</p>
             </div>
         </div>";
         echo $output;
+    }else{
+        $db->closeDBConnection();
     }
-    $db->closeDBConnection();
+    
     if(!$res)
         error_log("errore inserimento commento");
 ?>
