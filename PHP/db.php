@@ -514,12 +514,7 @@
             if(isset($queryResult) && $queryResult)
             {
                 if(mysqli_num_rows($queryResult)==0)
-                {
-                    error_log("entrato query insert");
                     $query = "INSERT INTO karma_commenti(commento,utente,valore) VALUES ('$comment', '$user', '$opinion')";
-                    error_log($query);
-                }
-                   
                 else{
                     if($opinion != 0)
                         $query = "UPDATE karma_commenti SET valore=$opinion WHERE commento=$comment AND utente=$user";
