@@ -8,7 +8,8 @@
     $articolo = isset($_GET['articolo']) ? $_GET['articolo'] : null;
     $titolo = isset($_GET['titolo']) ? $_GET['titolo']: null;
     $id = isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : -1;
-    $description=" <meta description=\"".$titolo;
+    $description=" <meta name=\"description\" content=\"".$titolo;
+    $titoloPagina= "<title>".$titolo;
     if($id == -1){
         header("Location: 404.html");
         return;
@@ -20,11 +21,13 @@
     if(isset($guida) && isset($titolo)){
         $content = file_get_contents('Guide/'.$guida.'/index.html');
         $content = str_replace('img/', "Guide/".$guida."/"."img/", $content);
-        $description =  $description." - guide - pokefriends\">";
+        $description =  $description." - Guide - Pokèfriends\">";
+        $titoloPagina= $titoloPagina." - Guide - Pokèfriends </title>";
     }else if(isset($articolo) && isset($titolo)){
         $content = file_get_contents('Articoli/'.$articolo.'/index.html');
         $content = str_replace('img/', "Articoli/".$articolo."/"."img/", $content);
-        $description= $description." - articolo - pokefriends\">";
+        $description= $description." - Articolo - Pokèfriends\">";
+        $titoloPagina=$titoloPagina." - Articolo- Pokèfriends </title>";
     }else{
         $paginaContentViewer = file_get_contents('../404.html');
         return;
@@ -34,6 +37,7 @@
     $userid = isset($_SESSION['userid'])? $_SESSION['userid'] : 0;
     $paginaContentViewer = str_replace('<title/>', $titolo, $paginaContentViewer);
     $paginaContentViewer = str_replace('<description/>', $description, $paginaContentViewer);
+    $paginaContentViewer = str_replace('<PokeFriendsTitolo/>', $titoloPagina, $paginaContentViewer);
 
     
 
