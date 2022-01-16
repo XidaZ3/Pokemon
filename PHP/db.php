@@ -489,7 +489,7 @@
         {
             $query = "SELECT contenuto FROM karma_contenuti WHERE $contenuto = contenuto AND $user=utente";
             $queryResult = mysqli_query($this->connection, $query) or null;
-
+            
             if($queryResult)
             {
                 if(mysqli_num_rows($queryResult)==0)
@@ -508,14 +508,18 @@
 
         public function addCommentOpinion($comment,$user, $opinion)
         {
-            $comment=substr($comment,2);
             $query = "SELECT commento FROM karma_commenti WHERE $comment = commento AND $user = utente";
             $queryResult = mysqli_query($this->connection, $query) or null;
 
             if(isset($queryResult) && $queryResult)
             {
                 if(mysqli_num_rows($queryResult)==0)
+                {
+                    error_log("entrato query insert");
                     $query = "INSERT INTO karma_commenti(commento,utente,valore) VALUES ('$comment', '$user', '$opinion')";
+                    error_log($query);
+                }
+                   
                 else{
                     if($opinion != 0)
                         $query = "UPDATE karma_commenti SET valore=$opinion WHERE commento=$comment AND utente=$user";

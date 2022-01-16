@@ -814,7 +814,6 @@ button.like, button.dislike{
     }
 
     .commento{
-        border:var(--mediumColor) 3px solid;
         padding: 0.5em;
         margin-top: 0;
     }
