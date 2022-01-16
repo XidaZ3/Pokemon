@@ -47,7 +47,7 @@
                                     <a id=\"conttab\"></a>
                                     <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                     <ul class =\"itemStats\">
-                                        <li>Creato:{$item['data_creazione']}</li>
+                                        <li>Creato:<br/>{$item['data_creazione']}
                                         <li>Karma:". (isset($item['karma']) ? $item['karma'] : 0)."</li>
                                         <li>Commenti:". (isset($item['ncom']) ? $item['ncom'] : 0)."</li>
                                     </ul>

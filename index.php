@@ -15,7 +15,7 @@
             $outputRecent = $outputRecent . "<li class=\"hflex itemList\">
                                                 <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
-                                                    <li>Creato:{$item['data_creazione']}</li>
+                                                    <li>Creato:<br/>{$item['data_creazione']}</li>
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>
@@ -34,7 +34,7 @@
             $outputLiked = $outputLiked . "<li class=\"hflex itemList\">
                                                 <a href=\"contentViewer.php?id={$item['id']}&".($item['tipo']? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
                                                 <ul class =\"itemStats\">
-                                                    <li>Creato:{$item['data_creazione']}</li>
+                                                    <li>Creato:<br/>{$item['data_creazione']}</li>
                                                     <li>Karma:{$item['karma']}</li>
                                                     <li>Commenti:{$item['ncom']}</li>
                                                 </ul>

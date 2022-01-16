@@ -230,6 +230,10 @@ footer{
     font-size: 125%;
 }
 
+.itemList ul{
+    width: 30%;
+}
+
 .itemList a:visited{
     color: var(--visitedLink);
 }
