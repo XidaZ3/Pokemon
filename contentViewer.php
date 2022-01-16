@@ -45,7 +45,10 @@
         $arrayres= $db->getUserOpinionContent($id,$userid);
         $karma = $db->getContentKarma($id);
         $row = $arrayres->fetch_assoc();
-        $karmaContent = $row['valore'] == 1 ? 1: ($row['valore'] == -1 ? 0 : null);
+        if($row)
+            $karmaContent = $row['valore'] == 1 ? 1: ($row['valore'] == -1 ? 0 : null);
+        else
+            $karmaContent = null;
         $opinionContent="<div id=\"nc{$id}\" class=\"gestioneContenuto hflex\">
         <button onclick=\"likeContenuto()\" class=\"like".(isset($karmaContent) && $karmaContent ? " pressed" : " unpressed")."\">Like</button>
         <button onclick=\"dislikeContenuto()\" class=\"dislike".(isset($karmaContent) && !$karmaContent ? " pressed" : " unpressed")."\">Dislike</button>".

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 16, 2022 at 04:18 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.3.33
+-- Host: localhost:3306
+-- Creato il: Gen 16, 2022 alle 18:25
+-- Versione del server: 10.3.32-MariaDB-0ubuntu0.20.04.1
+-- Versione PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,25 +19,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pokefriends`
+-- Database: `xchen`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commenti`
+-- Struttura della tabella `commenti`
 --
 
 CREATE TABLE `commenti` (
   `id` int(11) NOT NULL,
   `utente` int(11) NOT NULL,
-  `testo` tinytext COLLATE utf8_bin NOT NULL,
+  `testo` varchar(255) COLLATE utf8_bin NOT NULL,
   `contenuto` int(11) DEFAULT NULL,
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `commenti`
+-- Dump dei dati per la tabella `commenti`
 --
 
 INSERT INTO `commenti` (`id`, `utente`, `testo`, `contenuto`, `timestamp`) VALUES
@@ -60,17 +61,18 @@ INSERT INTO `commenti` (`id`, `utente`, `testo`, `contenuto`, `timestamp`) VALUE
 (128, 43, 'Che sballo! Questa guida è una bomba!', 19, '2022-01-16'),
 (129, 43, 'Gran bel post, mi porta indietro nel tempo', 25, '2022-01-16'),
 (130, 47, 'Quello che ci voleva, ben fatto!', 36, '2022-01-16'),
-(131, 47, 'Gran bel post', 36, '2022-01-16');
+(131, 47, 'Gran bel post', 36, '2022-01-16'),
+(132, 9, 'efefefe', 32, '2022-01-16');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contenuti`
+-- Struttura della tabella `contenuti`
 --
 
 CREATE TABLE `contenuti` (
   `id` int(11) NOT NULL,
-  `path` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `tipo` tinyint(4) NOT NULL DEFAULT 0,
   `titolo` tinytext COLLATE utf8_bin NOT NULL,
   `data_creazione` date NOT NULL DEFAULT current_timestamp(),
@@ -78,7 +80,7 @@ CREATE TABLE `contenuti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `contenuti`
+-- Dump dei dati per la tabella `contenuti`
 --
 
 INSERT INTO `contenuti` (`id`, `path`, `tipo`, `titolo`, `data_creazione`, `editore`) VALUES
@@ -99,7 +101,7 @@ INSERT INTO `contenuti` (`id`, `path`, `tipo`, `titolo`, `data_creazione`, `edit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karma_commenti`
+-- Struttura della tabella `karma_commenti`
 --
 
 CREATE TABLE `karma_commenti` (
@@ -110,16 +112,17 @@ CREATE TABLE `karma_commenti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `karma_commenti`
+-- Dump dei dati per la tabella `karma_commenti`
 --
 
 INSERT INTO `karma_commenti` (`id`, `commento`, `utente`, `valore`) VALUES
-(8, 17, 48, 1);
+(8, 17, 48, 1),
+(99, 122, 9, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karma_contenuti`
+-- Struttura della tabella `karma_contenuti`
 --
 
 CREATE TABLE `karma_contenuti` (
@@ -130,7 +133,7 @@ CREATE TABLE `karma_contenuti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `karma_contenuti`
+-- Dump dei dati per la tabella `karma_contenuti`
 --
 
 INSERT INTO `karma_contenuti` (`id`, `contenuto`, `utente`, `valore`) VALUES
@@ -146,12 +149,13 @@ INSERT INTO `karma_contenuti` (`id`, `contenuto`, `utente`, `valore`) VALUES
 (18, 25, 43, 1),
 (19, 19, 47, 1),
 (20, 30, 47, 1),
-(21, 36, 47, 1);
+(21, 36, 47, 1),
+(26, 21, 9, -1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utenti`
+-- Struttura della tabella `utenti`
 --
 
 CREATE TABLE `utenti` (
@@ -166,7 +170,7 @@ CREATE TABLE `utenti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `utenti`
+-- Dump dei dati per la tabella `utenti`
 --
 
 INSERT INTO `utenti` (`id`, `email`, `password`, `username`, `privilegio`, `data_iscrizione`, `attivo`, `avatar`) VALUES
@@ -180,11 +184,11 @@ INSERT INTO `utenti` (`id`, `email`, `password`, `username`, `privilegio`, `data
 (51, 'admin', '$2y$10$7wqxpNqvQyG9y7QWYYrJKOux/G6BT/qlSQWvfa.DKr7MKvM7VbcF2', 'admin', 1, '2022-01-13', 1, 317);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `commenti`
+-- Indici per le tabelle `commenti`
 --
 ALTER TABLE `commenti`
   ADD PRIMARY KEY (`id`),
@@ -192,15 +196,15 @@ ALTER TABLE `commenti`
   ADD KEY `utente` (`utente`);
 
 --
--- Indexes for table `contenuti`
+-- Indici per le tabelle `contenuti`
 --
 ALTER TABLE `contenuti`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `path` (`path`) USING HASH,
+  ADD UNIQUE KEY `path` (`path`),
   ADD KEY `editore` (`editore`);
 
 --
--- Indexes for table `karma_commenti`
+-- Indici per le tabelle `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
   ADD PRIMARY KEY (`id`),
@@ -208,14 +212,14 @@ ALTER TABLE `karma_commenti`
   ADD KEY `utente` (`utente`);
 
 --
--- Indexes for table `karma_contenuti`
+-- Indici per le tabelle `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
   ADD PRIMARY KEY (`id`),
   ADD KEY `contenuto` (`contenuto`);
 
 --
--- Indexes for table `utenti`
+-- Indici per le tabelle `utenti`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id`),
@@ -223,70 +227,67 @@ ALTER TABLE `utenti`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `commenti`
+-- AUTO_INCREMENT per la tabella `commenti`
 --
 ALTER TABLE `commenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
--- AUTO_INCREMENT for table `contenuti`
+-- AUTO_INCREMENT per la tabella `contenuti`
 --
 ALTER TABLE `contenuti`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `karma_commenti`
+-- AUTO_INCREMENT per la tabella `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT for table `karma_contenuti`
+-- AUTO_INCREMENT per la tabella `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `utenti`
+-- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `commenti`
+-- Limiti per la tabella `commenti`
 --
 ALTER TABLE `commenti`
   ADD CONSTRAINT `content` FOREIGN KEY (`contenuto`) REFERENCES `contenuti` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `utente` FOREIGN KEY (`utente`) REFERENCES `utenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `contenuti`
+-- Limiti per la tabella `contenuti`
 --
 ALTER TABLE `contenuti`
   ADD CONSTRAINT `editore` FOREIGN KEY (`editore`) REFERENCES `utenti` (`id`);
 
 --
--- Constraints for table `karma_commenti`
+-- Limiti per la tabella `karma_commenti`
 --
 ALTER TABLE `karma_commenti`
   ADD CONSTRAINT `karma_commento` FOREIGN KEY (`commento`) REFERENCES `commenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  ADD CONSTRAINT `commento_utente` FOREIGN KEY (`utente`) REFERENCES `utenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  
 
 --
--- Constraints for table `karma_contenuti`
+-- Limiti per la tabella `karma_contenuti`
 --
 ALTER TABLE `karma_contenuti`
   ADD CONSTRAINT `contenuto` FOREIGN KEY (`contenuto`) REFERENCES `contenuti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  ADD CONSTRAINT `contenuto_utente` FOREIGN KEY (`utente`) REFERENCES `utenti` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
