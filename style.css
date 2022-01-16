@@ -945,6 +945,10 @@ button.like, button.dislike{
     .gestioneCommento{
         display: flex;
     }
+
+    #psyduckConfused p{
+        right:auto;
+    }
 }
 
 @media only screen and (max-width: 600px) {
