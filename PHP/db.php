@@ -234,7 +234,7 @@
 
         public function getContentNumberByType($tipo){
             $query= "SELECT COUNT(c.id) as ncontenuti FROM contenuti c WHERE c.tipo = $tipo";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentNumberByType: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){
@@ -254,7 +254,7 @@
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY c.data_creazione DESC LIMIT $offset, 5";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContentsMostRecent: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){
@@ -274,7 +274,7 @@
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY c.data_creazione ASC LIMIT $offset, 5";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContentsLeastRecent: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){
@@ -294,7 +294,7 @@
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY karma DESC LIMIT $offset, 5";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContentsMostKarma: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){
@@ -314,7 +314,7 @@
             FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
             WHERE tipo = 0 GROUP BY c.id 
             ORDER BY ncom DESC LIMIT $offset, 5";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getGuideContentsMostComments: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){
@@ -335,7 +335,7 @@
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY c.data_creazione DESC LIMIT $offset, 5";
-                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContentsMostRecent: ".mysqli_error($this->connection));
                 if(mysqli_num_rows($queryResult)>0){
                     $result = array();
                     while($row = mysqli_fetch_assoc($queryResult)){
@@ -357,7 +357,7 @@
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY c.data_creazione Asc LIMIT $offset, 5";
-                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContentsLeastRecent: ".mysqli_error($this->connection));
                 if(mysqli_num_rows($queryResult)>0){
                     $result = array();
                     while($row = mysqli_fetch_assoc($queryResult)){
@@ -379,7 +379,7 @@
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY karma DESC LIMIT $offset, 5";
-                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContentsMostKarma: ".mysqli_error($this->connection));
                 if(mysqli_num_rows($queryResult)>0){
                     $result = array();
                     while($row = mysqli_fetch_assoc($queryResult)){
@@ -401,7 +401,7 @@
                 FROM contenuti c LEFT JOIN karma_contenuti k ON c.id = k.contenuto LEFT JOIN commenti co ON c.id = co.contenuto JOIN utenti u ON c.editore=u.id 
                 WHERE tipo = 1 GROUP BY c.id 
                 ORDER BY ncom DESC LIMIT $offset, 5";
-                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContentsMostComments: ".mysqli_error($this->connection));
                 if(mysqli_num_rows($queryResult)>0){
                     $result = array();
                     while($row = mysqli_fetch_assoc($queryResult)){
@@ -420,7 +420,7 @@
              FROM commenti co JOIN utenti u ON co.utente = u.id LEFT JOIN karma_commenti k ON k.commento = co.id AND k.utente = $userid
              WHERE co.contenuto = $id GROUP BY commentoid 
              ORDER BY co.timestamp DESC, commentoid DESC";
-            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getArticleContents: ".mysqli_error($this->connection));
+            $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentComments: ".mysqli_error($this->connection));
             if(mysqli_num_rows($queryResult)>0){
                 $result = array();
                 while($row = mysqli_fetch_assoc($queryResult)){

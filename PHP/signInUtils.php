@@ -1,6 +1,6 @@
 <?php
 
-    session_start(); //Attivo la session per accedere alla variabile $_SESSION[]
+    session_start(); 
     require_once "db.php";
     use DB\DBAccess;
     $db= new DBAccess();
@@ -10,7 +10,8 @@
     $usedUsername = null;
     $errorEmail=false;
     $errorUsername = false;
-    if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['uname'])) // Verifico che siano state inviate le variabili necessarie
+    // Verifico che siano state inviate le variabili necessarie
+    if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['uname'])) 
     {
         $email = $_POST['email'];
         $psw = $_POST['password'];
@@ -34,7 +35,7 @@
                 $userAdded= true;
                 $userFound=true;
             }else if(!is_null($user) && !is_array($user)) {
-                //L'utente è stato inserito ma non sono riuscito a recuperare i suoi dati
+                //L'utente è stato inserito ma non sono riuscito a recuperare i suoi dati da inserire nella sessione
                 $userFound=false;
                 $userAdded= true;
             }
