@@ -137,6 +137,23 @@
             }
         }
 
+        public function getContentById($id) {
+            if(isset($id)){
+                $query = "SELECT contenuti.* FROM contenuti WHERE id = $id";
+                $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentById: ".mysqli_error($this->connection));
+                if(mysqli_num_rows($queryResult)>0){
+                    $result = array();
+                    while($row = mysqli_fetch_assoc($queryResult)){
+                        array_push($result, $row);
+                    }
+                    $queryResult->free();
+                    return $result[0];
+                }else{
+                    return null;
+                }
+            }
+        }
+
         public function getContentByPath($path) {
             if(isset($path)){
                 $query = "SELECT contenuti.* FROM contenuti WHERE path = '$path'";
@@ -532,7 +549,7 @@
         }
 
         public function getContentKarma($contentid){
-             $query = "SELECT SUM(valore) as karma FROM karma_contenuti WHERE $contentid = contenuto";
+             $query = "SELECT IFNULL(SUM(valore),0) as karma FROM karma_contenuti WHERE $contentid = contenuto";
              $queryResult = mysqli_query($this->connection, $query) or die("Errore in getContentKarma: ".mysqli_error($this->connection));
              $karma = $queryResult->fetch_assoc();
              return $karma['karma'];

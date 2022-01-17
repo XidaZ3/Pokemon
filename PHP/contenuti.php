@@ -21,9 +21,9 @@
 
     if(isset($numeroContenuti) & $numeroContenuti > 0){
         //Creo il navigatore delle pagine
-        $pagesLink = ($page == 0 ? "" : "<a href=\"contenuti.php?page=".($page-1)."&filtro={$filter}&tipo={$contentType}\"> &lt  </a>");
+        $pagesLink = ($page == 0 ? "" : "<a href=\"contenuti.php?page=".($page-1)."&filtro={$filter}&tipo={$contentType}\"> &lt;  </a>");
         $pagesLink = $pagesLink . "<p>".($page+1)." di ". (ceil($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)) ." </p>";
-        $pagesLink = $pagesLink. ($page == (ceil($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)-1) ? "" : "<a href=\"contenuti.php?page=".($page+1)."&filtro={$filter}&tipo={$contentType}\">  &gt </a>");
+        $pagesLink = $pagesLink. ($page == (ceil($numeroContenuti[0]['ncontenuti']/$contenutiPerPagina)-1) ? "" : "<a href=\"contenuti.php?page=".($page+1)."&filtro={$filter}&tipo={$contentType}\">  &gt; </a>");
         $paginaContenuti = str_replace("<pageLink/>", $pagesLink, $paginaContenuti);
     }
     //Reinserisco il valore del filtro che era precedentemente selezionato (ad esempio se vado alla pagina successiva)
@@ -54,8 +54,8 @@
         foreach($content as $key => $item){
             $titoloTrim = str_replace(' ', '%20', $item['titolo']);
             
-            $output = $output . "<li class=\"hflex itemList\">
-                                    <a href=\"../contentViewer.php?id={$item['id']}&".($contentType? "articolo":"guida")."={$item['path']}&titolo=$titoloTrim\">{$item['titolo']}</a>
+            $output = $output . "<li class=\"hflex itemList\" id=\"$key\">
+                                    <a href=\"../contentViewer.php?id={$item['id']}\">{$item['titolo']}</a>
                                     <ul class =\"itemStats\">
                                         <li>Creato:<br/>{$item['data_creazione']}
                                         <li>Karma:". (isset($item['karma']) ? $item['karma'] : 0)."</li>
